@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="com.swookiee.runtime" sequenceNumber="31">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.jdt.feature.group" version="3.9.1.v20130911-1000"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130828-0031"/>
+<unit id="org.eclipse.pde.feature.group" version="3.9.1.v20130911-1000"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.codehaus.groovy.eclipse.feature.source.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<unit id="org.codehaus.groovy.alltests.feature.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<unit id="org.codehaus.groovy21.feature.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<unit id="org.codehaus.groovy.jdt.patch.source.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<unit id="org.codehaus.groovy.alltests.feature.source.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<unit id="org.codehaus.groovy.eclipse.feature.feature.group" version="2.8.0.xx-20130703-1600-e43-RELEASE"/>
+<repository location="http://dist.springsource.org/release/GRECLIPSE/e4.3/"/>
+</location>
+</locations>
+<environment>
+<os>macosx</os>
+<ws>cocoa</ws>
+<arch>x86_64</arch>
+<nl>en_US</nl>
+</environment>
+</target>

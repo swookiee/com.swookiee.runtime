@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component name="com.intuit.data.runtime.client.RestInterfaceComponent">
+        <implementation class="com.intuit.data.runtime.client.RestInterfaceComponent"/>
+        <reference name="HttpService" interface="org.osgi.service.http.HttpService" cardinality="1..1" policy="static" bind="setHttpService" unbind="unsetHttpService"/>
+    </scr:component>
+</components>

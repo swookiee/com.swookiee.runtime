@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product uid="com.swookiee.runtime" useFeatures="false" includeLaunchers="false">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-consoleLog -console -Dlogback.configurationFile=./com.intuit.data.runtime.core/logback.xml</programArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.7</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="ch.qos.logback.classic"/>
+      <plugin id="ch.qos.logback.core"/>
+      <plugin id="com.codahale.metrics.core"/>
+      <plugin id="com.codahale.metrics.graphite"/>
+      <plugin id="com.codahale.metrics.jvm"/>
+      <plugin id="com.eclipsesource.jaxrs.publisher"/>
+      <plugin id="com.fasterxml.jackson.core.jackson-annotations"/>
+      <plugin id="com.fasterxml.jackson.core.jackson-core"/>
+      <plugin id="com.fasterxml.jackson.core.jackson-databind"/>
+      <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-base"/>
+      <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider"/>
+      <plugin id="com.google.gson"/>
+      <plugin id="com.google.guava"/>
+      <plugin id="com.google.inject"/>
+      <plugin id="com.swookiee.runtime.core"/>
+      <plugin id="com.swookiee.runtime.ewok"/>
+      <plugin id="com.swookiee.runtime.metrics"/>
+      <plugin id="de.twentyeleven.skysail.org.json-osgi"/>
+      <plugin id="javax.annotation-api"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="javax.validation.api"/>
+      <plugin id="javax.ws.rs-api"/>
+      <plugin id="joda-time"/>
+      <plugin id="jul.to.slf4j"/>
+      <plugin id="org.apache.commons.fileupload"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.felix.fileinstall"/>
+      <plugin id="org.apache.felix.gogo.command"/>
+      <plugin id="org.apache.felix.gogo.runtime"/>
+      <plugin id="org.apache.felix.gogo.shell"/>
+      <plugin id="org.apache.felix.webconsole"/>
+      <plugin id="org.apache.servicemix.bundles.aopalliance"/>
+      <plugin id="org.apache.servicemix.bundles.javax-inject"/>
+      <plugin id="org.eclipse.equinox.cm"/>
+      <plugin id="org.eclipse.equinox.console"/>
+      <plugin id="org.eclipse.equinox.ds"/>
+      <plugin id="org.eclipse.equinox.http.jetty"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.metatype"/>
+      <plugin id="org.eclipse.equinox.util"/>
+      <plugin id="org.eclipse.jetty.continuation"/>
+      <plugin id="org.eclipse.jetty.http"/>
+      <plugin id="org.eclipse.jetty.io"/>
+      <plugin id="org.eclipse.jetty.security"/>
+      <plugin id="org.eclipse.jetty.server"/>
+      <plugin id="org.eclipse.jetty.servlet"/>
+      <plugin id="org.eclipse.jetty.util"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.osgi.util"/>
+      <plugin id="org.glassfish.hk2.api"/>
+      <plugin id="org.glassfish.hk2.external.asm-all-repackaged"/>
+      <plugin id="org.glassfish.hk2.external.cglib"/>
+      <plugin id="org.glassfish.hk2.locator"/>
+      <plugin id="org.glassfish.hk2.osgi-resource-locator"/>
+      <plugin id="org.glassfish.hk2.utils"/>
+      <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core"/>
+      <plugin id="org.glassfish.jersey.core.jersey-client"/>
+      <plugin id="org.glassfish.jersey.core.jersey-common"/>
+      <plugin id="org.glassfish.jersey.core.jersey-server"/>
+      <plugin id="org.ops4j.peaberry"/>
+      <plugin id="slf4j.api"/>
+   </plugins>
+
+   <configurations>
+      <plugin id="ch.qos.logback.classic" autoStart="true" startLevel="0" />
+      <plugin id="ch.qos.logback.core" autoStart="true" startLevel="0" />
+      <plugin id="com.codahale.metrics.core" autoStart="true" startLevel="0" />
+      <plugin id="com.codahale.metrics.graphite" autoStart="true" startLevel="0" />
+      <plugin id="com.codahale.metrics.jvm" autoStart="true" startLevel="0" />
+      <plugin id="com.eclipsesource.jaxrs.publisher" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.core.jackson-annotations" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.core.jackson-core" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.core.jackson-databind" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-base" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" autoStart="true" startLevel="0" />
+      <plugin id="com.google.gson" autoStart="true" startLevel="0" />
+      <plugin id="com.google.guava" autoStart="true" startLevel="0" />
+      <plugin id="com.google.inject" autoStart="true" startLevel="0" />
+      <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="3" />
+      <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
+      <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
+      <plugin id="de.twentyeleven.skysail.org.json-osgi" autoStart="true" startLevel="0" />
+      <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
+      <plugin id="javax.servlet" autoStart="true" startLevel="0" />
+      <plugin id="javax.validation.api" autoStart="true" startLevel="0" />
+      <plugin id="javax.ws.rs-api" autoStart="true" startLevel="0" />
+      <plugin id="joda-time" autoStart="true" startLevel="0" />
+      <plugin id="jul.to.slf4j" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.fileupload" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.io" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.fileinstall" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.shell" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.webconsole" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.servicemix.bundles.aopalliance" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.servicemix.bundles.javax-inject" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.jetty" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.metatype" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.continuation" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.http" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.io" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.security" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.server" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.servlet" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
+      <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.osgi.util" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.api" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.external.asm-all-repackaged" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.external.cglib" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.locator" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.osgi-resource-locator" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.hk2.utils" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.jersey.core.jersey-client" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.jersey.core.jersey-common" autoStart="true" startLevel="3" />
+      <plugin id="org.glassfish.jersey.core.jersey-server" autoStart="true" startLevel="0" />
+      <plugin id="org.ops4j.peaberry" autoStart="true" startLevel="0" />
+      <plugin id="slf4j.api" autoStart="true" startLevel="0" />
+      <property name="eclipse.ignoreApp" value="true" />
+      <property name="felix.fileinstall.dir" value="./dropins" />
+      <property name="felix.fileinstall.noInitialDelay" value="true" />
+      <property name="felix.fileinstall.start.level" value="4" />
+      <property name="org.osgi.service.http.port" value="8080" />
+      <property name="osgi.compatibility.bootdelegation" value="true" />
+      <property name="osgi.console" value="10000" />
+      <property name="osgi.console.enable.builtin" value="false" />
+   </configurations>
+
+</product>
