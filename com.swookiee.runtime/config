@@ -1,0 +1,8 @@
+## swookiee config file.
+## Copy this to /etc/default/swookiee
+
+# Garbage Collector
+GC="-XX:+UseG1GC"
+
+# Memory settings
+MEMORY="-XX:MaxPermSize=512m -Xms40m -Xmx2048m"

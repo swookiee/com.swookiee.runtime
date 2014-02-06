@@ -3,13 +3,19 @@
 # init script for the swookiee runtime
 #
 
+## Read configuration from /etc/default/swookie
+CONFIG_FILE=/etc/default/swookiee
+test -f $CONFIG_FILE && . $CONFIG_FILE
+test ! -f $CONFIG_FILE && echo "Config not found - starting with defaults."
+
+##
 RUNTIME_LOCATION="`dirname \"$0\"`"
 
 ## TODO
 ## enable debug args configurable via export 
 COMMAND="java -Dlogback.configurationFile=$RUNTIME_LOCATION/logback.xml\
  -Dosgi.compatibility.bootdelegation=true\
- -Xdebug\
+ -Xdebug $GC $MEMORY\
  -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n\
  -jar $RUNTIME_LOCATION/target/runtime/plugins/org.eclipse.osgi_3.9.1.v20130814-1242.jar\
  -clean\
