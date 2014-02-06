@@ -62,11 +62,9 @@
             <version>2.3.1</version>
         </dependency>
 
-        <!-- Needed as Annotation processor -->
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
-            <version>1.2.4</version>
         </dependency>
     </dependencies>
 
@@ -75,38 +73,10 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-scr-plugin</artifactId>
-                <version>1.15.0</version>
-                <configuration>
-                    <supportedProjectTypes>
-                        <supportedProjectType>eclipse-plugin</supportedProjectType>
-                    </supportedProjectTypes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-scr-descriptor</id>
-                        <goals>
-                            <goal>scr</goal>
-                        </goals>
-                        <phase>process-classes</phase>
-                        <configuration>
-                            <specVersion>1.2</specVersion>
-                            <outputDirectory>${basedir}</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-compiler-plugin</artifactId>
-                <configuration>
-                    <extraClasspathElements>
-                        <extraClasspathElement>
-                            <groupId>org.apache.felix</groupId>
-                            <artifactId>org.apache.felix.scr.annotations</artifactId>
-                            <version>1.2.4</version>
-                        </extraClasspathElement>
-                    </extraClasspathElements>
-                </configuration>
             </plugin>
         </plugins>
     </build>

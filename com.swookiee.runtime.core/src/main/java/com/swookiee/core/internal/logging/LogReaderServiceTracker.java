@@ -1,4 +1,4 @@
-package com.swookiee.core;
+package com.swookiee.core.internal.logging;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +13,11 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This needs to be realized via a ServiceTracker in order to decouple from other dependencies such as Declarative
+ * Services since this Bundle needs to be started as one of the very firsts. Otherwise log messages could get lost.
+ * 
+ */
 public class LogReaderServiceTracker implements ServiceTrackerCustomizer<LogReaderService, LogReaderService> {
 
     private final BundleContext bundleContext;
@@ -35,6 +40,7 @@ public class LogReaderServiceTracker implements ServiceTrackerCustomizer<LogRead
 
     @Override
     public void modifiedService(final ServiceReference<LogReaderService> reference, final LogReaderService service) {
+        // nothing to do here
     }
 
     @Override
@@ -49,6 +55,7 @@ public class LogReaderServiceTracker implements ServiceTrackerCustomizer<LogRead
 
             final Logger logger = LoggerFactory.getLogger("Bundle:" + entry.getBundle().getSymbolicName());
             // Marker marker = MarkerFactory.getMarker(entry.getBundle().getSymbolicName());
+
             switch (entry.getLevel()) {
             case LogService.LOG_DEBUG:
                 logger.debug(entry.getMessage(), entry.getException());

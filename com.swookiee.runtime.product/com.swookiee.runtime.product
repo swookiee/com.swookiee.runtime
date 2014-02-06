@@ -14,7 +14,6 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -63,11 +62,14 @@
       <plugin id="org.apache.servicemix.bundles.aopalliance"/>
       <plugin id="org.apache.servicemix.bundles.javax-inject"/>
       <plugin id="org.eclipse.equinox.cm"/>
+      <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.console"/>
       <plugin id="org.eclipse.equinox.ds"/>
       <plugin id="org.eclipse.equinox.http.jetty"/>
       <plugin id="org.eclipse.equinox.http.servlet"/>
       <plugin id="org.eclipse.equinox.metatype"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.useradmin"/>
       <plugin id="org.eclipse.equinox.util"/>
       <plugin id="org.eclipse.jetty.continuation"/>
       <plugin id="org.eclipse.jetty.http"/>
@@ -131,11 +133,14 @@
       <plugin id="org.apache.servicemix.bundles.aopalliance" autoStart="true" startLevel="0" />
       <plugin id="org.apache.servicemix.bundles.javax-inject" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.jetty" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.metatype" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.useradmin" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.continuation" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.http" autoStart="true" startLevel="0" />
