@@ -50,7 +50,6 @@ public class UserAdminAuthenticationService implements AuthenticationService {
                 if (role instanceof User) {
                     final User user = (User) role;
                     if (user.getName().equals(username)) {
-                        System.out.println("Foo: " + new String((byte[]) user.getCredentials().get("password")));
                         return user.hasCredential("password", passwordHash);
                     }
                 }
