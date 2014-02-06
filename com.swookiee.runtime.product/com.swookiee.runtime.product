@@ -14,6 +14,7 @@
 
    <windowImages/>
 
+
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -26,6 +27,9 @@
 
    <plugins>
       <plugin id="ch.qos.logback.classic"/>
+      <plugin id="ch.qos.logback.contrib.logback-jackson"/>
+      <plugin id="ch.qos.logback.contrib.logback-json-classic"/>
+      <plugin id="ch.qos.logback.contrib.logback-json-core"/>
       <plugin id="ch.qos.logback.core"/>
       <plugin id="com.codahale.metrics.core"/>
       <plugin id="com.codahale.metrics.graphite"/>
@@ -91,6 +95,9 @@
 
    <configurations>
       <plugin id="ch.qos.logback.classic" autoStart="true" startLevel="0" />
+      <plugin id="ch.qos.logback.contrib.logback-jackson" autoStart="true" startLevel="0" />
+      <plugin id="ch.qos.logback.contrib.logback-json-classic" autoStart="true" startLevel="0" />
+      <plugin id="ch.qos.logback.contrib.logback-json-core" autoStart="true" startLevel="0" />
       <plugin id="ch.qos.logback.core" autoStart="true" startLevel="0" />
       <plugin id="com.codahale.metrics.core" autoStart="true" startLevel="0" />
       <plugin id="com.codahale.metrics.graphite" autoStart="true" startLevel="0" />

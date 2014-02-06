@@ -21,7 +21,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
  */
 public class OSGiLogForwarderActivator implements BundleActivator {
 
-    private ServiceTracker serviceTracker;
+    private ServiceTracker<LogReaderService, LogReaderService> serviceTracker;
 
     @Override
     public void start(final BundleContext bundleContext) throws Exception {
@@ -34,7 +34,7 @@ public class OSGiLogForwarderActivator implements BundleActivator {
         SLF4JBridgeHandler.install();
 
         final LogReaderServiceTracker customer = new LogReaderServiceTracker(bundleContext);
-        serviceTracker = new ServiceTracker(bundleContext, LogReaderService.class.getName(), customer);
+        serviceTracker = new ServiceTracker<>(bundleContext, LogReaderService.class.getName(), customer);
         serviceTracker.open();
 
     }
