@@ -92,11 +92,6 @@
             <url>http://download.eclipse.org/releases/kepler</url>
         </repository>
         <repository>
-            <id>eclipse-orbit</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20140114142710/repository/</url>
-        </repository>
-        <repository>
             <id>groovy-eclipse</id>
             <layout>p2</layout>
             <url>http://dist.springsource.org/release/GRECLIPSE/e4.3/</url>
