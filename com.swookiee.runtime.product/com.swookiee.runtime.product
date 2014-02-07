@@ -45,15 +45,12 @@
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
       <plugin id="com.swookiee.runtime.metrics"/>
-      <plugin id="de.twentyeleven.skysail.org.json-osgi"/>
       <plugin id="javax.annotation-api"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.validation.api"/>
       <plugin id="javax.ws.rs-api"/>
       <plugin id="joda-time"/>
       <plugin id="jul.to.slf4j"/>
-      <plugin id="org.apache.commons.fileupload"/>
-      <plugin id="org.apache.commons.io"/>
       <plugin id="org.apache.felix.fileinstall"/>
       <plugin id="org.apache.felix.gogo.command"/>
       <plugin id="org.apache.felix.gogo.runtime"/>
@@ -116,15 +113,12 @@
       <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="2" />
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
-      <plugin id="de.twentyeleven.skysail.org.json-osgi" autoStart="true" startLevel="0" />
       <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
       <plugin id="javax.servlet" autoStart="true" startLevel="0" />
       <plugin id="javax.validation.api" autoStart="true" startLevel="0" />
       <plugin id="javax.ws.rs-api" autoStart="true" startLevel="0" />
       <plugin id="joda-time" autoStart="true" startLevel="0" />
       <plugin id="jul.to.slf4j" autoStart="true" startLevel="0" />
-      <plugin id="org.apache.commons.fileupload" autoStart="true" startLevel="0" />
-      <plugin id="org.apache.commons.io" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.fileinstall" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
