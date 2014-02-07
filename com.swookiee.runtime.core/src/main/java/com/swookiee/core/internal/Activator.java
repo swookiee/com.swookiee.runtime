@@ -8,6 +8,7 @@ import org.osgi.service.log.LogReaderService;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
+import com.swookiee.core.JsonFileLoggingDecorator;
 import com.swookiee.core.internal.logging.LogReaderServiceTracker;
 
 /**
@@ -19,8 +20,6 @@ import com.swookiee.core.internal.logging.LogReaderServiceTracker;
  * <p>
  * & https://github.com/openhab/openhab/blob/master/bundles/core/org.openhab.core/src/main/java/org/openhab/core/
  * internal/ logging/OSGILogListener.java
- * 
- * 
  */
 public class Activator implements BundleActivator {
 
@@ -34,12 +33,11 @@ public class Activator implements BundleActivator {
 
     @Override
     public void start(final BundleContext bundleContext) {
-
         Activator.context = bundleContext;
 
         redirectLoggingHandlers();
-
         redirectOSGiLogging();
+        installLogbackDeploymentLogging();
     }
 
     private void redirectLoggingHandlers() {
@@ -57,6 +55,10 @@ public class Activator implements BundleActivator {
         final LogReaderServiceTracker customer = new LogReaderServiceTracker(Activator.context);
         serviceTracker = new ServiceTracker<>(Activator.context, LogReaderService.class.getName(), customer);
         serviceTracker.open();
+    }
+
+    private void installLogbackDeploymentLogging() {
+        new JsonFileLoggingDecorator().install(context);
     }
 
     @Override
