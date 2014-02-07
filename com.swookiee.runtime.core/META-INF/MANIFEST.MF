@@ -9,10 +9,10 @@ Import-Package: ch.qos.logback.classic,
  ch.qos.logback.contrib.jackson,
  ch.qos.logback.contrib.json,
  ch.qos.logback.contrib.json.classic,
- ch.qos.logback.core;version="1.0.13",
+ ch.qos.logback.core,
  ch.qos.logback.core.encoder,
  ch.qos.logback.core.rolling,
- ch.qos.logback.core.spi;version="1.0.13",
+ ch.qos.logback.core.spi,
  ch.qos.logback.core.status,
  com.fasterxml.jackson.core,
  org.osgi.framework,
@@ -20,8 +20,8 @@ Import-Package: ch.qos.logback.classic,
  org.osgi.service.log;version="1.3.0",
  org.osgi.service.useradmin;version="1.1.0",
  org.osgi.util.tracker,
- org.slf4j;version="1.7.5",
- org.slf4j.bridge;version="1.7.5"
+ org.slf4j;version="[1.7.0,1.8.0)",
+ org.slf4j.bridge;version="[1.7.0,1.8.0)"
 Service-Component: OSGI-INF/*.xml 
 Bundle-Activator: com.swookiee.core.internal.Activator
 Export-Package: com.swookiee.core.auth
