@@ -1,4 +1,6 @@
 # swookiee* JVM REST Service Runtime
+[![Build Status](https://travis-ci.org/swookiee/com.swookiee.runtime.png?branch=develop)](https://travis-ci.org/swookiee/com.swookiee.runtime)
+
 
 ## What is swookiee*
 
