@@ -1,4 +1,5 @@
-# swookiee* JVM REST Service Runtime
+#![shaved wookiee](http://www.gravatar.com/avatar/62cf8eb12029b66dfa837efa365f12b4) swookiee* JVM REST Service Runtime 
+
 [![Build Status](https://travis-ci.org/swookiee/com.swookiee.runtime.png?branch=develop)](https://travis-ci.org/swookiee/com.swookiee.runtime)
 
 
