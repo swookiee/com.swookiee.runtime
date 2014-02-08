@@ -98,7 +98,7 @@ In case you have a logstash and kibana stack to analyze your logs you might want
 Every published REST interface will be monitored via metrics. In addition basic JVM statistics will be published. In order to configure the graphite end point you can set the properties `graphiteHost` and `graphitePort`. By default port `2003` will be used for `graphitePort`.
 
 ## Deployment and runtime management via REST
-[RFC-182](https://github.com/osgi/design/tree/master/rfcs/rfc0182))
+[RFC-182](https://github.com/osgi/design/tree/master/rfcs/rfc0182)
 
 ## Configuration
 Configuration is a crucial feature and we are working on it. Ideas are welcome!
