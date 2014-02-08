@@ -15,23 +15,6 @@
     <name>Swookiee Runtime Equinox Product &amp; Target Platform</name>
 
     <dependencies>
-        <!-- -->
-        <dependency>
-            <groupId>com.swookiee</groupId>
-            <artifactId>com.swookiee.runtime.ewok</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.swookiee</groupId>
-            <artifactId>com.swookiee.runtime.core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.swookiee</groupId>
-            <artifactId>com.swookiee.runtime.metrics</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
         <!-- 3rd party dependencies which are not from the eclipse kepler 
             repository -->
         <dependency>
@@ -104,11 +87,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.intuit</groupId>
-            <artifactId>com.intuit.data.runtime.core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
         </dependency>
@@ -154,6 +132,7 @@
             <version>2.10.3</version>
         </dependency>
     </dependencies>
+    <!--  needed for equinox dependencies -->
     <repositories>
         <repository>
             <id>eclipse-kepler</id>
