@@ -22,6 +22,7 @@ import com.intuit.data.runtime.client.servlet.BundlesServlet;
 import com.intuit.data.runtime.client.servlet.FrameworkStartLevelServlet;
 import com.intuit.data.runtime.client.servlet.ServiceServlet;
 import com.intuit.data.runtime.client.servlet.ServicesServlet;
+import com.swookiee.core.auth.AuthenticationService;
 
 /**
  * This class is the main component registering RFC-182 endpoints. @see <a
@@ -35,17 +36,9 @@ public class RestInterfaceComponent {
 
     private BundleContext bundleContext;
     private HttpService httpService;
+    private AuthenticationService authenticationService;
 
     private static final Logger logger = LoggerFactory.getLogger(RestInterfaceComponent.class);
-
-    @Reference
-    public void setHttpService(final HttpService httpService) {
-        this.httpService = httpService;
-    }
-
-    public void unsetHttpService(final HttpService httpService) {
-        this.httpService = null;
-    }
 
     public void activate(final ComponentContext context) {
         bundleContext = context.getBundleContext();
@@ -73,7 +66,7 @@ public class RestInterfaceComponent {
         servlets.put(ServicesServlet.ALIAS, new ServicesServlet(this.bundleContext));
         servlets.put(ServiceServlet.ALIAS, new ServiceServlet(this.bundleContext));
 
-        final BasicAuthHttpContext basicAuthHttpContext = new BasicAuthHttpContext();
+        final BasicAuthHttpContext basicAuthHttpContext = new BasicAuthHttpContext(authenticationService);
 
         try {
             for (final String alias : servlets.keySet()) {
@@ -84,4 +77,23 @@ public class RestInterfaceComponent {
             logger.error("Servlet could not be registred.", ex);
         }
     }
+
+    @Reference
+    public void setAuthenticationService(final AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+    public void unsetAuthenticationService(final AuthenticationService authenticationService) {
+        this.authenticationService = null;
+    }
+
+    @Reference
+    public void setHttpService(final HttpService httpService) {
+        this.httpService = httpService;
+    }
+
+    public void unsetHttpService(final HttpService httpService) {
+        this.httpService = null;
+    }
+
 }

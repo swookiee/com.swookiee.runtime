@@ -13,7 +13,7 @@
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
 <booleanAttribute key="default" value="false"/>
 <booleanAttribute key="default_auto_start" value="true"/>
-<stringAttribute key="deselected_workspace_plugins" value="com.intuit.data.messaging,com.intuit.data.profile,com.intuit.data.profile.resource,com.intuit.data.runtime.swookiee-application,com.swookiee.runtime.ewok,com.swookiee.runtime.ewok.test,com.swookiee.runtime.metrics"/>
+<stringAttribute key="deselected_workspace_plugins" value="com.intuit.data.messaging,com.intuit.data.profile,com.intuit.data.profile.resource,com.intuit.data.runtime.configuration,com.intuit.data.runtime.swookiee-application,com.swookiee.runtime.ewok,com.swookiee.runtime.ewok.test,com.swookiee.runtime.metrics"/>
 <booleanAttribute key="includeOptional" value="true"/>
 <stringAttribute key="location" value="${workspace_loc}/../junit-workspace"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">

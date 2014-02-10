@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 
 import org.osgi.service.http.HttpContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.swookiee.core.auth.AuthenticationService;
 
 /**
  * This HttpContext provides a simple Basic-Auth mechanism. Unfortunately it is not yet connected to a real user
@@ -16,8 +20,17 @@ import org.osgi.service.http.HttpContext;
  */
 public class BasicAuthHttpContext implements HttpContext {
 
+    private static final Logger logger = LoggerFactory.getLogger(BasicAuthHttpContext.class);
+
+    private final AuthenticationService authenticationService;
+
+    public BasicAuthHttpContext(final AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
     @Override
-    public boolean handleSecurity(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
+    public boolean handleSecurity(final HttpServletRequest request, final HttpServletResponse response)
+            throws IOException {
         if (request.getHeader("Authorization") == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
@@ -51,7 +64,10 @@ public class BasicAuthHttpContext implements HttpContext {
         final String username = usernameAndPassword.substring(0, userNameIndex);
         final String password = usernameAndPassword.substring(userNameIndex + 1);
 
-        // TODO lpf: get it from some central administration
-        return (username.equals("admin") && password.equals("admin"));
+        if (authenticationService == null) {
+            logger.warn("Could not authenticate user due to missing Authenticatiopn Service");
+            return false;
+        }
+        return authenticationService.validateUserCredentials(username, password);
     }
 }

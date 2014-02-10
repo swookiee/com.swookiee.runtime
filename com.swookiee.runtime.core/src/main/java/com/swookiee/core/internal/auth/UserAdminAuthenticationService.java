@@ -4,12 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
-import org.osgi.service.useradmin.Role;
 import org.osgi.service.useradmin.User;
 import org.osgi.service.useradmin.UserAdmin;
 import org.slf4j.Logger;
@@ -44,20 +42,13 @@ public class UserAdminAuthenticationService implements AuthenticationService {
             final MessageDigest digest = MessageDigest.getInstance("MD5");
             final byte[] passwordHash = digest.digest(password.getBytes("UTF-8"));
 
-            final Role[] roles = this.userAdmin.getRoles(null);
+            final User user = this.userAdmin.getUser("username", username);
 
-            for (final Role role : roles) {
-                if (role instanceof User) {
-                    final User user = (User) role;
-                    if (user.getName().equals(username)) {
-                        return user.hasCredential("password", passwordHash);
-                    }
-                }
-            }
-        } catch (final InvalidSyntaxException | NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            return (user != null && user.hasCredential("password", passwordHash));
+
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             logger.error(
-                    "This really should not happen during user authentication, in case it does: "
-                            + ex.getMessage(), ex);
+                    "This really should not happen during user authentication, in case it does: " + ex.getMessage(), ex);
         }
         return false;
     }

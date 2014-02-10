@@ -21,6 +21,7 @@ class AuthenticationServiceTest extends OSGiTest{
         UserAdmin useradmin = getService(UserAdmin)
 
         User user = (User) useradmin.createRole("admin", Role.USER)
+        user.getProperties().put("username", "admin")
 
         MessageDigest digest = MessageDigest.getInstance("MD5")
         def foo = digest.digest("test".getBytes("UTF-8"))

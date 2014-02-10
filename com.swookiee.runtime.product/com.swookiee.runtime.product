@@ -164,7 +164,7 @@
       <property name="felix.fileinstall.start.level" value="4" />
       <property name="org.osgi.service.http.port" value="8080" />
       <property name="osgi.compatibility.bootdelegation" value="true" />
-      <property name="osgi.console" value="10000" />
+      <property name="osgi.console" value="localhost:10000" />
       <property name="osgi.console.enable.builtin" value="false" />
    </configurations>
 

@@ -4,6 +4,7 @@ Bundle-SymbolicName: com.swookiee.runtime.ewok
 Bundle-Version: 1.0.0.qualifier
 Import-Package: com.fasterxml.jackson.core;version="[2.3,3)",
  com.fasterxml.jackson.databind;version="[2.3,3)",
+ com.swookiee.core.auth,
  javax.servlet;version="[2.6,3)",
  javax.servlet.http;version="[2.6,3)",
  javax.xml.bind,
