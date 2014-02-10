@@ -12,9 +12,10 @@
     <modules>
         <module>com.swookiee.runtime</module>
         <module>com.swookiee.runtime.core</module>
-        <module>com.swookiee.runtime.core.test</module>
         <module>com.swookiee.runtime.ewok</module>
         <module>com.swookiee.runtime.ewok.test</module>
+        <module>com.swookiee.runtime.authentication</module>
+        <module>com.swookiee.runtime.authentication.test</module>
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.product</module>
     </modules>
@@ -81,14 +82,14 @@
                 <version>${slf4j.version}</version>
                 <scope>provided</scope>
             </dependency>
-            
+
             <dependency>
                 <!-- Makes life in module poms a bit easier -->
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>

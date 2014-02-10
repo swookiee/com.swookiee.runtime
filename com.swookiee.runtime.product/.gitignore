@@ -2,3 +2,4 @@
 .project
 .settings
 generated-maven-deps.target
+/target
