@@ -2,7 +2,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Swookiee Ewok (RFC-182 draft)
 Bundle-SymbolicName: com.swookiee.runtime.ewok
 Bundle-Version: 1.0.0.qualifier
-Import-Package: com.fasterxml.jackson.core;version="[2.3,3)",
+Import-Package: com.fasterxml.jackson.annotation;version="[2.3,3)",
+ com.fasterxml.jackson.core;version="[2.3,3)",
  com.fasterxml.jackson.databind;version="[2.3,3)",
  com.swookiee.runtime.authentication,
  javax.servlet;version="[2.6,3)",
