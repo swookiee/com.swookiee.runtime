@@ -3,6 +3,7 @@ package com.swookiee.runtime.authentication.internal;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Activate;
@@ -17,68 +18,69 @@ import org.osgi.service.useradmin.UserAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Component(configurationPolicy = ConfigurationPolicy.OPTIONAL)
-public class UserManagementService {
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.swookiee.runtime.authentication.AdminUserConfiguration;
 
+@Component(configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = AdminUserConfiguration.pid)
+public class AdminUserManagementSerice {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserManagementService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminUserManagementSerice.class);
 
     private static final String DEFAULT_ADMIN_USERNAME = "admin";
     private static final String DEFAULT_ADMIN_PASSWORD = "admin123";
+
     private static final String USER_ADMIN_USERNAME_PROPERTY = "username";
     private static final String USER_ADMIN_PASSWORD_PROPERTY = "password";
-    private static final String CONFIGURATION_PASSWORD_PROPERTY = "user.admin.password";
-    private static final String CONFIGURATION_USERNAME_PROPERTY = "user.admin.username";
+    private static final String CONFIGURATION_PASSWORD_PROPERTY = "password";
+    private static final String CONFIGURATION_USERNAME_PROPERTY = "username";
 
-    private String lastUsername;
-    private String lastPassword;
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    private final Map<String, Object> configuration = new HashMap<>();
+    {
+        configuration.put(CONFIGURATION_USERNAME_PROPERTY, DEFAULT_ADMIN_USERNAME);
+        configuration.put(CONFIGURATION_PASSWORD_PROPERTY, DEFAULT_ADMIN_PASSWORD);
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
     private UserAdmin userAdmin;
 
     @Activate
     private void activate(final Map<String, String> properties) {
+        configuration.putAll(properties);
+        final AdminUserConfiguration adminUserConfiguration = mapper.convertValue(configuration,
+                AdminUserConfiguration.class);
 
-        if (properties.containsKey(CONFIGURATION_USERNAME_PROPERTY)
-                && properties.containsKey(CONFIGURATION_PASSWORD_PROPERTY)) {
-            setAdminUserFromConfiguration(properties);
-        } else {
-            setAdminUser(DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_PASSWORD);
-        }
+        setAdminUser(adminUserConfiguration);
     }
 
     @Modified
     private void modified(final Map<String, String> properties) {
+        removeAdminUser();
+        configuration.putAll(properties);
+        final AdminUserConfiguration adminUserConfiguration = mapper.convertValue(configuration,
+                AdminUserConfiguration.class);
 
-        if (properties.containsKey(CONFIGURATION_USERNAME_PROPERTY)
-                && properties.containsKey(CONFIGURATION_PASSWORD_PROPERTY)) {
-            this.userAdmin.removeRole(lastUsername);
-            setAdminUserFromConfiguration(properties);
-        } else if (properties.containsKey(CONFIGURATION_PASSWORD_PROPERTY)) {
-            setAdminUser(lastUsername, properties.get(CONFIGURATION_PASSWORD_PROPERTY));
-        } else if (properties.containsKey(CONFIGURATION_USERNAME_PROPERTY)) {
-            this.userAdmin.removeRole(lastUsername);
-            setAdminUser(properties.get(CONFIGURATION_USERNAME_PROPERTY), lastPassword);
-        }
+        setAdminUser(adminUserConfiguration);
     }
 
     @Deactivate
     private void deactivate() {
-        this.userAdmin.removeRole(lastUsername);
+        removeAdminUser();
     }
 
-    private void setAdminUserFromConfiguration(final Map<String, String> properties) {
-        final String username = properties.get(CONFIGURATION_USERNAME_PROPERTY);
-        final String password = properties.get(CONFIGURATION_PASSWORD_PROPERTY);
-
-        setAdminUser(username, password);
+    private void removeAdminUser() {
+        this.userAdmin.removeRole((String) configuration.get(CONFIGURATION_USERNAME_PROPERTY));
     }
 
-    private void setAdminUser(final String username, final String password) {
-        logger.info("Admin user has changed username: {}", username);
-        final User user = createAndGetAdminUser(username);
-        setPassword(user, password);
-        this.lastUsername = username;
-        this.lastPassword = password;
+    private void setAdminUser(final AdminUserConfiguration configuration) {
+
+        logger.info("Admin user has changed username: {}", configuration.username);
+
+        final User user = createAndGetAdminUser(configuration.username);
+        setPassword(user, configuration.password);
+
     }
 
     @SuppressWarnings("unchecked")

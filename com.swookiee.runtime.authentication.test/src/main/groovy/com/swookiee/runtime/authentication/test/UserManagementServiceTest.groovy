@@ -8,7 +8,9 @@ import org.osgi.framework.BundleContext
 import org.osgi.service.cm.Configuration
 import org.osgi.service.cm.ConfigurationAdmin
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.groovyosgi.testing.OSGiTest
+import com.swookiee.runtime.authentication.AdminUserConfiguration
 import com.swookiee.runtime.authentication.AuthenticationService
 import com.swookiee.runtime.authentication.internal.Activator
 
@@ -17,22 +19,23 @@ class UserManagementServiceTest extends OSGiTest {
     @After
     public void resetDefaults(){
 
-        Dictionary<String, Object> config = new Hashtable<>()
-        config.put("user.admin.username", "admin")
-        config.put("user.admin.password", "admin123")
+        AdminUserConfiguration config = new AdminUserConfiguration()
+        config.username = "admin"
+        config.password = "admin123"
 
-        configuration.update(config)
+        updateConfiguration(config)
+
         sleep(200)
     }
 
     @Test
     public void 'Change username and password'() {
 
-        Dictionary<String, Object> config = new Hashtable<>()
-        config.put("user.admin.username", "test")
-        config.put("user.admin.password", "testtest")
+        AdminUserConfiguration config = new AdminUserConfiguration()
+        config.username = "test"
+        config.password ="testtest"
 
-        configuration.update(config)
+        updateConfiguration(config)
         sleep(200)
 
         AuthenticationService authenticationService = getService(AuthenticationService)
@@ -44,10 +47,10 @@ class UserManagementServiceTest extends OSGiTest {
     @Test
     public void 'Change password'() {
 
-        Dictionary<String, Object> config = new Hashtable<>()
-        config.put("user.admin.password", "testtest")
+        AdminUserConfiguration config = new AdminUserConfiguration()
+        config.password ="testtest"
 
-        configuration.update(config)
+        updateConfiguration(config)
         sleep(200)
 
         AuthenticationService authenticationService = getService(AuthenticationService)
@@ -59,10 +62,10 @@ class UserManagementServiceTest extends OSGiTest {
     @Test
     public void 'Change username'() {
 
-        Dictionary<String, Object> config = new Hashtable<>()
-        config.put("user.admin.username", "newAdmin")
+        AdminUserConfiguration config = new AdminUserConfiguration()
+        config.username ="newAdmin"
 
-        configuration.update(config)
+        updateConfiguration(config)
         sleep(200)
 
         AuthenticationService authenticationService = getService(AuthenticationService)
@@ -71,9 +74,15 @@ class UserManagementServiceTest extends OSGiTest {
         assertTrue authenticationService.validateUserCredentials("newAdmin", "admin123")
     }
 
+    def updateConfiguration(AdminUserConfiguration adminUserConfiguration){
+        ObjectMapper mapper = new ObjectMapper()
+        Hashtable<String, Object> configurationMap = mapper.convertValue(adminUserConfiguration, Hashtable)
+        getConfiguration().update(configurationMap)
+    }
+
     def Configuration getConfiguration(){
         ConfigurationAdmin configurationAdmin = getService(ConfigurationAdmin)
-        Configuration configuration = configurationAdmin.getConfiguration("com.swookiee.runtime.authentication.internal.UserManagementService")
+        Configuration configuration = configurationAdmin.getConfiguration(AdminUserConfiguration.pid)
     }
 
     @Override
