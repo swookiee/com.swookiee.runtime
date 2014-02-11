@@ -23,6 +23,9 @@ class AuthenticationServiceTest extends OSGiTest{
         assertFalse authenticationService.validateUserCredentials("admin", "test1")
     }
 
+
+
+
     @Override
     protected BundleContext getBundleContext() {
         return Activator.context

@@ -98,6 +98,11 @@
                             <artifactId>org.eclipse.equinox.useradmin</artifactId>
                             <version>0.0.0</version>
                         </dependency>
+                        <dependency>
+                            <type>eclipse-plugin</type>
+                            <artifactId>org.eclipse.equinox.cm</artifactId>
+                            <version>0.0.0</version>
+                        </dependency>
                     </dependencies>
                     <bundleStartLevel>
                         <bundle>
@@ -107,6 +112,11 @@
                         </bundle>
                         <bundle>
                             <id>org.eclipse.equinox.useradmin</id>
+                            <level>1</level>
+                            <autoStart>true</autoStart>
+                        </bundle>
+                        <bundle>
+                            <id>org.eclipse.equinox.cm</id>
                             <level>1</level>
                             <autoStart>true</autoStart>
                         </bundle>
