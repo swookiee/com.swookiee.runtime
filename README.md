@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/swookiee/com.swookiee.runtime.png?branch=develop)](https://travis-ci.org/swookiee/com.swookiee.runtime)
 
-## [Documentaion](http://swookiee.com)
+## [Documentation](http://swookiee.com)
 
 ## License
 The code is published under the terms of the [Eclipse Public License, version 1.0](http://www.eclipse.org/legal/epl-v10.html).
