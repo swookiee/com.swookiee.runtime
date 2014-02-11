@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/metatype">
+
+    <OCD description="UserConfiguration" name="Swookiee Admin User Configuration"
+        id="com.swookiee.runtime.authentication.internal.UserManagementService">
+
+        <AD name="Admin username" id="user.admin.username" required="true"
+            type="String" default="admin" />
+        <AD name="Admin password" id="user.admin.password" required="true"
+            type="String" default="admin123" />
+    </OCD>
+
+    <Designate pid="com.swookiee.runtime.authentication.internal.UserManagementService">
+        <Object ocdref="com.swookiee.runtime.authentication.internal.UserManagementService" />
+    </Designate>
+
+</metatype:MetaData>

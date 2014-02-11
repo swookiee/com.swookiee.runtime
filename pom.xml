@@ -12,9 +12,10 @@
     <modules>
         <module>com.swookiee.runtime</module>
         <module>com.swookiee.runtime.core</module>
-        <module>com.swookiee.runtime.core.test</module>
         <module>com.swookiee.runtime.ewok</module>
         <module>com.swookiee.runtime.ewok.test</module>
+        <module>com.swookiee.runtime.authentication</module>
+        <module>com.swookiee.runtime.authentication.test</module>
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.product</module>
     </modules>
@@ -81,6 +82,14 @@
                 <version>${slf4j.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+            <dependency>
+                <!-- Makes life in module poms a bit easier -->
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
@@ -327,52 +336,52 @@
                 </plugin>
 
                 <!-- For Testing in Groovy -->
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>build-helper-maven-plugin</artifactId>
-                        <version>${build.helper.maven.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>add-source</id>
-                                <phase>generate-sources</phase>
-                                <goals>
-                                    <goal>add-source</goal>
-                                </goals>
-                                <configuration>
-                                    <sources>
-                                        <source>src/main/groovy</source>
-                                    </sources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>${maven.compiler.version}</version>
-                        <configuration>
-                            <compilerId>groovy-eclipse-compiler</compilerId>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>compile</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.codehaus.groovy</groupId>
-                                <artifactId>groovy-eclipse-compiler</artifactId>
-                                <version>${groovy.eclipse.compiler.version}</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.codehaus.groovy</groupId>
-                                <artifactId>groovy-eclipse-batch</artifactId>
-                                <version>${groovy.eclipse.batch.version}</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build.helper.maven.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/main/groovy</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.version}</version>
+                    <configuration>
+                        <compilerId>groovy-eclipse-compiler</compilerId>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-eclipse-compiler</artifactId>
+                            <version>${groovy.eclipse.compiler.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-eclipse-batch</artifactId>
+                            <version>${groovy.eclipse.batch.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 </project>

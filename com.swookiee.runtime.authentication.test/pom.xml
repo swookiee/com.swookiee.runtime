@@ -9,10 +9,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>com.swookiee.runtime.ewok.test</artifactId>
+    <artifactId>com.swookiee.runtime.authentication.test</artifactId>
     <packaging>eclipse-test-plugin</packaging>
 
-    <name>Swookiee Ewok (RFC-182 draft) Test Fragment</name>
+    <name>Swookiee Runtime Authentication Test Fragment</name>
 
     <dependencies>
 
@@ -21,59 +21,23 @@
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty.orbit</groupId>
-            <artifactId>javax.servlet</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback.contrib</groupId>
-            <artifactId>logback-json-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback.contrib</groupId>
-            <artifactId>logback-jackson</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.webconsole</artifactId>
             <classifier>all</classifier>
         </dependency>
-        
+        <dependency>
+            <groupId>org.eclipse.jetty.orbit</groupId>
+            <artifactId>javax.servlet</artifactId>
+        </dependency>
+
         <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -114,6 +78,50 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <dependencies>
+                        <dependency>
+                            <type>eclipse-plugin</type>
+                            <artifactId>org.eclipse.equinox.ds</artifactId>
+                            <version>0.0.0</version>
+                        </dependency>
+                        <dependency>
+                            <type>eclipse-plugin</type>
+                            <artifactId>org.eclipse.equinox.useradmin</artifactId>
+                            <version>0.0.0</version>
+                        </dependency>
+                        <dependency>
+                            <type>eclipse-plugin</type>
+                            <artifactId>org.eclipse.equinox.cm</artifactId>
+                            <version>0.0.0</version>
+                        </dependency>
+                    </dependencies>
+                    <bundleStartLevel>
+                        <bundle>
+                            <id>org.eclipse.equinox.ds</id>
+                            <level>1</level>
+                            <autoStart>true</autoStart>
+                        </bundle>
+                        <bundle>
+                            <id>org.eclipse.equinox.useradmin</id>
+                            <level>1</level>
+                            <autoStart>true</autoStart>
+                        </bundle>
+                        <bundle>
+                            <id>org.eclipse.equinox.cm</id>
+                            <level>1</level>
+                            <autoStart>true</autoStart>
+                        </bundle>
+                    </bundleStartLevel>
+                </configuration>
             </plugin>
         </plugins>
     </build>

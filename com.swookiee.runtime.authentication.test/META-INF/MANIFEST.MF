@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Swookiee Runtime Ewok (RFC-182 draft) Test Fragment
-Bundle-SymbolicName: com.swookiee.runtime.ewok.test
+Bundle-Name: Swookiee Runtime Authentication Test Fragment
+Bundle-SymbolicName: com.swookiee.runtime.authentication.test
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: com.swookiee
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
@@ -14,5 +14,6 @@ Import-Package: groovy.lang,
  org.hamcrest.core,
  org.junit;version="4.0.0",
  org.junit.matchers;version="4.0.0",
- org.junit.runner;version="4.0.0"
-Fragment-Host: com.swookiee.runtime.ewok
+ org.junit.runner;version="4.0.0",
+ org.osgi.service.cm
+Fragment-Host: com.swookiee.runtime.authentication

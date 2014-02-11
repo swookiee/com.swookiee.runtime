@@ -42,6 +42,7 @@
       <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
+      <plugin id="com.swookiee.runtime.authentication"/>
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
       <plugin id="com.swookiee.runtime.metrics"/>
@@ -110,6 +111,7 @@
       <plugin id="com.google.gson" autoStart="true" startLevel="0" />
       <plugin id="com.google.guava" autoStart="true" startLevel="0" />
       <plugin id="com.google.inject" autoStart="true" startLevel="0" />
+      <plugin id="com.swookiee.runtime.authentication" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="2" />
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
@@ -164,7 +166,7 @@
       <property name="felix.fileinstall.start.level" value="4" />
       <property name="org.osgi.service.http.port" value="8080" />
       <property name="osgi.compatibility.bootdelegation" value="true" />
-      <property name="osgi.console" value="10000" />
+      <property name="osgi.console" value="localhost:10000" />
       <property name="osgi.console.enable.builtin" value="false" />
    </configurations>
 
