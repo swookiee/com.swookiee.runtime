@@ -1,4 +1,4 @@
-#![shaved wookiee](http://www.gravatar.com/avatar/62cf8eb12029b66dfa837efa365f12b4) swookiee JVM REST Service Runtime Project
+#![swookiee](http://www.gravatar.com/avatar/62cf8eb12029b66dfa837efa365f12b4) The swookiee REST Service Runtime Project
 
 [![Build Status](https://travis-ci.org/swookiee/com.swookiee.runtime.png?branch=develop)](https://travis-ci.org/swookiee/com.swookiee.runtime)
 
