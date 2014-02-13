@@ -37,6 +37,7 @@
       <plugin id="com.fasterxml.jackson.core.jackson-annotations"/>
       <plugin id="com.fasterxml.jackson.core.jackson-core"/>
       <plugin id="com.fasterxml.jackson.core.jackson-databind"/>
+      <plugin id="com.fasterxml.jackson.dataformat.jackson-dataformat-yaml"/>
       <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-base"/>
       <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider"/>
       <plugin id="com.google.gson"/>
@@ -90,6 +91,7 @@
       <plugin id="org.glassfish.jersey.core.jersey-common"/>
       <plugin id="org.glassfish.jersey.core.jersey-server"/>
       <plugin id="org.ops4j.peaberry"/>
+      <plugin id="org.yaml.snakeyaml"/>
       <plugin id="slf4j.api"/>
    </plugins>
 
@@ -106,6 +108,7 @@
       <plugin id="com.fasterxml.jackson.core.jackson-annotations" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.core.jackson-core" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.core.jackson-databind" autoStart="true" startLevel="0" />
+      <plugin id="com.fasterxml.jackson.dataformat.jackson-dataformat-yaml" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-base" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" autoStart="true" startLevel="0" />
       <plugin id="com.google.gson" autoStart="true" startLevel="0" />
@@ -159,6 +162,7 @@
       <plugin id="org.glassfish.jersey.core.jersey-common" autoStart="true" startLevel="3" />
       <plugin id="org.glassfish.jersey.core.jersey-server" autoStart="true" startLevel="0" />
       <plugin id="org.ops4j.peaberry" autoStart="true" startLevel="0" />
+      <plugin id="org.yaml.snakeyaml" autoStart="true" startLevel="0" />
       <plugin id="slf4j.api" autoStart="true" startLevel="0" />
       <property name="eclipse.ignoreApp" value="true" />
       <property name="felix.fileinstall.dir" value="./dropins" />

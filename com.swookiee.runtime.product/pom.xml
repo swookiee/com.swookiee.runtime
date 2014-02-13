@@ -99,6 +99,14 @@
             <artifactId>jackson-jaxrs-json-provider</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+        <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
@@ -132,7 +140,7 @@
             <version>2.10.3</version>
         </dependency>
     </dependencies>
-    <!--  needed for equinox dependencies -->
+    <!-- needed for equinox dependencies -->
     <repositories>
         <repository>
             <id>eclipse-kepler</id>
