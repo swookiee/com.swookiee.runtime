@@ -82,8 +82,24 @@
         </dependency>
 
         <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+        </dependency>
+        
+        <!-- scr plugin needs some internal dependencies -->
+        <dependency>
+            <groupId>com.swookiee</groupId>
+            <artifactId>com.swookiee.runtime.authentication</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

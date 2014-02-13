@@ -26,10 +26,8 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-        </dependency>
+        <!-- dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-simple</artifactId> 
+            </dependency -->
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.webconsole</artifactId>
@@ -48,10 +46,39 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
+        <!-- needed for core dependency -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-json-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+
         <!-- Needed as Annotation processor -->
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
+        </dependency>
+
+        <!-- scr plugin needs "internal" dependency to resolce SwookieeConfiguration interface -->
+        <dependency>
+            <groupId>com.swookiee</groupId>
+            <artifactId>com.swookiee.runtime.core</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

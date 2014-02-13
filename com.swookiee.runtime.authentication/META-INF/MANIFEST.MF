@@ -7,11 +7,12 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.3.1",
  com.fasterxml.jackson.core.type;version="2.3.1",
  com.fasterxml.jackson.databind;version="(2.3,3]",
+ com.swookiee.core.configuration,
  org.apache.felix.webconsole,
  org.osgi.framework,
  org.osgi.service.component.annotations;version="1.2.0",
  org.osgi.service.useradmin;version="1.1.0",
  org.slf4j;version="[1.7.0,1.8.0)"
 Service-Component: OSGI-INF/*.xml 
-Export-Package: com.swookiee.runtime.authentication
+Export-Package: com.swookiee.runtime.authentication;uses:="com.swookiee.core.configuration"
 Bundle-Activator: com.swookiee.runtime.authentication.internal.Activator
