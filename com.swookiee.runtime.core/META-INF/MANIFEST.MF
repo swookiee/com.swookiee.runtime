@@ -25,6 +25,5 @@ Import-Package: ch.qos.logback.classic,
  org.osgi.util.tracker,
  org.slf4j;version="[1.7.0,1.8.0)",
  org.slf4j.bridge;version="[1.7.0,1.8.0)"
-Service-Component: OSGI-INF/*.xml 
 Bundle-Activator: com.swookiee.core.internal.Activator
 Export-Package: com.swookiee.core.configuration
