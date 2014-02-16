@@ -30,6 +30,7 @@
       <plugin id="ch.qos.logback.contrib.logback-json-classic"/>
       <plugin id="ch.qos.logback.contrib.logback-json-core"/>
       <plugin id="ch.qos.logback.core"/>
+      <plugin id="clojure.osgi"/>
       <plugin id="com.codahale.metrics.core"/>
       <plugin id="com.codahale.metrics.graphite"/>
       <plugin id="com.codahale.metrics.jvm"/>
@@ -101,6 +102,7 @@
       <plugin id="ch.qos.logback.contrib.logback-json-classic" autoStart="true" startLevel="0" />
       <plugin id="ch.qos.logback.contrib.logback-json-core" autoStart="true" startLevel="0" />
       <plugin id="ch.qos.logback.core" autoStart="true" startLevel="0" />
+      <plugin id="clojure.osgi" autoStart="true" startLevel="0" />
       <plugin id="com.codahale.metrics.core" autoStart="true" startLevel="0" />
       <plugin id="com.codahale.metrics.graphite" autoStart="true" startLevel="0" />
       <plugin id="com.codahale.metrics.jvm" autoStart="true" startLevel="0" />

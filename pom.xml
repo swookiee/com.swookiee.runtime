@@ -10,6 +10,7 @@
     <name>Swookiee Runtime Parent</name>
 
     <modules>
+        <module>clojure.osgi</module>
         <module>com.swookiee.runtime</module>
         <module>com.swookiee.runtime.core</module>
         <module>com.swookiee.runtime.ewok</module>
