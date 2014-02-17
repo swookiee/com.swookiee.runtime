@@ -52,7 +52,7 @@ public class MetricsToGraphiteReporter {
 
     @Modified
     public void modified(final Map<String, Object> properties) {
-        reporter.stop();
+        stopGraphiteReporter();
 
         configurationConsumer.applyConfiguration(properties);
         final GraphiteReporterConfiguration configuration = configurationConsumer.getConfiguration(GraphiteReporterConfiguration.class);
@@ -67,7 +67,7 @@ public class MetricsToGraphiteReporter {
             return;
         }
 
-        if (configuration.graphiteHost == null) {
+        if (configuration.graphiteHost == null || configuration.graphiteHost.isEmpty()) {
             logger.info("Graphite Reporter could not be started, no host configured");
             return;
         }
@@ -76,7 +76,7 @@ public class MetricsToGraphiteReporter {
                 configuration.graphitePort));
 
         reporter = GraphiteReporter.forRegistry(this.metricRegistry)
-                .prefixedWith(getReverseHostName())
+                .prefixedWith(String.format("%s.%s", configuration.reportingPrefix, getReverseHostName()))
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .filter(MetricFilter.ALL)

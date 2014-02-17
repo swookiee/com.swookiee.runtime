@@ -29,7 +29,7 @@ public final class ConfigurationConsumer<T> {
         return new ConfigurationConsumer<T>(defaultConfig);
     }
 
-    public static <T> ConfigurationConsumer<T> withoutDefaultConfiguration() {
+    public static <T> ConfigurationConsumer<T> newConsumer() {
         return new ConfigurationConsumer<T>();
     }
 
