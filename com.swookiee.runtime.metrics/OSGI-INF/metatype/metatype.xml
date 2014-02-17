@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+
+    <OCD description="UserConfiguration" name="Swookiee Graphite Reporter Configuration"
+        id="com.swookiee.runtime.metrics">
+
+        <AD name="graphite/carbon Target Hostname" id="graphiteHost"
+            required="true" type="String" />
+        <AD name="graphite/carbon Target Port" id="graphitePort"
+            required="true" type="Integer" default="2003" />
+        <AD name="additional reporting prefix" id="reportingPrefix" required="false"
+            type="String" />
+        <AD name="reporting interval in seconds" id="reportingIntervalInSeconds"
+            required="true" type="Integer" default="60" />
+        <AD name="is reporting enabled?" id="reportingEnabled"
+            required="true" type="Boolean" default="false" />
+
+    </OCD>
+
+    <Designate pid="com.swookiee.runtime.metrics">
+        <Object ocdref="com.swookiee.runtime.metrics" />
+    </Designate>
+
+</metatype:MetaData>
