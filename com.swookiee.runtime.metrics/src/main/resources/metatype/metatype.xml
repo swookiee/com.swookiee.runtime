@@ -4,15 +4,15 @@
     <OCD description="UserConfiguration" name="Swookiee Graphite Reporter Configuration"
         id="com.swookiee.runtime.metrics">
 
-        <AD name="graphite/carbon Target Hostname" id="graphiteHost"
+        <AD name="graphite/carbon target hostname" id="graphiteHost"
             required="true" type="String" />
-        <AD name="graphite/carbon Target Port" id="graphitePort"
+        <AD name="graphite/carbon target port" id="graphitePort"
             required="true" type="Integer" default="2003" />
         <AD name="additional reporting prefix" id="reportingPrefix" required="false"
             type="String" />
         <AD name="reporting interval in seconds" id="reportingIntervalInSeconds"
             required="true" type="Integer" default="60" />
-        <AD name="is reporting enabled?" id="reportingEnabled"
+        <AD name="reporting enabled" id="reportingEnabled"
             required="true" type="Boolean" default="false" />
 
     </OCD>
