@@ -3,7 +3,6 @@ package com.swookiee.runtime.authentication.internal;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.osgi.service.component.annotations.Activate;
@@ -18,8 +17,7 @@ import org.osgi.service.useradmin.UserAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.swookiee.core.configuration.ConfigurationConsumer;
 import com.swookiee.runtime.authentication.AdminUserConfiguration;
 
 @Component(configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = AdminUserConfiguration.pid)
@@ -32,25 +30,16 @@ public class AdminUserManagementSerice {
 
     private static final String USER_ADMIN_USERNAME_PROPERTY = "username";
     private static final String USER_ADMIN_PASSWORD_PROPERTY = "password";
-    private static final String CONFIGURATION_PASSWORD_PROPERTY = "password";
-    private static final String CONFIGURATION_USERNAME_PROPERTY = "username";
 
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    private final Map<String, Object> configuration = new HashMap<>();
-    {
-        configuration.put(CONFIGURATION_USERNAME_PROPERTY, DEFAULT_ADMIN_USERNAME);
-        configuration.put(CONFIGURATION_PASSWORD_PROPERTY, DEFAULT_ADMIN_PASSWORD);
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    }
+    private ConfigurationConsumer<AdminUserConfiguration> configurationConsumer;
 
     private UserAdmin userAdmin;
 
     @Activate
     private void activate(final Map<String, String> properties) {
-        configuration.putAll(properties);
-        final AdminUserConfiguration adminUserConfiguration = mapper.convertValue(configuration,
-                AdminUserConfiguration.class);
+        this.configurationConsumer = ConfigurationConsumer.withDefaultConfiguration(getDefaultConfiguration());
+        configurationConsumer.applyConfiguration(properties);
+        final AdminUserConfiguration adminUserConfiguration = configurationConsumer.getConfiguration(AdminUserConfiguration.class);
 
         setAdminUser(adminUserConfiguration);
     }
@@ -58,11 +47,17 @@ public class AdminUserManagementSerice {
     @Modified
     private void modified(final Map<String, String> properties) {
         removeAdminUser();
-        configuration.putAll(properties);
-        final AdminUserConfiguration adminUserConfiguration = mapper.convertValue(configuration,
-                AdminUserConfiguration.class);
+        configurationConsumer.applyConfiguration(properties);
 
+        final AdminUserConfiguration adminUserConfiguration = configurationConsumer.getConfiguration(AdminUserConfiguration.class);
         setAdminUser(adminUserConfiguration);
+    }
+
+    private AdminUserConfiguration getDefaultConfiguration() {
+        final AdminUserConfiguration adminUserConfiguration = new AdminUserConfiguration();
+        adminUserConfiguration.username = DEFAULT_ADMIN_USERNAME;
+        adminUserConfiguration.password = DEFAULT_ADMIN_PASSWORD;
+        return adminUserConfiguration;
     }
 
     @Deactivate
@@ -71,7 +66,8 @@ public class AdminUserManagementSerice {
     }
 
     private void removeAdminUser() {
-        this.userAdmin.removeRole((String) configuration.get(CONFIGURATION_USERNAME_PROPERTY));
+        final String username = configurationConsumer.getConfiguration(AdminUserConfiguration.class).username;
+        this.userAdmin.removeRole(username);
     }
 
     private void setAdminUser(final AdminUserConfiguration configuration) {

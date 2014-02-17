@@ -6,6 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Import-Package: com.codahale.metrics;version="[3.0,4)",
  com.codahale.metrics.graphite;version="[3.0,4)",
  com.codahale.metrics.jvm;version="[3.0,4)",
+ com.fasterxml.jackson.annotation,
+ com.swookiee.core.configuration,
  javax.management,
  javax.ws.rs.container;version="[2.0,3)",
  javax.ws.rs.ext;version="[2.0,3)",
@@ -14,3 +16,4 @@ Import-Package: com.codahale.metrics;version="[3.0,4)",
  org.slf4j;version="1.7.5"
 Service-Component: OSGI-INF/*.xml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: com.swookiee.runtime.metrics.configuration;uses:="com.swookiee.core.configuration"

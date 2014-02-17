@@ -1,11 +1,8 @@
 package com.swookiee.runtime.authentication;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.swookiee.core.configuration.SwookieeConfiguration;
+import com.swookiee.core.configuration.Configuration;
 
-@JsonInclude(Include.NON_NULL)
-public class AdminUserConfiguration implements SwookieeConfiguration {
+public class AdminUserConfiguration implements Configuration {
 
     public static final String pid = "com.swookiee.runtime.authentication";
 

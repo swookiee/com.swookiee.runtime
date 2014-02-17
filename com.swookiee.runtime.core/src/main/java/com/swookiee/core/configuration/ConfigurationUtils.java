@@ -16,7 +16,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 /**
  * This utility class can be used to bridge your configuration information out of your YAML and POJO pair to the
- * ConfigurationAdmin and thereby to the providers of {@link SwookieeConfiguration} implementations.
+ * ConfigurationAdmin and thereby to the providers of {@link Configuration} implementations.
  * <p>
  * Example:
  * 
@@ -40,18 +40,18 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
  * 
  * 
  */
-public final class SwookieeConfigurationUtils<T> {
+public final class ConfigurationUtils<T> {
 
-    private static final Logger logger = LoggerFactory.getLogger(SwookieeConfigurationUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfigurationUtils.class);
     private final static ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
     private final Class<T> clazz;
 
     /**
      * 
      * @param clazz
-     *            see {@link SwookieeConfigurationUtils}
+     *            see {@link ConfigurationUtils}
      */
-    public SwookieeConfigurationUtils(final Class<T> clazz) {
+    public ConfigurationUtils(final Class<T> clazz) {
         this.clazz = clazz;
     }
 
@@ -69,7 +69,7 @@ public final class SwookieeConfigurationUtils<T> {
             final Field[] fields = configuration.getClass().getFields();
 
             for (final Field field : fields) {
-                final SwookieeConfiguration configElement = (SwookieeConfiguration) field.get(configuration);
+                final Configuration configElement = (Configuration) field.get(configuration);
 
                 @SuppressWarnings("unchecked")
                 final Dictionary<String, Object> properties = mapper.convertValue(configElement, Hashtable.class);

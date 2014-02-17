@@ -4,9 +4,7 @@ Bundle-Name: Swookiee Authentication Bundle
 Bundle-SymbolicName: com.swookiee.runtime.authentication
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.fasterxml.jackson.annotation;version="2.3.1",
- com.fasterxml.jackson.core.type;version="2.3.1",
- com.fasterxml.jackson.databind;version="(2.3,3]",
+Import-Package: com.fasterxml.jackson.annotation,
  com.swookiee.core.configuration,
  org.apache.felix.webconsole,
  org.osgi.framework,

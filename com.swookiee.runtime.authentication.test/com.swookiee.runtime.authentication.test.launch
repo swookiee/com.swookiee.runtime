@@ -11,6 +11,11 @@
 <booleanAttribute key="clearConfig" value="true"/>
 <booleanAttribute key="clearws" value="true"/>
 <booleanAttribute key="clearwslog" value="false"/>
+<listAttribute key="com.mountainminds.eclemma.core.SCOPE_IDS">
+<listEntry value="=com.swookiee.runtime.core/src\/main\/java"/>
+<listEntry value="=com.swookiee.runtime.authentication/src\/main\/java"/>
+<listEntry value="=com.swookiee.runtime.ewok/src\/main\/java"/>
+</listAttribute>
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/pde-junit"/>
 <booleanAttribute key="default" value="false"/>
 <booleanAttribute key="default_auto_start" value="true"/>

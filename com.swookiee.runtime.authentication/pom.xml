@@ -74,7 +74,8 @@
             <artifactId>org.apache.felix.scr.ds-annotations</artifactId>
         </dependency>
 
-        <!-- scr plugin needs "internal" dependency to resolce SwookieeConfiguration interface -->
+        <!-- scr plugin needs "internal" dependency to resolce SwookieeConfiguration 
+            interface -->
         <dependency>
             <groupId>com.swookiee</groupId>
             <artifactId>com.swookiee.runtime.core</artifactId>
@@ -92,28 +93,9 @@
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-compiler-plugin</artifactId>
             </plugin>
-            <!-- Workaround since metatype will be erased by scr plugin -->
+            <!-- Workaround to copy metatype to OSGI-INF -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/OSGI-INF/metatype</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/metatype</directory>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
