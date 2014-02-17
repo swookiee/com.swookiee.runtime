@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,7 +83,7 @@ public final class ConfigurationUtils<T> {
 
     private void setConfig(final ConfigurationAdmin configurationAdmin, final String pid,
             final Dictionary<String, ?> properties) throws IOException {
-        final Configuration configuration = configurationAdmin.getConfiguration(pid);
+        final org.osgi.service.cm.Configuration configuration = configurationAdmin.getConfiguration(pid);
         configuration.update(properties);
     }
 
