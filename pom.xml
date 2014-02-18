@@ -12,6 +12,7 @@
     <modules>
         <module>com.swookiee.runtime</module>
         <module>com.swookiee.runtime.core</module>
+        <module>com.swookiee.runtime.core.test</module>
         <module>com.swookiee.runtime.ewok</module>
         <module>com.swookiee.runtime.ewok.test</module>
         <module>com.swookiee.runtime.authentication</module>
