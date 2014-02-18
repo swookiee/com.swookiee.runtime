@@ -39,41 +39,40 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
  * 
  * 
  */
-public final class ConfigurationUtils<T> {
+public final class ConfigurationUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigurationUtils.class);
     private final static ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-    private final Class<T> clazz;
-
-    /**
-     * 
-     * @param clazz
-     *            see {@link ConfigurationUtils}
-     */
-    public ConfigurationUtils(final Class<T> clazz) {
-        this.clazz = clazz;
-    }
 
     /**
      * 
      * @param configurationFile
-     *            URL to your yaml configuration
+     *            URL to your YAML configuration
      * @param configurationAdmin
      *            {@link ConfigurationAdmin} instance
      */
-    public void setConfiguration(final URL configurationFile, final ConfigurationAdmin configurationAdmin) {
+    public static <T> void applyConfiguration(final Class<T> clazz, final URL configurationFile,
+            final ConfigurationAdmin configurationAdmin) {
         try {
 
             final T configuration = mapper.readValue(configurationFile, clazz);
             final Field[] fields = configuration.getClass().getFields();
 
             for (final Field field : fields) {
+
+                if (!(field.get(configuration) instanceof Configuration)) {
+                    logger.error("Field {} is not implementing {} and could not be applied!", field.getName(),
+                            Configuration.class.getName());
+                    return;
+                }
+
                 final Configuration configElement = (Configuration) field.get(configuration);
 
                 @SuppressWarnings("unchecked")
                 final Dictionary<String, Object> properties = mapper.convertValue(configElement, Hashtable.class);
 
-                this.setConfig(configurationAdmin, configElement.getPid(), properties);
+                ConfigurationUtils.sendConfigurationToConfigAdmin(configurationAdmin, configElement.getPid(),
+                        properties);
 
             }
         } catch (final IOException | IllegalArgumentException | IllegalAccessException ex) {
@@ -81,7 +80,7 @@ public final class ConfigurationUtils<T> {
         }
     }
 
-    private void setConfig(final ConfigurationAdmin configurationAdmin, final String pid,
+    private static void sendConfigurationToConfigAdmin(final ConfigurationAdmin configurationAdmin, final String pid,
             final Dictionary<String, ?> properties) throws IOException {
         final org.osgi.service.cm.Configuration configuration = configurationAdmin.getConfiguration(pid);
         configuration.update(properties);

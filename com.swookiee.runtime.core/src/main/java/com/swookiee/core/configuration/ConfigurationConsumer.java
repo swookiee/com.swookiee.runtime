@@ -33,8 +33,9 @@ public final class ConfigurationConsumer<T> {
         return new ConfigurationConsumer<T>();
     }
 
-    public void applyConfiguration(final Map<String, ?> configuration) {
+    public ConfigurationConsumer<T> applyConfiguration(final Map<String, ?> configuration) {
         this.configuration.putAll(configuration);
+        return this;
     }
 
     public T getConfiguration(final Class<T> clazz) {

@@ -37,8 +37,9 @@ public class AdminUserManagementSerice {
 
     @Activate
     private void activate(final Map<String, String> properties) {
-        this.configurationConsumer = ConfigurationConsumer.withDefaultConfiguration(getDefaultConfiguration());
-        configurationConsumer.applyConfiguration(properties);
+        this.configurationConsumer = ConfigurationConsumer.withDefaultConfiguration(getDefaultConfiguration())
+                .applyConfiguration(properties);
+
         final AdminUserConfiguration adminUserConfiguration = configurationConsumer.getConfiguration(AdminUserConfiguration.class);
 
         setAdminUser(adminUserConfiguration);
