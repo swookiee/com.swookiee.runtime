@@ -19,6 +19,7 @@
         <module>com.swookiee.runtime.authentication.test</module>
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.product</module>
+        <module>com.swookiee.runtime.webconsolebranding</module>
     </modules>
 
     <properties>

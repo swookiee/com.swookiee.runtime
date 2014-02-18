@@ -47,6 +47,7 @@
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
       <plugin id="com.swookiee.runtime.metrics"/>
+      <plugin id="com.swookiee.runtime.webconsolebranding" fragment="true"/>
       <plugin id="javax.annotation-api"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.validation.api"/>
