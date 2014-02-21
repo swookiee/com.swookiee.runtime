@@ -91,7 +91,6 @@
       <plugin id="org.glassfish.jersey.core.jersey-client"/>
       <plugin id="org.glassfish.jersey.core.jersey-common"/>
       <plugin id="org.glassfish.jersey.core.jersey-server"/>
-      <plugin id="org.ops4j.peaberry"/>
       <plugin id="org.yaml.snakeyaml"/>
       <plugin id="slf4j.api"/>
    </plugins>
@@ -162,7 +161,6 @@
       <plugin id="org.glassfish.jersey.core.jersey-client" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.jersey.core.jersey-common" autoStart="true" startLevel="3" />
       <plugin id="org.glassfish.jersey.core.jersey-server" autoStart="true" startLevel="0" />
-      <plugin id="org.ops4j.peaberry" autoStart="true" startLevel="0" />
       <plugin id="org.yaml.snakeyaml" autoStart="true" startLevel="0" />
       <plugin id="slf4j.api" autoStart="true" startLevel="0" />
       <property name="eclipse.ignoreApp" value="true" />
