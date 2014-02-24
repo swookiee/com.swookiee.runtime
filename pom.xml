@@ -11,15 +11,18 @@
 
     <modules>
         <module>com.swookiee.runtime</module>
+        <module>com.swookiee.runtime.authentication</module>
+        <module>com.swookiee.runtime.authentication.test</module>
         <module>com.swookiee.runtime.core</module>
         <module>com.swookiee.runtime.core.test</module>
         <module>com.swookiee.runtime.ewok</module>
         <module>com.swookiee.runtime.ewok.test</module>
-        <module>com.swookiee.runtime.authentication</module>
-        <module>com.swookiee.runtime.authentication.test</module>
         <module>com.swookiee.runtime.metrics</module>
-        <module>com.swookiee.runtime.product</module>
+        <module>com.swookiee.runtime.swaggerui</module>
         <module>com.swookiee.runtime.webconsolebranding</module>
+
+        <module>com.swookiee.runtime.product</module>
+
     </modules>
 
     <properties>
@@ -34,7 +37,7 @@
         <slf4j.version>1.7.6</slf4j.version>
         <logback.version>1.0.13</logback.version>
         <jersey.version>2.5.1</jersey.version>
-        <metrics.version>3.0.1</metrics.version>
+        <metrics.version>3.0.2</metrics.version>
         <jackson.version>2.3.1</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
     </properties>
