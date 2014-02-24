@@ -35,7 +35,7 @@ public class SwaggerIndexServlet extends HttpServlet {
         final StringBuilder sb = new StringBuilder();
         sb.append("<div class='input icon-btn'>");
         sb.append(String.format(
-                "<img id='show-api-%1$2s' src='images/wordnik_api.png' title='%1$2s API' onclick=\"loadApi('/apidocs/%1$2s/')\">",
+                "<img id='show-api-%1$2s' src='images/swookiee.png' title='%1$2s API' onclick=\"loadApi('/apidocs/%1$2s')\">",
                 bundleSymbolicName));
         sb.append("</div>");
 
