@@ -6,3 +6,5 @@
 
 ## License
 The code is published under the terms of the [Eclipse Public License, version 1.0](http://www.eclipse.org/legal/epl-v10.html).
+
+Included swagger-ui files from [swagger-ui](https://github.com/wordnik/swagger-ui), are Licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
