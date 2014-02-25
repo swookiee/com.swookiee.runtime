@@ -1,4 +1,4 @@
-package com.swookiee.core;
+package com.swookiee.core.internal.logging;
 
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.contrib.jackson.JacksonJsonFormatter;
-import ch.qos.logback.contrib.json.classic.JsonLayout;
 import ch.qos.logback.core.encoder.LayoutWrappingEncoder;
 import ch.qos.logback.core.rolling.RollingFileAppender;
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
@@ -15,6 +14,19 @@ import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
 /**
  * When active (system property 'productionLogging' is non-null), this adds an appender to the Logback root logger. This
  * appender will append any log messages to a log file in JSON format.
+ * <p>
+ * Simple message will automatically be logged in json format, for example <code>logger.info("just text")</code> will
+ * give <code>{ ... "message":"just text" ...}</code>.
+ * <p>
+ * Complex types can be given in a format like this:
+ * 
+ * <code><pre>
+ * HashMap<String, Object> map = new HashMap<>();
+ * map.put("string", "string value");
+ * map.put("myBean", new MyBean());
+ * logger.info("{}", map):
+ * </pre></code> If
+ * <code>myBean</cdoe> is a proper JavaBean, the message will be logged as json, including the serialzed instance of <code>MyBean</code>.
  */
 public class JsonFileLoggingDecorator {
 
@@ -97,7 +109,7 @@ public class JsonFileLoggingDecorator {
         appender.setRollingPolicy(policy);
 
         final LayoutWrappingEncoder<ILoggingEvent> wrappingEncoder = new LayoutWrappingEncoder<>();
-        JsonLayout jsonLayout = new JsonLayout();
+        FullJsonLayout jsonLayout = new FullJsonLayout();
         wrappingEncoder.setLayout(jsonLayout);
 
         JacksonJsonFormatter formatter = new JacksonJsonFormatter();

@@ -8,7 +8,7 @@ import org.osgi.service.log.LogReaderService;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
-import com.swookiee.core.JsonFileLoggingDecorator;
+import com.swookiee.core.internal.logging.JsonFileLoggingDecorator;
 import com.swookiee.core.internal.logging.LogReaderServiceTracker;
 
 /**
