@@ -43,6 +43,7 @@
       <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
+      <plugin id="com.rabbitmq.client"/>
       <plugin id="com.swookiee.runtime.authentication"/>
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
@@ -115,6 +116,7 @@
       <plugin id="com.google.gson" autoStart="true" startLevel="0" />
       <plugin id="com.google.guava" autoStart="true" startLevel="0" />
       <plugin id="com.google.inject" autoStart="true" startLevel="0" />
+      <plugin id="com.rabbitmq.client" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.authentication" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="2" />
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
