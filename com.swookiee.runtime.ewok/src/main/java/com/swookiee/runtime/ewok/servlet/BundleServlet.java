@@ -68,7 +68,7 @@ public class BundleServlet extends HttpServlet {
             response.getWriter().println(json);
 
         } catch (final HttpErrorException ex) {
-            logger.error(ex.getMessage(), ex);
+            logger.info(ex.getMessage());
             response.sendError(ex.getHttpErrorCode());
         }
     }
