@@ -50,6 +50,7 @@
       <plugin id="com.swookiee.runtime.metrics"/>
       <plugin id="com.swookiee.runtime.swaggerui"/>
       <plugin id="com.swookiee.runtime.webconsolebranding" fragment="true"/>
+      <plugin id="javassist"/>
       <plugin id="javax.annotation-api"/>
       <plugin id="javax.servlet"/>
       <plugin id="javax.validation.api"/>
@@ -89,6 +90,7 @@
       <plugin id="org.glassfish.hk2.locator"/>
       <plugin id="org.glassfish.hk2.osgi-resource-locator"/>
       <plugin id="org.glassfish.hk2.utils"/>
+      <plugin id="org.glassfish.jersey.bundles.repackaged.jersey-guava"/>
       <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core"/>
       <plugin id="org.glassfish.jersey.core.jersey-client"/>
       <plugin id="org.glassfish.jersey.core.jersey-common"/>
@@ -122,6 +124,7 @@
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.swaggerui" autoStart="true" startLevel="0" />
+      <plugin id="javassist" autoStart="true" startLevel="0" />
       <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
       <plugin id="javax.servlet" autoStart="true" startLevel="0" />
       <plugin id="javax.validation.api" autoStart="true" startLevel="0" />
@@ -161,6 +164,7 @@
       <plugin id="org.glassfish.hk2.locator" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.osgi-resource-locator" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.utils" autoStart="true" startLevel="0" />
+      <plugin id="org.glassfish.jersey.bundles.repackaged.jersey-guava" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.jersey.core.jersey-client" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.jersey.core.jersey-common" autoStart="true" startLevel="3" />

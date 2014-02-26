@@ -36,7 +36,7 @@
         <groovy.eclipse.batch.version>2.1.5-03</groovy.eclipse.batch.version>
         <slf4j.version>1.7.6</slf4j.version>
         <logback.version>1.0.13</logback.version>
-        <jersey.version>2.5.1</jersey.version>
+        <jersey.version>2.6</jersey.version>
         <metrics.version>3.0.2</metrics.version>
         <jackson.version>2.3.1</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
@@ -65,7 +65,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>14.0.1</version>
+                <version>16.0.1</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
@@ -149,6 +149,21 @@
                 <version>${jersey.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+            <!-- Jersey 2.6 needs some hk2 dependencies explicitly -->
+            <dependency>
+                <groupId>org.glassfish.hk2.external</groupId>
+                <artifactId>asm-all-repackaged</artifactId>
+                <version>2.2.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2.external</groupId>
+                <artifactId>cglib</artifactId>
+                <version>2.2.0-b23</version>
+                <scope>provided</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.jackson.jaxrs</groupId>
                 <artifactId>jackson-jaxrs-json-provider</artifactId>
@@ -192,7 +207,7 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.27</version>
+                <version>5.1.29</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
