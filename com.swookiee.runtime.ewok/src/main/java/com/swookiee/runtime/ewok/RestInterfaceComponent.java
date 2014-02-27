@@ -58,7 +58,6 @@ public class RestInterfaceComponent {
     }
 
     private void registerServletsToHttpService() {
-
         servlets.put(FrameworkStartLevelServlet.ALIAS, new FrameworkStartLevelServlet(this.bundleContext));
         servlets.put(BundlesServlet.ALIAS, new BundlesServlet(this.bundleContext));
         servlets.put(BundlesRepresentationsServlet.ALIAS, new BundlesRepresentationsServlet(this.bundleContext));
@@ -74,7 +73,7 @@ public class RestInterfaceComponent {
             }
 
         } catch (ServletException | NamespaceException ex) {
-            logger.error("Servlet could not be registred.", ex);
+            logger.error("Servlet could not be registred: {}", ex.getMessage(), ex);
         }
     }
 

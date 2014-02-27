@@ -19,7 +19,6 @@ import com.swookiee.runtime.ewok.representation.ServiceRepresenation;
 public final class ServletUtil {
 
     public static final String APPLICATION_JSON = "application/json";
-
     private static final PathIdExtractor idExtractor = new PathIdExtractor();
     private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -67,14 +66,12 @@ public final class ServletUtil {
     }
 
     public static Bundle checkAndGetBundle(final BundleContext bundleContext, final long bundleId) throws HttpErrorException {
-
         final Bundle bundle = bundleContext.getBundle(bundleId);
 
         if (bundle == null) {
             throw new HttpErrorException(String.format("Could not find Bundle %d", bundleId),
                     HttpServletResponse.SC_NOT_FOUND);
         }
-
         return bundle;
     }
 

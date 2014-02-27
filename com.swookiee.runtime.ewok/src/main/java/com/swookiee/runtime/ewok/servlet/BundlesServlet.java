@@ -43,14 +43,11 @@ public class BundlesServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-
         ServletUtil.jsonResponse(response, getBundleUriList());
-
     }
 
     @Override
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-
         try {
             String installedBundleLocation;
             if (isTextPlain(request)) {
@@ -58,16 +55,12 @@ public class BundlesServlet extends HttpServlet {
 
                 installedBundleLocation = installBundle(url);
                 response.getWriter().println(installedBundleLocation);
-
             } else if (isBundleZipOrJar(request)) {
-
                 final String location = getLocationSave(request);
+
                 makeSureBundleIsNotInstalled(location);
-
                 installedBundleLocation = installBundle(location, request.getInputStream());
-
                 response.getWriter().println(installedBundleLocation);
-
             } else {
                 throw new HttpErrorException("User not qualified Exception", HttpServletResponse.SC_BAD_REQUEST);
             }
@@ -84,16 +77,14 @@ public class BundlesServlet extends HttpServlet {
     }
 
     private String getLocationSave(final HttpServletRequest request) throws HttpErrorException {
-
         final String location = request.getHeader("Content-Location");
 
         // This is not exactly as described in the specification. It says SHOULD, we need a MUST since reading the
-        // filename from stream (Content-Disposition name field) has no tooling since we don't have a multi part form.
+        // filename from stream (Content-Disposition name field) comes not that handy.
         if (location == null) {
             throw new HttpErrorException("File upload must contain Content-Location header declaring location",
                     HttpServletResponse.SC_BAD_REQUEST);
         }
-
         return "inputstream:" + location;
     }
 
@@ -113,14 +104,14 @@ public class BundlesServlet extends HttpServlet {
     }
 
     private String installBundle(final String url, final InputStream inputStream) throws HttpErrorException {
-
         Bundle installedBundle;
+
         try {
             logger.info("Installing bundle from {}", url);
             installedBundle = bundleContext.installBundle(url, inputStream);
             return String.format("%s/%d", BundleServlet.ALIAS, installedBundle.getBundleId());
         } catch (final BundleException ex) {
-            logger.error("Could not install bundle", ex);
+            logger.error("Could not install bundle: {}", ex.getMessage(), ex);
             final String exceptionRepresentation = exceptionAsExceptionRepresentationJson(ex);
             throw new HttpErrorException("Could not install bundle", ex, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     exceptionRepresentation);

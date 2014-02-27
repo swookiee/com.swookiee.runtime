@@ -20,7 +20,7 @@ public class PathIdExtractor {
 
     /**
      * 
-     * This method extracts ids as long from rest like paths.
+     * This method extracts ids as long from REST like paths.
      * 
      * @param path
      *            String of a servlet pathInfo

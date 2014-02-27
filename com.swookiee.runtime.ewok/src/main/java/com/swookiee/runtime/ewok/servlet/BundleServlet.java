@@ -66,7 +66,6 @@ public class BundleServlet extends HttpServlet {
             }
             response.setContentType(ServletUtil.APPLICATION_JSON);
             response.getWriter().println(json);
-
         } catch (final HttpErrorException ex) {
             logger.info(ex.getMessage());
             response.sendError(ex.getHttpErrorCode());
@@ -76,7 +75,6 @@ public class BundleServlet extends HttpServlet {
     @Override
     protected void doPut(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try {
-
             final long bundleId = ServletUtil.getId(request);
             final Bundle bundle = ServletUtil.checkAndGetBundle(bundleContext, bundleId);
 
@@ -87,7 +85,6 @@ public class BundleServlet extends HttpServlet {
             } else {
                 updateBundle(request, bundle);
             }
-
         } catch (final HttpErrorException ex) {
             logger.error(ex.getMessage(), ex);
             response.sendError(ex.getHttpErrorCode());

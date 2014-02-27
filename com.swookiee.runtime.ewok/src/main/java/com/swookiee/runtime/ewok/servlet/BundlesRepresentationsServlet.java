@@ -32,13 +32,10 @@ public class BundlesRepresentationsServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
-
         ServletUtil.jsonResponse(response, getBundleRepresentationsList());
-
     }
 
     public List<BundleRepresentation> getBundleRepresentationsList() {
-
         final Bundle[] bundles = bundleContext.getBundles();
         final List<BundleRepresentation> bundleList = new ArrayList<>();
 
