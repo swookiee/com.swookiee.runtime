@@ -57,6 +57,8 @@
       <plugin id="javax.ws.rs-api"/>
       <plugin id="joda-time"/>
       <plugin id="jul.to.slf4j"/>
+      <plugin id="org.apache.commons.codec"/>
+      <plugin id="org.apache.commons.lang3"/>
       <plugin id="org.apache.felix.fileinstall"/>
       <plugin id="org.apache.felix.gogo.command"/>
       <plugin id="org.apache.felix.gogo.runtime"/>
@@ -131,6 +133,8 @@
       <plugin id="javax.ws.rs-api" autoStart="true" startLevel="0" />
       <plugin id="joda-time" autoStart="true" startLevel="0" />
       <plugin id="jul.to.slf4j" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.codec" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.lang3" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.fileinstall" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
