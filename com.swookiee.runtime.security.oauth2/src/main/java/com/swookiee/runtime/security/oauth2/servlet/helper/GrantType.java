@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.servlet;
+package com.swookiee.runtime.security.oauth2.servlet.helper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +12,7 @@ public enum GrantType {
 
     AUTHORIZATION_CODE("authorization_code"),
     PASSWORD("password"),
-    REFRESH_TOKEN("refresh_token"),
-    SOCIAL_TOKEN("social_token");
+    REFRESH_TOKEN("refresh_token");
 
     private static final Map<String, GrantType> LOOK_UP = new HashMap<>();
 

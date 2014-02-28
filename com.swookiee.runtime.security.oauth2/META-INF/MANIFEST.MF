@@ -7,23 +7,25 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: 
  com.google.common.base,
  com.google.common.collect,
- com.google.common.io;version="16.0.1",
+ com.google.common.io,
  com.google.gson,
- com.google.gson.annotations;version="2.2.2",
- com.google.gson.reflect;version="2.2.2",
- javax.servlet;version="2.6.0",
- javax.servlet.http;version="2.6.0",
+ com.google.gson.annotations,
+ com.google.gson.reflect,
+ javax.servlet,
+ javax.servlet.http,
  javax.ws.rs.container,
  javax.ws.rs.core,
  javax.ws.rs.ext,
+ org.apache.commons.codec,
+ org.apache.commons.codec.binary,
+ org.apache.commons.lang3,
  org.joda.time,
- org.osgi.framework;version="1.7.0",
+ org.osgi.framework,
  org.osgi.service.cm,
- org.osgi.service.component;version="1.2.0",
+ org.osgi.service.component,
  org.osgi.service.component.annotations,
- org.osgi.service.http;version="1.2.1",
- org.slf4j;version="1.7.2"
+ org.osgi.service.http,
+ org.slf4j
 Service-Component: OSGI-INF/*.xml
 Bundle-ClassPath: .,
- lib/jsontoken-1.1.jar,
- lib/commons-codec-1.9.jar
+ lib/jsontoken-1.1.jar

@@ -8,7 +8,7 @@ import com.swookiee.runtime.security.oauth2.authcode.AuthCodeStorage;
 import com.swookiee.runtime.security.oauth2.client.ClientRegistry;
 import com.swookiee.runtime.security.oauth2.token.AuthenticationException.AuthenticationError;
 
-@Component
+@Component(service = TokenHandler.class)
 public class TokenHandler {
 
 

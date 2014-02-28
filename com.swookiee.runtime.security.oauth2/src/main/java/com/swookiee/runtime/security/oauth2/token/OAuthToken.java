@@ -15,7 +15,7 @@ public class OAuthToken {
     private final String refreshToken;
 
     @SerializedName("scope")
-    private final String scope = "foomla";
+    private final String scope = "swookiee";
 
     @SerializedName("token_type")
     private final String tokenType = "bearer";

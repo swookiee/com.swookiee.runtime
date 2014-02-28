@@ -12,7 +12,7 @@ import org.joda.time.Instant;
 import org.joda.time.Period;
 
 /**
- * {@link AccessTokenGenerator} generates a foomla OAuth2 access token.
+ * {@link AccessTokenGenerator} generates a OAuth2 access token.
  * 
  */
 public class AccessTokenGenerator {
@@ -20,10 +20,10 @@ public class AccessTokenGenerator {
     // TODO: use configured hours of validity
     public static final int HOURS_OF_TOKEN_VALIDITY = 8;
 
-    private static final String AUDIENCE = "foomla";
+    private static final String AUDIENCE = "swookiee";
 
     // TODO: use configured shared secret
-    private static final String SHARED_SECRET = "";
+    private static final String SHARED_SECRET = "test";
 
     private final Clock clock = new SystemClock();
 

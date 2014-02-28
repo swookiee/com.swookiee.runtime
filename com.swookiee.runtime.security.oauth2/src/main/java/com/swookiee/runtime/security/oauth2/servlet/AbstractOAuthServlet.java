@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
+import com.swookiee.runtime.security.oauth2.servlet.helper.ErrorResponse;
+import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
 
 public abstract class AbstractOAuthServlet extends HttpServlet {
 

@@ -36,9 +36,9 @@ public class AccessTokenRequestFilter implements ContainerRequestFilter {
         }
 
         for (String authorizationHeader : authorizationHeaders) {
-            if (authorizationHeader.startsWith("Bearer")) {
+            if (authorizationHeader.startsWith("Bearer ")) {
                 try {
-                    jsonTokenValidator.validate(authorizationHeader);
+                    jsonTokenValidator.validate(authorizationHeader.substring(7, authorizationHeader.length()));
                 } catch (JsonTokenValidationException ex) {
                     logger.warn("Could not validate token: " + ex.getMessage(), ex);
                     containerRequestContext.abortWith(Response.status(Status.UNAUTHORIZED).build());

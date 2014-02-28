@@ -2,6 +2,7 @@ package com.swookiee.runtime.security.oauth2.authcode;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.osgi.service.component.annotations.Component;
 
 import com.google.common.collect.Maps;
@@ -34,9 +35,7 @@ public class AuthCodeStorage {
     }
 
     private String generateAuthCode() {
-        // return RandomStringUtils.random(AUTH_CODE_LENGTH, ALPHABET);
-        // TODO:
-        return "xyz";
+        return RandomStringUtils.random(AUTH_CODE_LENGTH, ALPHABET);
     }
 
     private long now() {

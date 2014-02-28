@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.servlet;
+package com.swookiee.runtime.security.oauth2.servlet.helper;
 
 import javax.servlet.http.HttpServletRequest;
 

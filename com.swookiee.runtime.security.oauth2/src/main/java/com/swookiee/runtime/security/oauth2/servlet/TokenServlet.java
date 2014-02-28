@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.token;
+package com.swookiee.runtime.security.oauth2.servlet;
 
 import java.io.IOException;
 
@@ -15,11 +15,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
-import com.swookiee.runtime.security.oauth2.servlet.AbstractOAuthServlet;
-import com.swookiee.runtime.security.oauth2.servlet.GrantType;
-import com.swookiee.runtime.security.oauth2.servlet.OAuthErrorCode;
-import com.swookiee.runtime.security.oauth2.servlet.OAuthRequestParameters;
-import com.swookiee.runtime.security.oauth2.servlet.UserService;
+import com.swookiee.runtime.security.oauth2.UserService;
+import com.swookiee.runtime.security.oauth2.servlet.helper.GrantType;
+import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
+import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthRequestParameters;
+import com.swookiee.runtime.security.oauth2.token.AuthenticationException;
+import com.swookiee.runtime.security.oauth2.token.OAuthToken;
+import com.swookiee.runtime.security.oauth2.token.TokenCreationException;
+import com.swookiee.runtime.security.oauth2.token.TokenHandler;
 
 @Component
 public class TokenServlet extends AbstractOAuthServlet {
@@ -48,8 +51,26 @@ public class TokenServlet extends AbstractOAuthServlet {
         this.httpService = httpService;
     }
 
+    @Reference
+    public void setTokenHandler(TokenHandler tokenHandler) {
+        this.tokenHandler = tokenHandler;
+    }
+
+    @Reference
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     public void unsetHttpService(HttpService httpService) {
         this.httpService = null;
+    }
+
+    public void unsetTokenHandler(TokenHandler tokenHandler) {
+        this.tokenHandler = null;
+    }
+
+    public void unsetUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @Override

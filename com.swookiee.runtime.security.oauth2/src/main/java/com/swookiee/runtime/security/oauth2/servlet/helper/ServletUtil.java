@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.servlet;
+package com.swookiee.runtime.security.oauth2.servlet.helper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
+import com.swookiee.runtime.security.oauth2.servlet.AbstractOAuthServlet;
 import com.swookiee.runtime.security.oauth2.servlet.AbstractOAuthServlet.ServletError;
 
 public class ServletUtil {

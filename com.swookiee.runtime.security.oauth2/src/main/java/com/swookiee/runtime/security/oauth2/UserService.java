@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.servlet;
+package com.swookiee.runtime.security.oauth2;
 
 import org.osgi.service.component.annotations.Component;
 

@@ -16,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.swookiee.runtime.security.oauth2.client.ClientRegistry;
+import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
+import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthRequestParameters;
 
 @Component
 public class AuthorizeServlet extends AbstractOAuthServlet {

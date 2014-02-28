@@ -1,7 +1,10 @@
 package com.swookiee.runtime.security.oauth2.token;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.osgi.service.component.annotations.Component;
 
 
+@Component(service = RefreshTokenStorage.class)
 public class RefreshTokenStorage {
 
     private static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -36,9 +39,7 @@ public class RefreshTokenStorage {
     }
 
     private String generateRefreshToken() {
-        // return RandomStringUtils.random(AUTH_CODE_LENGTH, ALPHABET);
-        // TODO: generate random token
-        return "";
+        return RandomStringUtils.random(AUTH_CODE_LENGTH, ALPHABET);
     }
 
     private long now() {
