@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+
+    <OCD description="OAuth2 Configuration" name="Swookiee OAuth2 Configuration"
+        id="com.swookiee.runtime.security.oauth2">
+
+        <AD name="Shared secret" id="sharedSecret" required="true"
+            type="String" default="qFu3ePREH2rRJcPL" />
+
+    </OCD>
+
+    <Designate pid="com.swookiee.runtime.security.oauth2">
+        <Object ocdref="com.swookiee.runtime.security.oauth2" />
+    </Designate>
+
+</metatype:MetaData>

@@ -20,6 +20,7 @@
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.swaggerui</module>
         <module>com.swookiee.runtime.webconsolebranding</module>
+        <module>com.swookiee.runtime.security.oauth2</module>
 
         <module>com.swookiee.runtime.product</module>
 

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swookiee Security OAuth 2
+Bundle-SymbolicName: com.swookiee.runtime.security.oauth2;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: 
+ com.google.common.base,
+ com.google.common.collect,
+ com.google.common.io;version="16.0.1",
+ com.google.gson,
+ com.google.gson.annotations;version="2.2.2",
+ com.google.gson.reflect;version="2.2.2",
+ javax.servlet;version="2.6.0",
+ javax.servlet.http;version="2.6.0",
+ javax.ws.rs.container,
+ javax.ws.rs.core,
+ javax.ws.rs.ext,
+ org.joda.time,
+ org.osgi.framework;version="1.7.0",
+ org.osgi.service.cm,
+ org.osgi.service.component;version="1.2.0",
+ org.osgi.service.component.annotations,
+ org.osgi.service.http;version="1.2.1",
+ org.slf4j;version="1.7.2"
+Service-Component: OSGI-INF/*.xml
+Bundle-ClassPath: .,
+ lib/jsontoken-1.1.jar,
+ lib/commons-codec-1.9.jar

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>swookiee - Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+</head>
+
+<body data-show-error="{{SHOW_ERROR}}" data-error="{{ERROR}}">
+    <div class="container">
+        <header>
+            <h1>Login</h1>
+        </header>
+        <form role="form" id="login-form" action="/oauth2/login" method="post">
+            <input type="text" required class="form-control" placeholder="Username" name="username">
+            <input type="password" required class="form-control" id="exampleInputPassword1" placeholder="Passwort"
+                name="password">
+            <button type="submit">Login</button>
+        </form>
+        <footer> </footer>
+    </div>
+</body>
+</html>
