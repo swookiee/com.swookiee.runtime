@@ -53,7 +53,7 @@ public class LogReaderServiceTracker implements ServiceTrackerCustomizer<LogRead
         @Override
         public void logged(final LogEntry entry) {
 
-            final Logger logger = LoggerFactory.getLogger("Bundle:" + entry.getBundle().getSymbolicName());
+            final Logger logger = LoggerFactory.getLogger("Bundle." + entry.getBundle().getSymbolicName());
             // Marker marker = MarkerFactory.getMarker(entry.getBundle().getSymbolicName());
 
             switch (entry.getLevel()) {
