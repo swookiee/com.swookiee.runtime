@@ -17,7 +17,7 @@ COMMAND="java -Dlogback.configurationFile=$RUNTIME_LOCATION/logback.xml\
  -Dosgi.compatibility.bootdelegation=true\
  -Xdebug $GC $MEMORY\
  -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n\
- -jar $RUNTIME_LOCATION/target/runtime/plugins/org.eclipse.osgi_3.9.1.v20130814-1242.jar\
+ -jar $RUNTIME_LOCATION/target/runtime/plugins/org.eclipse.osgi_3.9.1.v20140110-1610.jar\
  -clean\
  -configuration $RUNTIME_LOCATION/target/runtime/configuration"
 
