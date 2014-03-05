@@ -11,15 +11,18 @@ public class ServiceRepresenation {
     String bundle;
     List<String> usingBundles = new ArrayList<>();
 
+    public ServiceRepresenation() {
+    }
+
     public Map<String, Object> getProperties() {
         return properties;
     }
 
-    public void setProperties(Map<String, Object> properties) {
+    public void setProperties(final Map<String, Object> properties) {
         this.properties = properties;
     }
 
-    public void addProperty(String key, Object value) {
+    public void addProperty(final String key, final Object value) {
         properties.put(key, value);
     }
 
@@ -27,7 +30,7 @@ public class ServiceRepresenation {
         return bundle;
     }
 
-    public void setBundle(String bundle) {
+    public void setBundle(final String bundle) {
         this.bundle = bundle;
     }
 
@@ -35,11 +38,11 @@ public class ServiceRepresenation {
         return usingBundles;
     }
 
-    public void setUsingBundles(List<String> usingBundles) {
+    public void setUsingBundles(final List<String> usingBundles) {
         this.usingBundles = usingBundles;
     }
 
-    public void addUsingBundle(String usingBundle) {
+    public void addUsingBundle(final String usingBundle) {
         usingBundles.add(usingBundle);
     }
 

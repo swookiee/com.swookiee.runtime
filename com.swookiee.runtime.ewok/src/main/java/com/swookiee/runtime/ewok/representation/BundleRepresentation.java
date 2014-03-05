@@ -9,8 +9,11 @@ public class BundleRepresentation {
     private String symbolicName;
     private String version;
 
-    public BundleRepresentation(long id, long lastModified, String location, int state, String symbolicName,
-            String version) {
+    public BundleRepresentation() {
+    }
+
+    public BundleRepresentation(final long id, final long lastModified, final String location, final int state, final String symbolicName,
+            final String version) {
         this.id = id;
         this.lastModified = lastModified;
         this.location = location;
@@ -23,7 +26,7 @@ public class BundleRepresentation {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -31,7 +34,7 @@ public class BundleRepresentation {
         return lastModified;
     }
 
-    public void setLastModified(long lastModified) {
+    public void setLastModified(final long lastModified) {
         this.lastModified = lastModified;
     }
 
@@ -39,7 +42,7 @@ public class BundleRepresentation {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(final String location) {
         this.location = location;
     }
 
@@ -47,7 +50,7 @@ public class BundleRepresentation {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(final int state) {
         this.state = state;
     }
 
@@ -55,7 +58,7 @@ public class BundleRepresentation {
         return symbolicName;
     }
 
-    public void setSymbolicName(String symbolicName) {
+    public void setSymbolicName(final String symbolicName) {
         this.symbolicName = symbolicName;
     }
 
@@ -63,7 +66,7 @@ public class BundleRepresentation {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(final String version) {
         this.version = version;
     }
 }

@@ -5,8 +5,10 @@ public class BundleStatusRepresentation {
     private int state;
     private int options;
 
-    public BundleStatusRepresentation(int state, int options) {
+    public BundleStatusRepresentation() {
+    }
 
+    public BundleStatusRepresentation(final int state, final int options) {
         this.state = state;
         this.options = options;
     }
@@ -15,7 +17,7 @@ public class BundleStatusRepresentation {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(final int state) {
         this.state = state;
     }
 
@@ -23,7 +25,7 @@ public class BundleStatusRepresentation {
         return options;
     }
 
-    public void setOptions(int options) {
+    public void setOptions(final int options) {
         this.options = options;
     }
 
