@@ -58,7 +58,11 @@ public class BundlesServlet extends HttpServlet {
             } else if (isBundleZipOrJar(request)) {
                 final String location = getLocationSave(request);
 
-                makeSureBundleIsNotInstalled(location);
+                final String header = request.getHeader("X-ForceBundleUpdate");
+                if (header == null || !header.equals("true")) {
+                    makeSureBundleIsNotInstalled(location);
+                }
+
                 installedBundleLocation = installBundle(location, request.getInputStream());
                 response.getWriter().println(installedBundleLocation);
             } else {
@@ -111,7 +115,7 @@ public class BundlesServlet extends HttpServlet {
             installedBundle = bundleContext.installBundle(url, inputStream);
             return String.format("%s/%d", BundleServlet.ALIAS, installedBundle.getBundleId());
         } catch (final BundleException ex) {
-            logger.error("Could not install bundle: {}", ex.getMessage(), ex);
+            logger.warn("Could not install bundle: {}", ex.getMessage());
             final String exceptionRepresentation = exceptionAsExceptionRepresentationJson(ex);
             throw new HttpErrorException("Could not install bundle", ex, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     exceptionRepresentation);
