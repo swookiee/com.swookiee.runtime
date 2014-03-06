@@ -15,20 +15,29 @@ public class ConfigurationUtilsTest {
     @Test
     void 'Configure via config admin'(){
         boolean tested = false
+        URL configFile = this.getClass().getResource("UberConfig.yaml")
+        ConfigurationUtils.applyConfiguration(UberConfig, configFile, getConfigAdmin({tested=true}))
+        assertThat tested, is(true)
+    }
 
-        ConfigurationAdmin configAdmin = [ getConfiguration : { def pid ->
+    @Test
+    void 'test against null values'(){
+        try{
+            ConfigurationUtils.applyConfiguration(null, null, null)
+        } catch (NullPointerException ex){
+            assertThat ex.getMessage(), containsString("Null value is not allowed")
+        }
+    }
+
+    def getConfigAdmin(Closure<?> closure){
+        def foo = [ getConfiguration : { def pid ->
                 assertThat pid, equalTo(ConfigPojo.pid)
                 [ update : { Dictionary properties ->
                         assertThat properties.get("foo"), equalTo("bar")
-                        tested =  true
+                        closure()
                     }
                 ] as Configuration
             }] as ConfigurationAdmin
-
-        URL configFile = this.getClass().getResource("UberConfig.yaml")
-
-        ConfigurationUtils.applyConfiguration(UberConfig, configFile, configAdmin)
-
-        assertThat tested, is(true)
+        return foo
     }
 }

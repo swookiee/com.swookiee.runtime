@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.swookiee.runtime.util.GuardAgainst;
 
 /**
  * This utility class can be used to bridge your configuration information out of your YAML and POJO pair to the
@@ -46,6 +47,8 @@ public final class ConfigurationUtils {
 
     /**
      * 
+     * @param clazz
+     *            Configuration POJO {@link Class}
      * @param configurationFile
      *            URL to your YAML configuration
      * @param configurationAdmin
@@ -54,6 +57,7 @@ public final class ConfigurationUtils {
     public static <T> void applyConfiguration(final Class<T> clazz, final URL configurationFile,
             final ConfigurationAdmin configurationAdmin) {
         try {
+            GuardAgainst.nullValue(clazz, configurationFile, configurationAdmin);
 
             final T configuration = mapper.readValue(configurationFile, clazz);
             final Field[] fields = configuration.getClass().getFields();
