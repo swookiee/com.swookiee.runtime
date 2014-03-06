@@ -17,8 +17,8 @@ import org.osgi.service.useradmin.UserAdmin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.swookiee.core.configuration.ConfigurationConsumer;
 import com.swookiee.runtime.authentication.AdminUserConfiguration;
+import com.swookiee.runtime.util.configuration.ConfigurationConsumer;
 
 @Component(configurationPolicy = ConfigurationPolicy.OPTIONAL, configurationPid = AdminUserConfiguration.pid)
 public class AdminUserManagementSerice {

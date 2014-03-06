@@ -1,4 +1,4 @@
-package com.swookiee.core.internal;
+package com.swookiee.runtime.core.internal;
 
 import java.util.logging.Handler;
 
@@ -8,8 +8,8 @@ import org.osgi.service.log.LogReaderService;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
-import com.swookiee.core.internal.logging.JsonFileLoggingDecorator;
-import com.swookiee.core.internal.logging.LogReaderServiceTracker;
+import com.swookiee.runtime.core.internal.logging.JsonFileLoggingDecorator;
+import com.swookiee.runtime.core.internal.logging.LogReaderServiceTracker;
 
 /**
  * This Activator initializes the logging from all various sources to the slf4j facade.

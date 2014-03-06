@@ -1,4 +1,4 @@
-package com.swookiee.core.configuration;
+package com.swookiee.runtime.util.configuration;
 
 import java.util.Hashtable;
 import java.util.Map;

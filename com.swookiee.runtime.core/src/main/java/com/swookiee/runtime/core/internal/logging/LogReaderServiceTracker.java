@@ -1,4 +1,4 @@
-package com.swookiee.core.internal.logging;
+package com.swookiee.runtime.core.internal.logging;
 
 import java.util.HashMap;
 import java.util.Map;

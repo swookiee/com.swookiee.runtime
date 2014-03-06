@@ -8,7 +8,7 @@ import org.junit.Test
 import org.osgi.service.cm.Configuration
 import org.osgi.service.cm.ConfigurationAdmin
 
-import com.swookiee.core.configuration.ConfigurationUtils
+import com.swookiee.runtime.util.configuration.ConfigurationUtils
 
 public class ConfigurationUtilsTest {
 

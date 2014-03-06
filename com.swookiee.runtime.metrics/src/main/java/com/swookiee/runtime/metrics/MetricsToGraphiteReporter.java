@@ -20,8 +20,8 @@ import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.graphite.Graphite;
 import com.codahale.metrics.graphite.GraphiteReporter;
-import com.swookiee.core.configuration.ConfigurationConsumer;
 import com.swookiee.runtime.metrics.configuration.GraphiteReporterConfiguration;
+import com.swookiee.runtime.util.configuration.ConfigurationConsumer;
 
 @Component(configurationPid = GraphiteReporterConfiguration.pid)
 public class MetricsToGraphiteReporter {

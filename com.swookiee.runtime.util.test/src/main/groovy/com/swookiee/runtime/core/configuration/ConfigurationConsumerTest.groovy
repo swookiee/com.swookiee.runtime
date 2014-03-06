@@ -6,7 +6,7 @@ import static org.junit.matchers.JUnitMatchers.*
 
 import org.junit.Test
 
-import com.swookiee.core.configuration.ConfigurationConsumer
+import com.swookiee.runtime.util.configuration.ConfigurationConsumer
 
 public class ConfigurationConsumerTest {
 

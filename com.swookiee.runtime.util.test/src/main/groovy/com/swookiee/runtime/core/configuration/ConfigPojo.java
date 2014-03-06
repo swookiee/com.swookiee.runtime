@@ -1,6 +1,6 @@
 package com.swookiee.runtime.core.configuration;
 
-import com.swookiee.core.configuration.Configuration;
+import com.swookiee.runtime.util.configuration.Configuration;
 
 public class ConfigPojo implements Configuration {
 

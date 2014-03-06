@@ -1,6 +1,6 @@
 package com.swookiee.runtime.metrics.configuration;
 
-import com.swookiee.core.configuration.Configuration;
+import com.swookiee.runtime.util.configuration.Configuration;
 
 public class GraphiteReporterConfiguration implements Configuration {
 
