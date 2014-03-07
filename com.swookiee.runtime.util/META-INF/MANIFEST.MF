@@ -13,5 +13,6 @@ Import-Package: com.fasterxml.jackson.annotation,
  org.osgi.framework,
  org.osgi.service.cm,
  org.slf4j;version="[1.7.0,1.8.0)"
-Export-Package: com.swookiee.runtime.util.configuration;uses:="org.osgi.service.cm",
+Export-Package: com.swookiee.runtime.util,
+ com.swookiee.runtime.util.configuration;uses:="org.osgi.service.cm",
  com.swookiee.runtime.util.guice;uses:="org.osgi.framework,com.google.inject.spi"
