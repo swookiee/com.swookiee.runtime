@@ -13,10 +13,16 @@ import org.osgi.framework.Bundle;
 
 import com.google.common.io.ByteStreams;
 
+/**
+ * This {@link HttpServlet} is serving the provided swagger documentation from external bundles. The injected
+ * {@link Bundle} MUST contain the {@value SwaggerDocumentationTracker#SWAGGER_HEADER} header in its Manifest file. The
+ * given header must point to the folder within the jar where the swagger JSON API description files are located and
+ * therefore can be served. If no other path information are provided the content of the main {@code service.json} will
+ * be returned.
+ */
 public class SwaggerDocumentationServlet extends HttpServlet {
 
     private static final String DEFAULT_PATH = "/service.json";
-
     private static final long serialVersionUID = -8476611541655924943L;
 
     private final Bundle bundle;
@@ -28,10 +34,9 @@ public class SwaggerDocumentationServlet extends HttpServlet {
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException,
     IOException {
-
         final String path = getPath(request);
 
-        final Object resourcesPath = bundle.getHeaders().get("X-Swagger-Documentation");
+        final Object resourcesPath = bundle.getHeaders().get(SwaggerDocumentationTracker.SWAGGER_HEADER);
         final URL resource = bundle.getResource(resourcesPath + path);
 
         if (resource == null) {
@@ -46,7 +51,6 @@ public class SwaggerDocumentationServlet extends HttpServlet {
 
     private String getPath(final HttpServletRequest request) {
         String path = request.getPathInfo();
-
         if (path == null || path.isEmpty() || path.equals("/")) {
             path = DEFAULT_PATH;
         }

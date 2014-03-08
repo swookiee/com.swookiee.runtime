@@ -1,56 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swagger UI</title>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
-  <link href='css/highlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
-  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
-  <script type="text/javascript" src="lib/shred.bundle.js"></script>
-  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
-  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
-  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
-  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
-  <script src='lib/handlebars-1.0.0.js' type='text/javascript'></script>
-  <script src='lib/underscore-min.js' type='text/javascript'></script>
-  <script src='lib/backbone-min.js' type='text/javascript'></script>
-  <script src='lib/swagger.js' type='text/javascript'></script>
-  <script src='swagger-ui.min.js' type='text/javascript'></script>
-  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
-  <script type="text/javascript">
-  	function loadApi(apiBundle) {
+<title>Swookiee - Swagger UI</title>
+<link href='css/highlight.default.css' media='screen' rel='stylesheet'
+	type='text/css' />
+<link href='css/screen.css' media='screen' rel='stylesheet'
+	type='text/css' />
+<script type="text/javascript" src="lib/shred.bundle.js"></script>
+<script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+<script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+<script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+<script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+<script src='lib/handlebars-1.0.0.js' type='text/javascript'></script>
+<script src='lib/underscore-min.js' type='text/javascript'></script>
+<script src='lib/backbone-min.js' type='text/javascript'></script>
+<script src='lib/swagger.js' type='text/javascript'></script>
+<script src='swagger-ui.min.js' type='text/javascript'></script>
+<script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+<script type="text/javascript">
+	$.getJSON("/services/swagger-documentaion", function(data) {
+		$.each(data, function() {
+			prependApiButton(this)
+		});
+	});
+
+	function loadApi(apiBundle) {
 		window.swaggerUi = new SwaggerUi({
-			url: apiBundle,
-			dom_id: "swagger-ui-container"
+			url : apiBundle,
+			dom_id : "swagger-ui-container"
 		});
 		window.swaggerUi.load();
- 	 }
-  </script>
+	}
+
+	function prependApiButton(name) {
+		url = "/swagger/" + name
+		$('#api_selector')
+				.prepend('<div class="input icon-btn"> \
+						<img id="show-'+name+'" src="images/swookiee.png" title="Show '+name+' Apis" onClick="loadApi(\''+url+'\')"> \
+						</div>');
+	}
+</script>
 </head>
 
 <body>
-<div id='header'>
-  <div class="swagger-ui-wrap">
-    <a id="logo" href="http://swagger.wordnik.com">swagger</a>
+	<div id='header'>
+		<div class="swagger-ui-wrap">
+			<a id="logo" href="http://swookiee.com">swookiee</a>
 
-    <form id='api_selector'>
-      {BUNDLE-APIS}
-      <!--div class='input icon-btn'>
-        <img id="show-wordnik-dev-icon" src="images/wordnik_api.png" title="Show Wordnik Developer Apis">
-      </div-->
-      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <!-- div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div-->
-      <div class='input'><a id="explore" href="#">Explore</a></div>
-    </form>
-  </div>
-</div>
+			<form id='api_selector'>
+				<div class='input'>
+					<input placeholder="http://example.com/api" id="input_baseUrl"
+						name="baseUrl" type="text" />
+				</div>
+				<div class='input'>
+					<input placeholder="api_key" id="input_apiKey" name="apiKey"
+						type="text" />
+				</div>
+				<div class='input'>
+					<a id="explore" href="#">Explore</a>
+				</div>
+			</form>
+		</div>
+	</div>
 
-<div id="message-bar" class="swagger-ui-wrap">
-  &nbsp;
-</div>
+	<div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
 
-<div id="swagger-ui-container" class="swagger-ui-wrap">
-
-</div>
+	<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 
 </body>
 
