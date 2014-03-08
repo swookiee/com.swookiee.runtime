@@ -57,7 +57,9 @@ public final class ConfigurationUtils {
     public static <T> void applyConfiguration(final Class<T> clazz, final URL configurationFile,
             final ConfigurationAdmin configurationAdmin) {
         try {
-            GuardAgainst.nullValue(clazz, configurationFile, configurationAdmin);
+            GuardAgainst.nullValue(clazz, "Class type can not be null");
+            GuardAgainst.nullValue(configurationFile, "Configuration File URL can not be null");
+            GuardAgainst.nullValue(configurationAdmin, "Configuration Admin reference can not be null");
 
             final T configuration = mapper.readValue(configurationFile, clazz);
             final Field[] fields = configuration.getClass().getFields();

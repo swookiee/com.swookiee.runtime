@@ -5,15 +5,17 @@ public final class GuardAgainst {
     private GuardAgainst() {
     }
 
-    public static void nullValue(final Object value) {
+    public static <T> T nullValue(T value) {
         if (value == null) {
-            throw new IllegalArgumentException("Null value is not allowed");
+            throw new IllegalArgumentException();
         }
+        return value;
     }
 
-    public static void nullValue(final Object... values) {
-        for (final Object value : values) {
-            GuardAgainst.nullValue(value);
+    public static <T> T nullValue(T value, String message) {
+        if (value == null) {
+            throw new IllegalArgumentException(message);
         }
+        return value;
     }
 }

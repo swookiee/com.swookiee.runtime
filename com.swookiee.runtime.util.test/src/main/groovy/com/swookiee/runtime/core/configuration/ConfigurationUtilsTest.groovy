@@ -16,17 +16,13 @@ public class ConfigurationUtilsTest {
     void 'Configure via config admin'(){
         boolean tested = false
         URL configFile = this.getClass().getResource("UberConfig.yaml")
-        ConfigurationUtils.applyConfiguration(UberConfig, configFile, getConfigAdmin({tested=true}))
+        ConfigurationUtils.applyConfiguration(UberConfig, configFile, getConfigAdmin({ tested=true }))
         assertThat tested, is(true)
     }
 
     @Test
-    void 'test against null values'(){
-        try{
-            ConfigurationUtils.applyConfiguration(null, null, null)
-        } catch (NullPointerException ex){
-            assertThat ex.getMessage(), containsString("Null value is not allowed")
-        }
+    void 'test that null values dont throw a NPE'(){
+        ConfigurationUtils.applyConfiguration(null, null, null)
     }
 
     def getConfigAdmin(Closure<?> closure){
