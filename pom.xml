@@ -43,6 +43,7 @@
         <metrics.version>3.0.2</metrics.version>
         <jackson.version>2.3.2</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
+        <guice-version>4.0-beta</guice-version>
     </properties>
 
     <dependencyManagement>
@@ -222,7 +223,13 @@
             <dependency>
                 <groupId>com.google.inject</groupId>
                 <artifactId>guice</artifactId>
-                <version>4.0-beta</version>
+                <version>${guice-version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.inject.extensions</groupId>
+                <artifactId>guice-multibindings</artifactId>
+                <version>${guice-version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>

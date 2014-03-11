@@ -124,6 +124,10 @@
             <artifactId>guice</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-multibindings</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
         </dependency>
@@ -168,7 +172,7 @@
             <artifactId>groovy-all</artifactId>
         </dependency>
     </dependencies>
-    
+
     <!-- needed for equinox dependencies -->
     <repositories>
         <repository>
