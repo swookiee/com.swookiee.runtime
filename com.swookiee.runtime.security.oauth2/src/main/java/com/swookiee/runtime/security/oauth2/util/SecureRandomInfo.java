@@ -19,6 +19,7 @@ public class SecureRandomInfo {
     public long getExpirationDate() {
         return expirationDate;
     }
+
     public String getUserId() {
         return userId;
     }

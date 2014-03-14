@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import com.swookiee.runtime.security.oauth2.client.ClientRegistry;
 import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
-import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthRequestParameters;
 
 @Component
 public class AuthorizeServlet extends AbstractOAuthServlet {
@@ -63,12 +62,10 @@ public class AuthorizeServlet extends AbstractOAuthServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        OAuthRequestParameters requestParameters = OAuthRequestParameters.parse(request);
-
         HttpSession session = request.getSession();
 
-        String clientId = requestParameters.getClientId();
-        String redirectUri = requestParameters.getRedirectUri();
+        String clientId = request.getParameter(PARAMETER_CLIENT_ID);
+        String redirectUri = request.getParameter(PARAMETER_REDIRECT_URI);
 
         if (clientId == null || redirectUri == null) {
             logger.warn("Authorization of client request failed, because client id or redirect URI parameter was null.");
@@ -76,7 +73,7 @@ public class AuthorizeServlet extends AbstractOAuthServlet {
             return;
         }
 
-        if (!clientRegistry.isValid(clientId, redirectUri)) {
+        if (!clientRegistry.isValidClientIdAndRedirectUri(clientId, redirectUri)) {
             logger.warn(
                     "Authorization of client request failed, because client id '{}' or redirect URI '{}' was not valid.",
                     clientId, redirectUri);
@@ -84,8 +81,8 @@ public class AuthorizeServlet extends AbstractOAuthServlet {
             return;
         }
 
-        session.setAttribute(OAuthRequestParameters.CLIENT_ID, clientId);
-        session.setAttribute(OAuthRequestParameters.REDIRECT_URI, redirectUri);
+        session.setAttribute(PARAMETER_CLIENT_ID, clientId);
+        session.setAttribute(PARAMETER_REDIRECT_URI, redirectUri);
 
         sendLoginRedirect(request, response);
     }

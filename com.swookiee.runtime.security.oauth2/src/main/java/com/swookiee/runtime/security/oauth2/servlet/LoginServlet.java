@@ -1,6 +1,5 @@
 package com.swookiee.runtime.security.oauth2.servlet;
 
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -16,10 +15,10 @@ import org.osgi.service.http.NamespaceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.swookiee.runtime.security.oauth2.LoginTemplateProvider;
 import com.swookiee.runtime.security.oauth2.UserService;
 import com.swookiee.runtime.security.oauth2.authcode.AuthCodeStorage;
 import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
-import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthRequestParameters;
 import com.swookiee.runtime.security.oauth2.servlet.helper.ServletUtil;
 
 @Component
@@ -31,6 +30,8 @@ public class LoginServlet extends AbstractOAuthServlet {
 
     private HttpService httpService;
     private final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
+    private LoginTemplateProvider loginTemplateProvider;
+
     private UserService userService;
 
     public void activate(ComponentContext componentContext) {
@@ -56,6 +57,11 @@ public class LoginServlet extends AbstractOAuthServlet {
     }
 
     @Reference
+    public void setLoginTemplateProvider(LoginTemplateProvider loginTemplateProvider) {
+        this.loginTemplateProvider = loginTemplateProvider;
+    }
+
+    @Reference
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -68,6 +74,10 @@ public class LoginServlet extends AbstractOAuthServlet {
         this.httpService = null;
     }
 
+    public void unsetLoginTemplateProvider(LoginTemplateProvider loginTemplateProvider) {
+        this.loginTemplateProvider = null;
+    }
+
     public void unsetUserService(UserService userService) {
         this.userService = userService;
     }
@@ -77,8 +87,8 @@ public class LoginServlet extends AbstractOAuthServlet {
 
         HttpSession session = request.getSession();
 
-        String clientId = (String) session.getAttribute(OAuthRequestParameters.CLIENT_ID);
-        String redirectUri = (String) session.getAttribute(OAuthRequestParameters.REDIRECT_URI);
+        String clientId = (String) session.getAttribute(PARAMETER_CLIENT_ID);
+        String redirectUri = (String) session.getAttribute(PARAMETER_REDIRECT_URI);
 
         if (clientId == null || redirectUri == null) {
             sendErrorRedirect(response, redirectUri, OAuthErrorCode.INVALID_REQUEST);
@@ -86,31 +96,30 @@ public class LoginServlet extends AbstractOAuthServlet {
         }
 
         ServletError servletError = (ServletError) request.getSession().getAttribute(SESSION_ATTRIBUTE_SERVLET_ERROR);
-        ServletUtil.writeHtmlToOutput(response, "/res/login.html", servletError);
+        ServletUtil.writeHtmlToOutput(response, loginTemplateProvider.getLoginTemplateInputStream(), servletError);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-    IOException {
+            IOException {
 
         HttpSession session = request.getSession();
 
-        String clientId = (String) session.getAttribute(OAuthRequestParameters.CLIENT_ID);
-        String redirectUri = (String) session.getAttribute(OAuthRequestParameters.REDIRECT_URI);
+        String clientId = (String) session.getAttribute(PARAMETER_CLIENT_ID);
+        String redirectUri = (String) session.getAttribute(PARAMETER_REDIRECT_URI);
 
         if (clientId == null || redirectUri == null) {
             sendErrorRedirect(response, redirectUri, OAuthErrorCode.INVALID_REQUEST);
             return;
         }
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter(PARAMETER_USERNAME);
+        String password = request.getParameter(PARAMETER_PASSWORD);
 
         if (userService.isValidCredentials(username, password)) {
             String authCode = authCodeStorage.createAuthCode(clientId, username);
             sendAuthCodeRedirect(request, response, authCode, redirectUri);
-        }
-        else {
+        } else {
             logger.warn("Login for user '{}' failed", username);
             sendLoginRedirect(request, response, LoginError.INVALID_CREDENTIALS);
         }

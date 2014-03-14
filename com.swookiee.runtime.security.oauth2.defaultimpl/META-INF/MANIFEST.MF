@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swookiee Security OAuth2 Default Implementation
+Bundle-SymbolicName: com.swookiee.runtime.security.oauth2.defaultimpl;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Service-Component: OSGI-INF/*.xml
+Import-Package: com.google.common.collect,
+ com.swookiee.runtime.security.oauth2,
+ org.osgi.service.component.annotations
+Bundle-ClassPath: .

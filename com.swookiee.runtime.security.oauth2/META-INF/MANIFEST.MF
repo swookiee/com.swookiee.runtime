@@ -1,11 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Swookiee Security OAuth 2
+Bundle-Name: Swookiee Security OAuth2
 Bundle-SymbolicName: com.swookiee.runtime.security.oauth2;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: 
- com.google.common.base,
+Import-Package: com.google.common.base,
  com.google.common.collect,
  com.google.common.io,
  com.google.gson,
@@ -29,3 +28,4 @@ Import-Package:
 Service-Component: OSGI-INF/*.xml
 Bundle-ClassPath: .,
  lib/jsontoken-1.1.jar
+Export-Package: com.swookiee.runtime.security.oauth2

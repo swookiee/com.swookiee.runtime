@@ -37,18 +37,26 @@ public abstract class AbstractOAuthServlet extends HttpServlet {
         String getName();
     }
 
+    protected static final String PARAMETER_CLIENT_ID = "client_id";
+
+    protected static final String PARAMETER_CLIENT_SECRET = "client_secret";
+
+    protected static final String PARAMETER_PASSWORD = "password";
+
+    protected static final String PARAMETER_REDIRECT_URI = "redirect_uri";
+
+    protected static final String PARAMETER_USERNAME = "username";
+
     protected static final String SESSION_ATTRIBUTE_SERVLET_ERROR = "servlet_error";
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractOAuthServlet.class);
-
 
     protected void sendAuthCodeRedirect(final HttpServletRequest request, final HttpServletResponse response,
             final String authCode, final String redirectUri) {
         try {
             request.getSession().invalidate();
             response.sendRedirect(redirectUri + "?code=" + authCode);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             logger.error("Could not send redirect: " + ex.getMessage(), ex);
         }
     }
@@ -61,12 +69,10 @@ public abstract class AbstractOAuthServlet extends HttpServlet {
 
             if (redirectUri != null) {
                 response.sendRedirect(redirectUri + "?error=" + error.getError());
-            }
-            else {
+            } else {
                 response.sendError(400, error.getError());
             }
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             logger.error("Could not send redirect or error response: " + ex.getMessage(), ex);
         }
     }
@@ -74,10 +80,10 @@ public abstract class AbstractOAuthServlet extends HttpServlet {
     protected void sendErrorResponse(final HttpServletResponse response, int statusCode, String error,
             final String description) {
         try {
+            response.setContentType("application/json; charset=UTF-8");
             response.getWriter().write(new Gson().toJson(new ErrorResponse(error, description)));
-            response.sendError(statusCode);
-        }
-        catch (IOException ex) {
+            response.setStatus(statusCode);
+        } catch (IOException ex) {
             logger.error("Could not send error response: " + ex.getMessage(), ex);
         }
     }
@@ -106,8 +112,7 @@ public abstract class AbstractOAuthServlet extends HttpServlet {
 
         try {
             response.sendRedirect(servletAlias);
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             String message = "Could not redirect to login: " + ex.getMessage();
             logger.error(message, ex);
             sendErrorResponse(response, 500, "INTERNAL_ERROR", message);

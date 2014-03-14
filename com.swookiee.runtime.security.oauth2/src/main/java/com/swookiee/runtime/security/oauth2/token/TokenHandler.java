@@ -3,6 +3,7 @@ package com.swookiee.runtime.security.oauth2.token;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import com.swookiee.runtime.security.oauth2.RefreshToken;
 import com.swookiee.runtime.security.oauth2.authcode.AuthCodeInfo;
 import com.swookiee.runtime.security.oauth2.authcode.AuthCodeStorage;
 import com.swookiee.runtime.security.oauth2.client.ClientRegistry;
@@ -11,12 +12,12 @@ import com.swookiee.runtime.security.oauth2.token.AuthenticationException.Authen
 @Component(service = TokenHandler.class)
 public class TokenHandler {
 
-
     private AuthCodeStorage authCodeStorage;
 
     private ClientRegistry clientRegistry;
 
     private RefreshTokenStorage refreshTokenStorage;
+
     public OAuthToken create(String clientId, String userId) throws TokenCreationException, AuthenticationException {
 
         if (!clientRegistry.clientExists(clientId)) {
@@ -27,7 +28,7 @@ public class TokenHandler {
     }
 
     public OAuthToken exchangeAuthCode(String clientId, String authCode) throws AuthenticationException,
-    TokenCreationException {
+            TokenCreationException {
 
         if (!clientRegistry.clientExists(clientId)) {
             throw new AuthenticationException(AuthenticationError.CLIENT_NOT_FOUND, clientId);
@@ -56,8 +57,9 @@ public class TokenHandler {
 
         return token;
     }
+
     public OAuthToken exchangeRefreshToken(String clientId, String refreshToken) throws AuthenticationException,
-    TokenCreationException {
+            TokenCreationException {
 
         if (!clientRegistry.clientExists(clientId)) {
             throw new AuthenticationException(AuthenticationError.CLIENT_NOT_FOUND, clientId);

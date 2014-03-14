@@ -30,8 +30,7 @@ public class AccessTokenGenerator {
     public String generate(String userId) throws TokenCreationException {
 
         try {
-            HmacSHA256Signer signer = new HmacSHA256Signer(userId, null, SHARED_SECRET
-                    .getBytes());
+            HmacSHA256Signer signer = new HmacSHA256Signer(userId, null, SHARED_SECRET.getBytes());
 
             JsonToken token = new JsonToken(signer);
 

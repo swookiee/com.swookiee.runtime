@@ -1,4 +1,4 @@
-package com.swookiee.runtime.security.oauth2.client;
+package com.swookiee.runtime.security.oauth2;
 
 import java.util.List;
 

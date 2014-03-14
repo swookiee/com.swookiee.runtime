@@ -1,15 +1,10 @@
-package com.swookiee.runtime.security.oauth2.token;
-
-
+package com.swookiee.runtime.security.oauth2;
 
 public class RefreshToken {
 
-
     private String clientId;
 
-
     private long expirationDate;
-
 
     private String token;
 

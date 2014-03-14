@@ -10,13 +10,11 @@ import com.google.common.collect.Maps;
 @Component(service = AuthCodeStorage.class)
 public class AuthCodeStorage {
 
-    private static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            .toCharArray();
+    private static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
     private static final int AUTH_CODE_LENGTH = 16;
     private static final int TEN_MINUTES = 600000 /* ms */;
 
     private final Map<String, AuthCodeInfo> authCodes = Maps.newConcurrentMap();
-
 
     public String createAuthCode(String clientId, String userId) {
 

@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 import com.swookiee.runtime.security.oauth2.UserService;
+import com.swookiee.runtime.security.oauth2.client.ClientRegistry;
 import com.swookiee.runtime.security.oauth2.servlet.helper.GrantType;
 import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthErrorCode;
-import com.swookiee.runtime.security.oauth2.servlet.helper.OAuthRequestParameters;
 import com.swookiee.runtime.security.oauth2.token.AuthenticationException;
 import com.swookiee.runtime.security.oauth2.token.OAuthToken;
 import com.swookiee.runtime.security.oauth2.token.TokenCreationException;
@@ -29,21 +29,18 @@ public class TokenServlet extends AbstractOAuthServlet {
 
     private static final String ALIAS_TOKEN = "/token";
     private static final Logger logger = LoggerFactory.getLogger(TokenServlet.class);
+    private static final String PARAMETER_CODE = "code";
+    private static final String PARAMETER_GRANT_TYPE = "grant_type";
+    private static final String PARAMETER_REFRESH_TOKEN = "refresh_token";
 
+    private ClientRegistry clientRegistry;
     private HttpService httpService;
     private TokenHandler tokenHandler;
     private UserService userService;
 
-    public void activate(ComponentContext componentContext) {
-        try {
-            httpService.registerServlet(ALIAS_TOKEN, this, null, null);
-        } catch (ServletException | NamespaceException ex) {
-            logger.error(ex.getMessage(), ex);
-        }
-    }
-
-    public void deactivate(ComponentContext componentContext) {
-        httpService.unregister(ALIAS_TOKEN);
+    @Reference
+    public void setClientRegistry(ClientRegistry clientRegistry) {
+        this.clientRegistry = clientRegistry;
     }
 
     @Reference
@@ -61,6 +58,10 @@ public class TokenServlet extends AbstractOAuthServlet {
         this.userService = userService;
     }
 
+    public void unsetClientRegistry(ClientRegistry clientRegistry) {
+        this.clientRegistry = clientRegistry;
+    }
+
     public void unsetHttpService(HttpService httpService) {
         this.httpService = null;
     }
@@ -73,14 +74,25 @@ public class TokenServlet extends AbstractOAuthServlet {
         this.userService = userService;
     }
 
+    protected void activate(ComponentContext componentContext) {
+        try {
+            httpService.registerServlet(ALIAS_TOKEN, this, null, null);
+        } catch (ServletException | NamespaceException ex) {
+            logger.error(ex.getMessage(), ex);
+        }
+    }
+
+    protected void deactivate(ComponentContext componentContext) {
+        httpService.unregister(ALIAS_TOKEN);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
     IOException {
 
-        OAuthRequestParameters parameters = OAuthRequestParameters.parse(request);
-
-        String clientId = parameters.getClientId();
-        GrantType grantType = GrantType.get(parameters.getGrantType());
+        String clientId = request.getParameter(PARAMETER_CLIENT_ID);
+        String clientSecret = request.getParameter(PARAMETER_CLIENT_SECRET);
+        String grantType = request.getParameter(PARAMETER_GRANT_TYPE);
 
         if (clientId == null || grantType == null) {
             sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_REQUEST,
@@ -88,25 +100,52 @@ public class TokenServlet extends AbstractOAuthServlet {
             return;
         }
 
+        if (!clientRegistry.isValidClientIdAndClientSecret(clientId, clientSecret)) {
+            sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_CLIENT,
+                    "Client id does not exists or client secret is invalid.");
+            return;
+        }
+
         OAuthToken token = null;
 
         try {
-            switch (grantType) {
+            switch (GrantType.valueOf(grantType.toUpperCase())) {
 
             case AUTHORIZATION_CODE:
-                String code = parameters.getCode();
+
+                String code = request.getParameter(PARAMETER_CODE);
+                if (code == null) {
+                    sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_REQUEST,
+                            "Auth code was not specified for grant type 'auth'.");
+                    return;
+                }
                 token = tokenHandler.exchangeAuthCode(clientId, code);
+
                 break;
 
             case REFRESH_TOKEN:
-                String refreshToken = parameters.getRefreshToken();
+                String refreshToken = request.getParameter(PARAMETER_REFRESH_TOKEN);
+
+                if (refreshToken == null) {
+                    sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_REQUEST,
+                            "Refresh token was not specified for grant type 'refresh_token'.");
+                    return;
+                }
+
                 token = tokenHandler.exchangeRefreshToken(clientId, refreshToken);
+
                 break;
 
             case PASSWORD:
 
-                String username = parameters.getUsername();
-                String password = parameters.getPassword();
+                String username = request.getParameter(PARAMETER_USERNAME);
+                String password = request.getParameter(PARAMETER_PASSWORD);
+
+                if (username == null || password == null) {
+                    sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_REQUEST,
+                            "Username or password was not specified for grant type 'authorization_code'.");
+                    return;
+                }
 
                 if (userService.isValidCredentials(username, password)) {
                     token = tokenHandler.create(clientId, username);
@@ -115,7 +154,9 @@ public class TokenServlet extends AbstractOAuthServlet {
                 break;
 
             default:
-                break;
+                sendOAuthErrorResponse(response, OAuthErrorCode.INVALID_GRANT, "Invalid grant type: " + grantType);
+                return;
+
             }
 
             response.getWriter().write(new Gson().toJson(token));

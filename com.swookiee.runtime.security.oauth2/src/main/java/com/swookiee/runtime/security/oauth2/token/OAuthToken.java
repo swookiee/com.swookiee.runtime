@@ -2,7 +2,6 @@ package com.swookiee.runtime.security.oauth2.token;
 
 import com.google.gson.annotations.SerializedName;
 
-
 public class OAuthToken {
 
     @SerializedName("access_token")
@@ -47,7 +46,6 @@ public class OAuthToken {
     public String getScope() {
         return scope;
     }
-
 
     public String getTokenType() {
         return tokenType;
