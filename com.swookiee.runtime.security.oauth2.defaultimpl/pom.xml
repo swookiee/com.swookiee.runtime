@@ -14,33 +14,7 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<name>Swookiee Security OAuth2 Default Implementation Bundle</name>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.swookiee</groupId>
-			<artifactId>com.swookiee.runtime.security.oauth2</artifactId>
-			<version>${project.version}</version>
-		</dependency>	
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-		<!-- Needed as Annotation processor -->
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.apache.felix.scr.ds-annotations</artifactId>
-		</dependency>
-
-	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
