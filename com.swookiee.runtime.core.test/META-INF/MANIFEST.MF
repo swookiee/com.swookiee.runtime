@@ -6,9 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: com.swookiee
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit
-Import-Package: com.fasterxml.jackson.annotation,
- com.swookiee.core.configuration,
- groovy.lang,
+Import-Package: groovy.lang,
  org.codehaus.groovy.reflection,
  org.codehaus.groovy.runtime,
  org.codehaus.groovy.runtime.callsite,
@@ -16,6 +14,5 @@ Import-Package: com.fasterxml.jackson.annotation,
  org.hamcrest.core,
  org.junit;version="4.0.0",
  org.junit.matchers;version="4.0.0",
- org.junit.runner;version="4.0.0",
- org.osgi.service.cm
+ org.junit.runner;version="4.0.0"
 Fragment-Host: com.swookiee.runtime.core

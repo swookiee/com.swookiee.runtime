@@ -25,7 +25,6 @@ import com.swookiee.runtime.ewok.util.ServletUtil;
  */
 public class ServiceServlet extends HttpServlet {
 
-
     public static final String ALIAS = "/framework/service";
     private static final long serialVersionUID = -8784847583201231060L;
     private static final Logger logger = LoggerFactory.getLogger(ServiceServlet.class);
@@ -50,7 +49,7 @@ public class ServiceServlet extends HttpServlet {
             response.getWriter().println(json);
 
         } catch (final HttpErrorException ex) {
-            logger.error(ex.getMessage(), ex);
+            logger.warn(ex.getMessage());
             ServletUtil.errorResponse(response, ex);
         }
     }
@@ -63,7 +62,8 @@ public class ServiceServlet extends HttpServlet {
             services = bundleContext.getServiceReferences((String) null, filter);
 
             if (services == null) {
-                throw new HttpErrorException("No Service Found", HttpServletResponse.SC_NOT_FOUND);
+                throw new HttpErrorException(String.format("No Service with ID '%s' Found", serviceId),
+                        HttpServletResponse.SC_NOT_FOUND);
             } else if (services.length > 1 || services.length < 0) {
                 throw new HttpErrorException("Illegal State", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
@@ -78,7 +78,7 @@ public class ServiceServlet extends HttpServlet {
 
             return mapper.writeValueAsString(serviceRepresenation);
 
-        } catch (final InvalidSyntaxException |  JsonProcessingException ex) {
+        } catch (final InvalidSyntaxException | JsonProcessingException ex) {
             logger.error("Cannot handle request " + ex.getMessage(), ex);
             throw new HttpErrorException("Cannot handle request", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }

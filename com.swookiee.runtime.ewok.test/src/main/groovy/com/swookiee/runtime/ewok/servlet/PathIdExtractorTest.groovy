@@ -9,7 +9,7 @@ import org.junit.Test
 import com.swookiee.runtime.ewok.util.HttpErrorException
 import com.swookiee.runtime.ewok.util.PathIdExtractor
 
-public class PathIdExtractorTest {
+public class PathIdExtractorTest extends BaseServletTest {
 
     @Test
     void 'extract Id from valid path'(){

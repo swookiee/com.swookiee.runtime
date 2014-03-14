@@ -12,7 +12,7 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.ServiceReference
 
-public class ServicesServletTest {
+public class ServicesServletTest extends BaseServletTest {
 
     @Test
     void 'call GET and return list of services'() {

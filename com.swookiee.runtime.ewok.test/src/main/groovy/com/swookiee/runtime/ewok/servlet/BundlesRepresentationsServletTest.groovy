@@ -11,7 +11,7 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.Version
 
-public class BundlesRepresentationsServletTest {
+public class BundlesRepresentationsServletTest extends BaseServletTest {
 
     @Test
     void 'call GET and return bundle list representation'(){

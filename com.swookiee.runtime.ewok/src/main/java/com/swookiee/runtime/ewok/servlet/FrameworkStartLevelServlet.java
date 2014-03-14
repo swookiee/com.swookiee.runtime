@@ -11,6 +11,7 @@ import org.osgi.framework.startlevel.FrameworkStartLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swookiee.runtime.ewok.representation.FrameworkStartLevelRepresentation;
 import com.swookiee.runtime.ewok.util.HttpErrorException;
@@ -60,6 +61,9 @@ public class FrameworkStartLevelServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NO_CONTENT);
         } catch (final HttpErrorException ex) {
             response.sendError(ex.getHttpErrorCode());
+        } catch (final JsonParseException ex) {
+            logger.warn("Could not parse FrameworkStartLevel");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         } catch (final Exception ex) {
             logger.error("Error while changing FrameworkStartLevel ", ex);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

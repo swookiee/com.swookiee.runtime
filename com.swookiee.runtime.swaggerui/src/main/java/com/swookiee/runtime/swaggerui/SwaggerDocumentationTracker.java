@@ -1,7 +1,5 @@
 package com.swookiee.runtime.swaggerui;
 
-import java.util.List;
-
 import javax.servlet.ServletException;
 
 import org.osgi.framework.Bundle;
@@ -13,42 +11,42 @@ import org.osgi.util.tracker.BundleTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This {@link BundleTracker} is looking for the {@value SwaggerDocumentationTracker#SWAGGER_HEADER} header. In case it
+ * is provided, it will register a {@link SwaggerDocumentationServlet} in order to provide its contents. It also adds a
+ * references of the {@link Bundle} to the {@link SwaggerDocumentationRegistry}.
+ */
 public class SwaggerDocumentationTracker extends BundleTracker<Bundle> {
 
     private static final Logger logger = LoggerFactory.getLogger(SwaggerDocumentationTracker.class);
-
+    public static final String SWAGGER_HEADER = "X-Swagger-Documentation";
     private final HttpService httpService;
-    private final List<Bundle> apiBundles;
+    private final SwaggerDocumentationRegistry documentationRegistry;
 
     public SwaggerDocumentationTracker(final BundleContext context, final HttpService httpService,
-            final List<Bundle> apiBundles) {
+            final SwaggerDocumentationRegistry documentationRegistry) {
         super(context, Bundle.ACTIVE, null);
         this.httpService = httpService;
-        this.apiBundles = apiBundles;
+        this.documentationRegistry = documentationRegistry;
     }
 
     @Override
     public Bundle addingBundle(final Bundle bundle, final BundleEvent event) {
-
-        final String swaggerPath = bundle.getHeaders().get("X-Swagger-Documentation");
-
+        final String swaggerPath = bundle.getHeaders().get(SWAGGER_HEADER);
         if (swaggerPath == null) {
             return bundle;
         }
-
         registerDocumentationServlet(bundle);
-
         return bundle;
-
     }
 
     @Override
     public void removedBundle(final Bundle bundle, final BundleEvent event, final Bundle object) {
 
-        if (bundle.getHeaders().get("X-Swagger-Documentation")== null) {
+        if (bundle.getHeaders().get(SWAGGER_HEADER) == null) {
             return;
         }
-        this.apiBundles.remove(bundle);
+        this.documentationRegistry.unregister(bundle);
         this.httpService.unregister(getAlias(bundle));
     }
 
@@ -57,7 +55,7 @@ public class SwaggerDocumentationTracker extends BundleTracker<Bundle> {
 
         try {
             this.httpService.registerServlet(getAlias(bundle), swaggerDocumentationServlet, null, null);
-            apiBundles.add(bundle);
+            this.documentationRegistry.register(bundle);
         } catch (ServletException | NamespaceException ex) {
             logger.error("Could not register swagger documentation for bundle: {}, {}", bundle.getSymbolicName(),
                     ex.getMessage(), ex);
@@ -65,14 +63,6 @@ public class SwaggerDocumentationTracker extends BundleTracker<Bundle> {
     }
 
     private String getAlias(final Bundle bundle) {
-        return HttpComponentRegistration.SWAGGER_ALIAS + "/" + bundle.getSymbolicName();
-    }
-
-    @Override
-    public void close() {
-        for (final Bundle bundle : apiBundles) {
-            this.httpService.unregister(getAlias(bundle));
-        }
-        super.close();
+        return MainComponent.SWAGGER_ALIAS + "/" + bundle.getSymbolicName();
     }
 }

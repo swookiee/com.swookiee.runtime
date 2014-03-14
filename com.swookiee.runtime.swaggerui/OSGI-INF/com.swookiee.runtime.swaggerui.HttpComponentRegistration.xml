@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
-    <scr:component name="com.swookiee.runtime.swaggerui.HttpComponentRegistration" activate="activate" deactivate="deactivate">
-        <implementation class="com.swookiee.runtime.swaggerui.HttpComponentRegistration"/>
-        <reference name="HttpService" interface="org.osgi.service.http.HttpService" cardinality="1..1" policy="dynamic" bind="setHttpService" unbind="unsetHttpService"/>
-    </scr:component>
-</components>

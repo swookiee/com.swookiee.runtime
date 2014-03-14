@@ -14,7 +14,7 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.ServiceReference
 
-public class ServiceServletTest {
+public class ServiceServletTest extends BaseServletTest {
 
     @Test
     void 'call GET and return service representation'() {
@@ -80,6 +80,6 @@ public class ServiceServletTest {
 
         servlet.doGet(request, response)
 
-        assertThat stringWriter.buffer.toString(), containsString('''No Service Found''')
+        assertThat stringWriter.buffer.toString(), containsString('''No Service with ID '42' Found''')
     }
 }

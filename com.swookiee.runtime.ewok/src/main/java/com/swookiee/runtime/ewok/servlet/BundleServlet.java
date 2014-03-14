@@ -88,7 +88,7 @@ public class BundleServlet extends HttpServlet {
         } catch (final HttpErrorException ex) {
             logger.error(ex.getMessage(), ex);
             response.sendError(ex.getHttpErrorCode());
-        } catch (final BundleException ex) {
+        } catch (final BundleException | IOException ex) {
             logger.error("Could not update Bundle", ex);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }

@@ -11,8 +11,9 @@ import org.junit.Test
 import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.Version
+import org.slf4j.Logger
 
-public class BundleServletTest {
+public class BundleServletTest extends BaseServletTest {
 
     @Test
     void 'call GET and return bundle information'(){

@@ -12,7 +12,7 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.startlevel.FrameworkStartLevel
 
-public class FrameworkStartLevelServletTest {
+public class FrameworkStartLevelServletTest extends BaseServletTest {
 
     @Test
     void 'call GET and return FrameworkStartLevelRepresentation'(){

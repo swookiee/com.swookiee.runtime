@@ -43,12 +43,14 @@
       <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
+      <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.rabbitmq.client"/>
       <plugin id="com.swookiee.runtime.authentication"/>
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
       <plugin id="com.swookiee.runtime.metrics"/>
       <plugin id="com.swookiee.runtime.swaggerui"/>
+      <plugin id="com.swookiee.runtime.util"/>
       <plugin id="com.swookiee.runtime.webconsolebranding" fragment="true"/>
       <plugin id="javassist"/>
       <plugin id="javax.annotation-api"/>
@@ -126,6 +128,7 @@
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.swaggerui" autoStart="true" startLevel="0" />
+      <plugin id="com.swookiee.runtime.util" autoStart="true" startLevel="0" />
       <plugin id="javassist" autoStart="true" startLevel="0" />
       <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
       <plugin id="javax.servlet" autoStart="true" startLevel="0" />

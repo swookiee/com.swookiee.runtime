@@ -6,7 +6,10 @@ public class BundleStartlevelRepresentation {
     private Boolean activationPolicyUsed;
     private Boolean persistentlyStarted;
 
-    public BundleStartlevelRepresentation(int startLevel, Boolean activationPolicyUsed, Boolean persistentlyStarted) {
+    public BundleStartlevelRepresentation() {
+    }
+
+    public BundleStartlevelRepresentation(final int startLevel, final Boolean activationPolicyUsed, final Boolean persistentlyStarted) {
         this.startLevel = startLevel;
         this.activationPolicyUsed = activationPolicyUsed;
         this.persistentlyStarted = persistentlyStarted;
@@ -16,7 +19,7 @@ public class BundleStartlevelRepresentation {
         return startLevel;
     }
 
-    public void setStartLevel(int startLevel) {
+    public void setStartLevel(final int startLevel) {
         this.startLevel = startLevel;
     }
 
@@ -24,7 +27,7 @@ public class BundleStartlevelRepresentation {
         return activationPolicyUsed;
     }
 
-    public void setActivationPolicyUsed(Boolean activationPolicyUsed) {
+    public void setActivationPolicyUsed(final Boolean activationPolicyUsed) {
         this.activationPolicyUsed = activationPolicyUsed;
     }
 
@@ -32,7 +35,7 @@ public class BundleStartlevelRepresentation {
         return persistentlyStarted;
     }
 
-    public void setPersistentlyStarted(Boolean persistentlyStarted) {
+    public void setPersistentlyStarted(final Boolean persistentlyStarted) {
         this.persistentlyStarted = persistentlyStarted;
     }
 

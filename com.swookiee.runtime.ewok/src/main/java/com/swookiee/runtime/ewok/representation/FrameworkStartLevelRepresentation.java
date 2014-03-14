@@ -5,8 +5,7 @@ public class FrameworkStartLevelRepresentation {
     private int startLevel;
     private int initialStartLevel;
 
-    @SuppressWarnings("unused")
-    private FrameworkStartLevelRepresentation() {
+    public FrameworkStartLevelRepresentation() {
     }
 
     public FrameworkStartLevelRepresentation(final int startLevel, final int initialStartLevel) {
