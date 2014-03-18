@@ -48,10 +48,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.eclipsesource</groupId>
-            <artifactId>osgi-jaxrs-connector</artifactId>
-            <version>3.2.1</version>
-            <scope>provided</scope>
+            <groupId>com.eclipsesource.jaxrs</groupId>
+            <artifactId>publisher</artifactId>
+            <version>3.3</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -74,7 +73,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.2.2</version>
+            <version>2.2.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -86,6 +85,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -282,6 +287,17 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
