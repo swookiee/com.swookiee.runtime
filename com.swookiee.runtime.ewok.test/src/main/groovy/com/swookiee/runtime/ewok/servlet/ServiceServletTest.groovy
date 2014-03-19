@@ -5,6 +5,7 @@ package com.swookiee.runtime.ewok.servlet
 import static org.hamcrest.CoreMatchers.*
 import static org.junit.Assert.*
 import static org.junit.matchers.JUnitMatchers.*
+import groovy.json.JsonSlurper
 
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
@@ -51,8 +52,12 @@ public class ServiceServletTest extends BaseServletTest {
 
         servlet.doGet(request, response)
 
-        assertThat stringWriter.buffer.toString(), containsString(
-                '''{"properties":{"Foo":"42","bar":"42"},"bundle":"com.test.bundle","usingBundles":[]}''')
+        def slurper = new JsonSlurper()
+        def result = slurper.parseText(stringWriter.buffer.toString())
+        assertThat result.properties.Foo, is(equalTo("42"))
+        assertThat result.properties.bar, is(equalTo("42"))
+        assertThat result.bundle, is(equalTo("com.test.bundle"))
+        assertThat result.usingBundles.size, is(equalTo(0))
     }
 
     @Test
