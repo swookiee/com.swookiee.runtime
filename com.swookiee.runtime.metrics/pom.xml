@@ -12,7 +12,14 @@
     <packaging>eclipse-plugin</packaging>
 
     <name>Swookiee Runtime Metrics bundle</name>
-
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.swookiee</groupId>
+            <artifactId>com.swookiee.runtime.util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

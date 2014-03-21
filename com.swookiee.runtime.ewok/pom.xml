@@ -17,6 +17,14 @@
 
     <name>Swookiee Ewok (RFC-182 draft)</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.swookiee</groupId>
+            <artifactId>com.swookiee.runtime.authentication</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

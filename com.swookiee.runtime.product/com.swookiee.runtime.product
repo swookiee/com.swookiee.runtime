@@ -14,6 +14,7 @@
 
    <windowImages/>
 
+
    <launcher>
       <solaris/>
       <win useIco="false">
@@ -54,13 +55,12 @@
       <plugin id="com.swookiee.runtime.webconsolebranding" fragment="true"/>
       <plugin id="javassist"/>
       <plugin id="javax.annotation-api"/>
-      <plugin id="javax.servlet"/>
+      <plugin id="javax.servlet-api" version="3.1.0"/>
       <plugin id="javax.validation.api"/>
       <plugin id="javax.ws.rs-api"/>
       <plugin id="joda-time"/>
       <plugin id="jul.to.slf4j"/>
       <plugin id="org.apache.commons.codec"/>
-      <plugin id="org.apache.commons.lang3"/>
       <plugin id="org.apache.felix.fileinstall"/>
       <plugin id="org.apache.felix.gogo.command"/>
       <plugin id="org.apache.felix.gogo.runtime"/>
@@ -72,19 +72,24 @@
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.console"/>
       <plugin id="org.eclipse.equinox.ds"/>
-      <plugin id="org.eclipse.equinox.http.jetty"/>
-      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.http.servlet" version="1.0.0.v20070606"/>
       <plugin id="org.eclipse.equinox.metatype"/>
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.useradmin"/>
       <plugin id="org.eclipse.equinox.util"/>
-      <plugin id="org.eclipse.jetty.continuation"/>
+      <plugin id="org.eclipse.jetty.deploy"/>
       <plugin id="org.eclipse.jetty.http"/>
       <plugin id="org.eclipse.jetty.io"/>
+      <plugin id="org.eclipse.jetty.jmx"/>
+      <plugin id="org.eclipse.jetty.osgi.boot"/>
+      <plugin id="org.eclipse.jetty.osgi.httpservice"/>
+      <plugin id="org.eclipse.jetty.schemas"/>
       <plugin id="org.eclipse.jetty.security"/>
       <plugin id="org.eclipse.jetty.server"/>
       <plugin id="org.eclipse.jetty.servlet"/>
       <plugin id="org.eclipse.jetty.util"/>
+      <plugin id="org.eclipse.jetty.webapp"/>
+      <plugin id="org.eclipse.jetty.xml"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.osgi.util"/>
@@ -131,13 +136,12 @@
       <plugin id="com.swookiee.runtime.util" autoStart="true" startLevel="0" />
       <plugin id="javassist" autoStart="true" startLevel="0" />
       <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
-      <plugin id="javax.servlet" autoStart="true" startLevel="0" />
+      <plugin id="javax.servlet-api" autoStart="true" startLevel="0" />
       <plugin id="javax.validation.api" autoStart="true" startLevel="0" />
       <plugin id="javax.ws.rs-api" autoStart="true" startLevel="0" />
       <plugin id="joda-time" autoStart="true" startLevel="0" />
       <plugin id="jul.to.slf4j" autoStart="true" startLevel="0" />
       <plugin id="org.apache.commons.codec" autoStart="true" startLevel="0" />
-      <plugin id="org.apache.commons.lang3" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.fileinstall" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="0" />
       <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
@@ -149,19 +153,24 @@
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.equinox.http.jetty" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.metatype" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.useradmin" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.jetty.continuation" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.deploy" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.http" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.io" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.jmx" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.osgi.boot" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.osgi.httpservice" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.schemas" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.security" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.server" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.webapp" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jetty.xml" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi.util" autoStart="true" startLevel="0" />
@@ -182,7 +191,8 @@
       <property name="felix.fileinstall.dir" value="./dropins" />
       <property name="felix.fileinstall.noInitialDelay" value="true" />
       <property name="felix.fileinstall.start.level" value="4" />
-      <property name="org.osgi.service.http.port" value="8080" />
+      <property name="jetty.home.bundle" value="org.eclipse.jetty.osgi.boot" />
+      <property name="jetty.port" value="8080" />
       <property name="osgi.compatibility.bootdelegation" value="true" />
       <property name="osgi.console" value="localhost:10000" />
       <property name="osgi.console.enable.builtin" value="false" />

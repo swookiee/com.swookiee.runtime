@@ -57,6 +57,8 @@
                             <id>com.swookiee.runtime</id>
                         </product>
                     </products>
+                    <source>repository</source>
+                    <directorRuntime>standalone</directorRuntime>
                 </configuration>
             </plugin>
             <plugin>
