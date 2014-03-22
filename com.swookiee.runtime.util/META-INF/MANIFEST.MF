@@ -19,4 +19,3 @@ Import-Package: com.fasterxml.jackson.annotation,
 Export-Package: com.swookiee.runtime.util,
  com.swookiee.runtime.util.configuration;uses:="org.osgi.service.cm",
  com.swookiee.runtime.util.guice;uses:="org.osgi.framework,com.google.inject.spi"
-Service-Component: OSGI-INF/*.xml
