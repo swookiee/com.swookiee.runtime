@@ -15,7 +15,7 @@
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dosgi.requiredJavaVersion=1.7 &#10;-XX:+UseG1GC &#10;-XX:MaxPermSize=256m &#10;-Xms40m &#10;-Xmx4096m &#10;-Declipse.ignoreApp=true &#10;-Dosgi.noShutdown=true &#10;-Dorg.osgi.service.http.port=8080 &#10;-Dosgi.clean=true &#10;-Dlogback.configurationFile=${workspace_loc:/com.swookiee.runtime.core/logback.xml}&#10;-Djetty.home.bundle=com.intuit.jetty.config"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dosgi.requiredJavaVersion=1.7 &#10;-XX:+UseG1GC &#10;-XX:MaxPermSize=256m &#10;-Xms40m &#10;-Xmx4096m &#10;-Declipse.ignoreApp=true &#10;-Dosgi.noShutdown=true &#10;-Dorg.osgi.service.http.port=8080 &#10;-Dosgi.clean=true &#10;-Dlogback.configurationFile=${workspace_loc:/com.swookiee.runtime.core/logback.xml} &#10;-Djetty.home.bundle=org.eclipse.jetty.osgi.boot"/>
 <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:com.swookiee.runtime.core}"/>
 <stringAttribute key="pde.version" value="3.3"/>
 <booleanAttribute key="show_selected_only" value="false"/>
@@ -23,5 +23,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="com.intuit.jetty.config@default:false,com.swookiee.runtime.authentication@default:default,com.swookiee.runtime.core@default:default,com.swookiee.runtime.ewok@default:default,com.swookiee.runtime.metrics@default:default,com.swookiee.runtime.swaggerui@default:default,com.swookiee.runtime.util@default:default,com.swookiee.runtime.webconsolebranding@default:false,com.swookiee.sample.swagger@default:default"/>
+<stringAttribute key="workspace_bundles" value="com.swookiee.runtime.authentication@default:default,com.swookiee.runtime.core@default:default,com.swookiee.runtime.ewok@default:default,com.swookiee.runtime.metrics@default:default,com.swookiee.runtime.swaggerui@default:default,com.swookiee.runtime.util@default:default,com.swookiee.runtime.webconsolebranding@default:false"/>
 </launchConfiguration>
