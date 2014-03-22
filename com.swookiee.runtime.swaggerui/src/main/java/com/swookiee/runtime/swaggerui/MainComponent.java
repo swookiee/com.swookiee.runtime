@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 public class MainComponent {
 
     static final String SWAGGER_ALIAS = "/swagger";
-    private static final String RESOURCES_FOLDER = "/resources";
+    private static final String RESOURCES_FOLDER = "/tools";
     private static final Logger logger = LoggerFactory.getLogger(MainComponent.class);
 
     private HttpService httpService;

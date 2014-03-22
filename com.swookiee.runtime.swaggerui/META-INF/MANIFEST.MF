@@ -17,6 +17,6 @@ Import-Package: com.google.common.base,
  org.osgi.service.http,
  org.osgi.util.tracker;version="1.5.0",
  org.slf4j
-Bundle-ClassPath: resources/,
- .
+Bundle-ClassPath: .,
+ tools/
 Service-Component: OSGI-INF/*.xml 
