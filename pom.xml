@@ -62,7 +62,7 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.compendium</artifactId>
-            <version>4.3.1</version>
+            <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -159,7 +159,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Jersey 2.6 needs some hk2 dependencies explicitly -->
+        <!-- Jersey needs some hk2 dependencies explicitly -->
         <dependency>
             <groupId>org.glassfish.hk2.external</groupId>
             <artifactId>asm-all-repackaged</artifactId>
@@ -210,7 +210,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
+            <version>5.1.30</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -246,7 +246,7 @@
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.fileinstall</artifactId>
-            <version>3.2.6</version>
+            <version>3.2.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -270,7 +270,7 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>3.2.3</version>
+            <version>3.2.4</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
