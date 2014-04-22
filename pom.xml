@@ -49,11 +49,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.eclipsesource.jaxrs</groupId>
-            <artifactId>publisher</artifactId>
-            <version>3.3</version>
-        </dependency>
-        <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
             <version>5.0.0</version>
@@ -158,6 +153,12 @@
             <version>${jersey.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Bridge between OSGi and jersey -->
+        <dependency>
+            <groupId>com.eclipsesource.jaxrs</groupId>
+            <artifactId>publisher</artifactId>
+            <version>3.3</version>
+        </dependency>
 
         <!-- Jersey needs some hk2 dependencies explicitly -->
         <dependency>
@@ -206,12 +207,6 @@
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>1.13</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.30</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>joda-time</groupId>
@@ -276,17 +271,6 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.10.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.2.2</version>
         </dependency>
 
         <!-- Test Dependencies -->
