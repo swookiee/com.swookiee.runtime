@@ -196,6 +196,7 @@
       <plugin id="slf4j.api" autoStart="true" startLevel="0" />
       <property name="eclipse.ignoreApp" value="true" />
       <property name="felix.fileinstall.dir" value="./dropins" />
+      <property name="felix.fileinstall.noInitialDelay" value="true" />
       <property name="felix.fileinstall.start.level" value="4" />
       <property name="jetty.home.bundle" value="org.eclipse.jetty.osgi.boot" />
       <property name="jetty.port" value="8080" />
