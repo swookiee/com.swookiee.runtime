@@ -23,25 +23,24 @@ import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
 public class JvmMetrics {
 
     private static final Logger logger = LoggerFactory.getLogger(JvmMetrics.class);
-
     private MetricRegistry metricRegistry;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final MetricRegistry metricRegistry) {
+    public void setMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = metricRegistry;
     }
 
-    public void unsetMetricRegistry(final MetricRegistry metricRegistry) {
+    public void unsetMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = null;
     }
 
     @Activate
     public void activate(final BundleContext bundleContext) {
-        registerAll("buffer-pools", new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()),
+        registerAll("jvm.buffer-pools", new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()),
                 this.metricRegistry);
-        registerAll("gc", new GarbageCollectorMetricSet(), this.metricRegistry);
-        registerAll("memory", new MemoryUsageGaugeSet(), this.metricRegistry);
-        registerAll("thread-states", new ThreadStatesGaugeSet(), this.metricRegistry);
+        registerAll("jvm.gc", new GarbageCollectorMetricSet(), this.metricRegistry);
+        registerAll("jvm.memory", new MemoryUsageGaugeSet(), this.metricRegistry);
+        registerAll("jvm.thread-states", new ThreadStatesGaugeSet(), this.metricRegistry);
 
         logger.info("Jvm Metrics activated!");
     }

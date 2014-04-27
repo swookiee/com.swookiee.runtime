@@ -28,18 +28,17 @@ import com.codahale.metrics.Timer.Context;
 public class TimingResourceFilter implements ContainerRequestFilter, ContainerResponseFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(TimingResourceFilter.class);
-
     private final ConcurrentMap<ContainerRequestContext, Timer.Context> requestTiming = new ConcurrentHashMap<>();
 
     private MetricRegistry metricRegistry;
     private Timer requestTimer;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final MetricRegistry metricRegistry) {
+    public void setMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = metricRegistry;
     }
 
-    public void unsetMetricRegistry(final MetricRegistry metricRegistry) {
+    public void unsetMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = null;
     }
 

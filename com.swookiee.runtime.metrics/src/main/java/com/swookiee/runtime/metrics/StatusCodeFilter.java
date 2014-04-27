@@ -26,15 +26,14 @@ import com.codahale.metrics.MetricRegistry;
 public class StatusCodeFilter implements ContainerResponseFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(StatusCodeFilter.class);
-
     private MetricRegistry metricRegistry;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final MetricRegistry metricRegistry) {
+    public void setMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = metricRegistry;
     }
 
-    public void unsetMetricRegistry(final MetricRegistry metricRegistry) {
+    public void unsetMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
         this.metricRegistry = null;
     }
 
@@ -42,7 +41,6 @@ public class StatusCodeFilter implements ContainerResponseFilter {
 
     @Activate
     public void activate() {
-
         statusCodeMeters = new ConcurrentHashMap<>();
         logger.info("Status Code Filter activated!");
     }
