@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
-    <scr:component name="com.codahale.metrics.MetricRegistry">
-        <implementation class="com.codahale.metrics.MetricRegistry"/>
-        <service servicefactory="false">
-            <provide interface="com.codahale.metrics.MetricRegistry"/>
-        </service>
-    </scr:component>
-</components>
