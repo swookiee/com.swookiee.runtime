@@ -90,6 +90,12 @@
             <version>${slf4j.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <!-- Makes life in module poms a bit easier -->
