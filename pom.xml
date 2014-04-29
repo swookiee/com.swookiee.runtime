@@ -4,7 +4,7 @@
 
     <groupId>com.swookiee</groupId>
     <artifactId>com.swookiee.runtime.parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${swookiee.version}</version>
     <packaging>pom</packaging>
 
     <name>Swookiee Runtime Parent</name>
@@ -45,6 +45,7 @@
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0-beta</guice-version>
         <jetty.version>9.1.4.v20140401</jetty.version>
+        <swookiee.version>1.0.0-SNAPSHOT</swookiee.version>
     </properties>
 
     <dependencies>

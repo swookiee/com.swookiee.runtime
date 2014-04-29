@@ -77,7 +77,7 @@
                                 <artifactItem>
                                     <groupId>com.swookiee</groupId>
                                     <artifactId>com.swookiee.runtime.product</artifactId>
-                                    <version>${project.version}</version>
+                                    <version>${swookiee.version}</version>
                                     <classifier>linux.gtk.x86_64</classifier>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
