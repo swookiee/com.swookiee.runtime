@@ -14,6 +14,10 @@
 
     <name>Swookiee Runtime Execution Project</name>
 
+    <properties>
+        <dropin.path>${project.build.directory}/dropins</dropin.path>
+    </properties>
+
     <dependencies>
         <!-- To make sure that the reactor order is correct -->
         <dependency>
@@ -50,6 +54,7 @@
                         <argument>-Xshare:off</argument>
                         <argument>-Dlogback.configurationFile=${basedir}/logback.xml</argument>
                         <argument>-Dosgi.compatibility.bootdelegation=true</argument>
+                        <argument>-Dfelix.fileinstall.dir=${dropin.path}</argument>
                         <argument>-Xdebug</argument>
                         <argument>-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</argument>
                         <argument>-jar</argument>
@@ -77,7 +82,7 @@
                                 <artifactItem>
                                     <groupId>com.swookiee</groupId>
                                     <artifactId>com.swookiee.runtime.product</artifactId>
-                                    <version>${swookiee.version}</version>
+                                    <version>${project.version}</version>
                                     <classifier>linux.gtk.x86_64</classifier>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>

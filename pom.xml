@@ -45,7 +45,6 @@
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0-beta</guice-version>
         <jetty.version>9.1.4.v20140401</jetty.version>
-        <swookiee.version>${project.version}</swookiee.version>
     </properties>
 
     <dependencies>
