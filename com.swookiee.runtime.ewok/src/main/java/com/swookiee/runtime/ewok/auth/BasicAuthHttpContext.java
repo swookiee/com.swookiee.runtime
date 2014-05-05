@@ -32,12 +32,14 @@ public class BasicAuthHttpContext implements HttpContext {
     public boolean handleSecurity(final HttpServletRequest request, final HttpServletResponse response)
             throws IOException {
         if (request.getHeader("Authorization") == null) {
+            response.addHeader("WWW-Authenticate", "Basic");
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
         if (authenticated(request)) {
             return true;
         } else {
+            response.addHeader("WWW-Authenticate", "Basic");
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
