@@ -13,6 +13,6 @@ public @interface OSGiExport {
 
     public @interface ServiceProperties {
         public String key();
-        public String value();
+        public String[] value();
     }
 }

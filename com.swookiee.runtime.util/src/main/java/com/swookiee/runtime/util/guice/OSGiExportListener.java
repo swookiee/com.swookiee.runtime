@@ -1,5 +1,6 @@
 package com.swookiee.runtime.util.guice;
 
+import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class OSGiExportListener implements ProvisionListener {
 
     private <T> void registerAsOSGiService(final T provisionedInstance) {
         final OSGiExport annotation = provisionedInstance.getClass().getAnnotation(OSGiExport.class);
-        final Hashtable<String, String> propertiesAsTable = getServiceProperties(annotation);
+        final Dictionary<String, Object> propertiesAsTable = getServiceProperties(annotation);
         final ServiceRegistration<?> registeredService = bundleContext.registerService(provisionedInstance.getClass()
                 .getName(), provisionedInstance, propertiesAsTable);
 
@@ -59,13 +60,18 @@ public class OSGiExportListener implements ProvisionListener {
 
     }
 
-    private Hashtable<String, String> getServiceProperties(final OSGiExport annotation) {
+    private Dictionary<String, Object> getServiceProperties(final OSGiExport annotation) {
         final ServiceProperties[] properties = annotation.properties();
-        final Hashtable<String, String> propertiesAsTable = new Hashtable<String, String>();
+        final Dictionary<String, Object> propertiesAsTable = new Hashtable<String, Object>();
 
         if (properties != null && properties.length > 0) {
             for (final ServiceProperties serviceProperties : properties) {
-                propertiesAsTable.put(serviceProperties.key(), serviceProperties.value());
+                String[] value = serviceProperties.value();
+                if (value.length == 1) {
+                    propertiesAsTable.put(serviceProperties.key(), value[0]);
+                } else {
+                    propertiesAsTable.put(serviceProperties.key(), value);
+                }
             }
         }
         return propertiesAsTable;
