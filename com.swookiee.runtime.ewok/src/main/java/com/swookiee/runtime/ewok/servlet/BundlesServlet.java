@@ -50,15 +50,14 @@ public class BundlesServlet extends HttpServlet {
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try {
             String installedBundleLocation;
-            boolean hasForceHeader = hasForceHeader(request);
+            boolean updateForced = updateForced(request);
             if (isTextPlain(request)) {
                 final String url = request.getReader().readLine();
-
-                installedBundleLocation = installBundle(url, hasForceHeader);
+                installedBundleLocation = installBundle(url, updateForced);
                 response.getWriter().println(installedBundleLocation);
             } else if (isBundleZipOrJar(request)) {
                 final String location = getLocationSave(request);
-                installedBundleLocation = installBundle(location, hasForceHeader, request.getInputStream());
+                installedBundleLocation = installBundle(location, updateForced, request.getInputStream());
                 response.getWriter().println(installedBundleLocation);
             } else {
                 throw new HttpErrorException("User not qualified Exception", HttpServletResponse.SC_BAD_REQUEST);
@@ -68,7 +67,7 @@ public class BundlesServlet extends HttpServlet {
         }
     }
 
-    private boolean hasForceHeader(final HttpServletRequest request) {
+    private boolean updateForced(final HttpServletRequest request) {
         final String header = request.getHeader("X-ForceBundleUpdate");
         return (header != null && header.equals("true"));
     }
