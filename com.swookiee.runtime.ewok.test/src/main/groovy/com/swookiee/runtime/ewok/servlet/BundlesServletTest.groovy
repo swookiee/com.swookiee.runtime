@@ -56,7 +56,8 @@ public class BundlesServletTest extends BaseServletTest {
         BundleContext bundleContext = [
             installBundle:{ def url, def stream ->
                 [getBundleId:{1L}] as Bundle
-            }
+            },
+            getBundle:{ def url -> null }
         ] as BundleContext
 
         def servlet = new BundlesServlet(bundleContext)
@@ -70,7 +71,8 @@ public class BundlesServletTest extends BaseServletTest {
 
         def request = [
             getReader:{ new BufferedReader(new StringReader("www.foobar.de")) },
-            getContentType:{"text/plain"}
+            getContentType:{"text/plain"},
+            getHeader:{ def a -> null }
         ] as HttpServletRequest
 
         servlet.doPost(request, response)
@@ -83,6 +85,7 @@ public class BundlesServletTest extends BaseServletTest {
     void 'call POST where installBundle throws exception'(){
 
         BundleContext bundleContext = [
+            getBundle:{ def url -> null},
             installBundle:{ def url, def stream ->
                 throw new BundleException("No way this gets installed", 42)
             }
@@ -104,7 +107,8 @@ public class BundlesServletTest extends BaseServletTest {
             getReader:{
                 new BufferedReader(new StringReader("remote bundle location url"))
             },
-            getContentType:{ "text/plain" }
+            getContentType:{ "text/plain" },
+            getHeader:{ def a -> null }
         ] as HttpServletRequest
 
         servlet.doPost(request, response)
@@ -160,6 +164,7 @@ public class BundlesServletTest extends BaseServletTest {
         def request = [
             getContentType:{ "application/x-jar" },
             getHeader:{"Content-Location:foobar.jar"},
+            getInputStream:{ null }
         ] as HttpServletRequest
 
         servlet.doPost(request, response)
@@ -194,6 +199,82 @@ public class BundlesServletTest extends BaseServletTest {
 
         servlet.doPost(request, response)
 
+        assertThat stringWriter.buffer.toString().trim(), is("/framework/bundle/1")
+    }
+
+
+    @Test
+    void 'call POST with force update header where no bundle was previously been installed'(){
+
+        BundleContext bundleContext = [
+            installBundle:{ def url, def stream ->
+                [getBundleId:{1L}] as Bundle
+            },
+            getBundle: { null }
+        ] as BundleContext
+
+        def servlet = new BundlesServlet(bundleContext)
+
+        StringWriter stringWriter = new StringWriter()
+        def response = [
+            getWriter:{ new PrintWriter(stringWriter) },
+            setContentType:{
+            }
+        ] as HttpServletResponse
+
+        def request = [
+            getReader:{ new BufferedReader(new StringReader("www.foobar.de")) },
+            getContentType:{"application/x-jar"},
+            getHeader:{ def a ->
+                if (a == "Content-Location"){
+                    "foobar.jar"
+                } else if (a == "X-ForceBundleUpdate"){
+                    "true"
+                }
+            },
+            getInputStream:{ null }
+        ] as HttpServletRequest
+        servlet.doPost(request, response)
+        assertThat stringWriter.buffer.toString().trim(), is("/framework/bundle/1")
+    }
+
+    @Test
+    void 'call POST with force update header and update via stream'(){
+
+        boolean updateCalled = false
+
+        Bundle instaledBundle = [
+            getBundleId:{1L},
+            update:{def a -> updateCalled = true }
+        ] as Bundle
+
+        BundleContext bundleContext = [
+            getBundle: { instaledBundle }
+        ] as BundleContext
+
+        def servlet = new BundlesServlet(bundleContext)
+
+        StringWriter stringWriter = new StringWriter()
+        def response = [
+            getWriter:{ new PrintWriter(stringWriter) },
+            setContentType:{
+            }
+        ] as HttpServletResponse
+
+        def request = [
+            getReader:{ new BufferedReader(new StringReader("www.foobar.de")) },
+            getContentType:{"application/x-jar"},
+            getHeader:{ def a ->
+                if (a == "Content-Location"){
+                    "foobar.jar"
+                } else if (a == "X-ForceBundleUpdate"){
+                    "true"
+                }
+            },
+            getInputStream:{ null }
+        ] as HttpServletRequest
+        servlet.doPost(request, response)
+        assertThat updateCalled, is(true)
         assertThat stringWriter.buffer.toString().trim(), is("/framework/bundle/1")
     }
 }
