@@ -68,6 +68,7 @@
       <plugin id="org.apache.felix.webconsole"/>
       <plugin id="org.apache.servicemix.bundles.aopalliance"/>
       <plugin id="org.apache.servicemix.bundles.javax-inject"/>
+      <plugin id="org.apache.servicemix.bundles.swagger-annotations"/>
       <plugin id="org.eclipse.equinox.cm"/>
       <plugin id="org.eclipse.equinox.common"/>
       <plugin id="org.eclipse.equinox.console"/>
@@ -154,6 +155,7 @@
       <plugin id="org.apache.felix.webconsole" autoStart="true" startLevel="0" />
       <plugin id="org.apache.servicemix.bundles.aopalliance" autoStart="true" startLevel="0" />
       <plugin id="org.apache.servicemix.bundles.javax-inject" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.servicemix.bundles.swagger-annotations" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
