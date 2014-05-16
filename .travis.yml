@@ -4,4 +4,4 @@ script: mvn -B install
 notifications:
   hipchat:
     rooms:
-      secure: g/k7byjQjbxho4lwDaq5N6XT+dvhVS0yuUm9HtbfjXRuxz3oQt7gO/q6KJp1ZbU+Q08GsjBGN0mu6ICtco4tOrK3nRqU55PpZwqXngERy4XGQZzUvZQ9ZIbD2JMtLo4CBacC8N56vKxsIqDYpB2lMvOilNeHv1GJUT9dio0ho8M=
+      secure: EiS9Vejix11+WWZRuxwMLdTPfxz7M+4cUzmrBfYN2rRhLrT2DrEDzhYpzxJ0lWvrIDdrZMqrAhw2PZVcNl0hvShnbyTSOkufXzSDxpD2eOIO6XxdPgZYasvPU/CmlXLpFL7fX0AGmrueFsNBlhIPBH0l/YWyEHtRZ7nlmixGrds=
