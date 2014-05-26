@@ -62,7 +62,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
             return;
         }
         context.stop();
-        this.requestTiming.remove(responseContext);
+        this.requestTiming.remove(requestContext);
     }
 
 }
