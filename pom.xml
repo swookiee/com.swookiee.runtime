@@ -39,7 +39,7 @@
         <groovy.eclipse.batch.version>2.1.8-01</groovy.eclipse.batch.version>
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.2</logback.version>
-        <jersey.version>2.8</jersey.version>
+        <jersey.version>2.9</jersey.version>
         <metrics.version>3.0.2</metrics.version>
         <jackson.version>2.3.3</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
@@ -159,6 +159,13 @@
             <version>${jersey.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-metainf-services</artifactId>
+            <version>${jersey.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <!-- Bridge between OSGi and jersey -->
         <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
