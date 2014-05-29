@@ -14,6 +14,7 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.BundleException
 import org.osgi.framework.Version
+import org.osgi.framework.startlevel.BundleStartLevel
 
 public class BundlesServletTest extends BaseServletTest {
 
@@ -53,9 +54,14 @@ public class BundlesServletTest extends BaseServletTest {
     @Test
     void 'call POST, installBundle and check if location was returned'(){
 
+        BundleStartLevel startLevel = [
+            setStartLevel:{ int a -> a } ] as BundleStartLevel
+
         BundleContext bundleContext = [
             installBundle:{ def url, def stream ->
-                [getBundleId:{1L}] as Bundle
+                [ getBundleId:{1L},
+                    adapt:{ startLevel }
+                ] as Bundle
             },
             getBundle:{ def url -> null }
         ] as BundleContext
@@ -173,10 +179,14 @@ public class BundlesServletTest extends BaseServletTest {
 
     @Test
     void 'call POST, installBundle via stream and check if location was returned'(){
+        
+        BundleStartLevel startLevel = [
+            setStartLevel:{ int a -> a } ] as BundleStartLevel
 
         BundleContext bundleContext = [
             installBundle:{ def url, def stream ->
-                [getBundleId:{1L}] as Bundle
+                [getBundleId:{1L},
+                    adapt:{startLevel}] as Bundle
             },
             getBundle: { null }
         ] as BundleContext
