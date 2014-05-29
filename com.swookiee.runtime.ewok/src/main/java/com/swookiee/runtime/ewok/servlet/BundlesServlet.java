@@ -50,14 +50,13 @@ public class BundlesServlet extends HttpServlet {
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try {
             String installedBundleLocation;
-            boolean updateForced = updateForced(request);
             if (isTextPlain(request)) {
                 final String url = request.getReader().readLine();
-                installedBundleLocation = installBundle(url, updateForced);
+                installedBundleLocation = installBundle(url);
                 response.getWriter().println(installedBundleLocation);
             } else if (isBundleZipOrJar(request)) {
                 final String location = getLocationSave(request);
-                installedBundleLocation = installBundle(location, updateForced, request.getInputStream());
+                installedBundleLocation = installBundle(location, request.getInputStream());
                 response.getWriter().println(installedBundleLocation);
             } else {
                 throw new HttpErrorException("User not qualified Exception", HttpServletResponse.SC_BAD_REQUEST);
@@ -67,16 +66,10 @@ public class BundlesServlet extends HttpServlet {
         }
     }
 
-    private boolean updateForced(final HttpServletRequest request) {
-        final String header = request.getHeader("X-ForceBundleUpdate");
-        return (header != null && header.equals("true"));
-    }
-
     private String getLocationSave(final HttpServletRequest request) throws HttpErrorException {
         final String location = request.getHeader("Content-Location");
 
-        // This is not exactly as described in the specification. It says SHOULD, we need a MUST since reading the
-        // filename from stream (Content-Disposition name field) comes not that handy.
+        // This is not exactly as described in the specification. It says SHOULD, we need a MUST here.
         if (location == null) {
             throw new HttpErrorException("File upload must contain Content-Location header declaring location",
                     HttpServletResponse.SC_BAD_REQUEST);
@@ -95,11 +88,11 @@ public class BundlesServlet extends HttpServlet {
                 || contentType.equals("application/zip") || contentType.equals("application/x-jar")));
     }
 
-    private String installBundle(final String url, final boolean force) throws HttpErrorException {
-        return installBundle(url, force, null);
+    private String installBundle(final String url) throws HttpErrorException {
+        return installBundle(url, null);
     }
 
-    private String installBundle(final String location, final boolean force, final InputStream inputStream)
+    private String installBundle(final String location, final InputStream inputStream)
             throws HttpErrorException {
         Bundle bundle;
 
@@ -108,8 +101,6 @@ public class BundlesServlet extends HttpServlet {
             bundle = bundleContext.getBundle(location);
             if (bundle == null) {
                 bundle = bundleContext.installBundle(location, inputStream);
-            } else if (bundle != null && force) {
-                bundle.update(inputStream);
             } else {
                 throw new HttpErrorException("Bundle with same location already installed",
                         HttpServletResponse.SC_CONFLICT);
