@@ -203,12 +203,14 @@
       <property name="eclipse.ignoreApp" value="true" />
       <property name="felix.fileinstall.dir" value="./dropins" />
       <property name="felix.fileinstall.noInitialDelay" value="true" />
-      <property name="felix.fileinstall.start.level" value="4" />
+      <property name="felix.fileinstall.start.level" value="10" />
       <property name="jetty.home.bundle" value="org.eclipse.jetty.osgi.boot" />
       <property name="jetty.port" value="8080" />
       <property name="osgi.compatibility.bootdelegation" value="true" />
       <property name="osgi.console" value="localhost:10000" />
       <property name="osgi.console.enable.builtin" value="false" />
+      <property name="osgi.startLevel" value="10" />
+      <property name="swookiee.default.install.startlevel" value="10" />
    </configurations>
 
 </product>

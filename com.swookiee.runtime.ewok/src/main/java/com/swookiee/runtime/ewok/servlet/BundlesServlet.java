@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
+import org.osgi.framework.startlevel.BundleStartLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +31,7 @@ import com.swookiee.runtime.ewok.util.ServletUtil;
  */
 public class BundlesServlet extends HttpServlet {
 
+    private static final String SWOOKIEE_DEFAULT_INSTALL_STARTLEVEL = "swookiee.default.install.startlevel";
     public static final String ALIAS = "/framework/bundles";
     private static final long serialVersionUID = 8101122973161058308L;
     private static final Logger logger = LoggerFactory.getLogger(BundlesServlet.class);
@@ -92,19 +94,18 @@ public class BundlesServlet extends HttpServlet {
         return installBundle(url, null);
     }
 
-    private String installBundle(final String location, final InputStream inputStream)
-            throws HttpErrorException {
+    private String installBundle(final String location, final InputStream inputStream) throws HttpErrorException {
         Bundle bundle;
 
         try {
             logger.info("Installing bundle from {}", location);
             bundle = bundleContext.getBundle(location);
-            if (bundle == null) {
-                bundle = bundleContext.installBundle(location, inputStream);
-            } else {
+            if (bundle != null) {
                 throw new HttpErrorException("Bundle with same location already installed",
                         HttpServletResponse.SC_CONFLICT);
             }
+            bundle = bundleContext.installBundle(location, inputStream);
+            applyDefaultStartLevel(bundle);
             return String.format("%s/%d", BundleServlet.ALIAS, bundle.getBundleId());
         } catch (final BundleException ex) {
             logger.warn("Could not install bundle: {}", ex.getMessage());
@@ -114,8 +115,13 @@ public class BundlesServlet extends HttpServlet {
         }
     }
 
-    private List<String> getBundleUriList() {
+    private void applyDefaultStartLevel(Bundle bundle) {
+        final BundleStartLevel bundleStartLevel = bundle.adapt(BundleStartLevel.class);
+        Integer startlevel = Integer.getInteger(SWOOKIEE_DEFAULT_INSTALL_STARTLEVEL, 1);
+        bundleStartLevel.setStartLevel(startlevel);
+    }
 
+    private List<String> getBundleUriList() {
         final Bundle[] bundles = bundleContext.getBundles();
         final List<String> bundleList = new ArrayList<>();
 
