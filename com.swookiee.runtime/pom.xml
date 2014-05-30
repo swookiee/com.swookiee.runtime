@@ -19,6 +19,10 @@
 
         <!-- If set to "y", this will cause swookiee to wait for a connected remote debugging session -->
         <debug.suspend>n</debug.suspend>
+        <!-- If set to true, the log output will be written as JSON output format -->
+        <production.logging>false</production.logging>
+        <!-- If set it will write the json production logging to this folder -->
+        <logging.directory></logging.directory>
     </properties>
 
     <dependencies>
@@ -55,6 +59,8 @@
                         <argument>-Dcom.sun.management.jmxremote.port=9010</argument>
                         <argument>-Xverify:none</argument>
                         <argument>-Xshare:off</argument>
+                        <argument>-DproductionLogging=${production.logging}</argument>
+                        <argument>-DloggingDirectory=${logging.directory}</argument>
                         <argument>-Dlogback.configurationFile=${basedir}/logback.xml</argument>
                         <argument>-Dosgi.compatibility.bootdelegation=true</argument>
                         <argument>-Dfelix.fileinstall.dir=${dropin.path}</argument>
