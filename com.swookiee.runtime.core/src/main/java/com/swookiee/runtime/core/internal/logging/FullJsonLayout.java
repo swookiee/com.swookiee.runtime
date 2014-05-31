@@ -1,6 +1,5 @@
 package com.swookiee.runtime.core.internal.logging;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
@@ -22,6 +21,6 @@ public class FullJsonLayout extends JsonLayout {
 
     private boolean isMeantToBeLoggedAsFullJson(final ILoggingEvent event) {
         Object[] args = event.getArgumentArray();
-        return event.getMessage().equals("{}") && args.length == 1 && args[0] instanceof HashMap;
+        return event.getMessage().equals("{}") && args.length == 1 && args[0] instanceof Map;
     }
 }
