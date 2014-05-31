@@ -44,7 +44,7 @@
         <jackson.version>2.3.3</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0-beta</guice-version>
-        <jetty.version>9.1.5.v20140505</jetty.version>
+        <jetty.version>9.2.0.v20140526</jetty.version>
     </properties>
 
     <dependencies>
