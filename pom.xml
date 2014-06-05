@@ -8,6 +8,32 @@
     <packaging>pom</packaging>
 
     <name>Swookiee Runtime Parent</name>
+    <description>Swookiee REST Service Runtime build</description>
+    <url>http://swookiee.com</url>
+
+    <licenses>
+        <license>
+            <name>Eclipse Public License (EPL)</name>
+            <url>http://www.eclipse.org/legal/epl-v10.html</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:swookiee/com.swookiee.runtime.git</connection>
+        <developerConnection>scm:git:git@github.com:swookiee/com.swookiee.runtime.git</developerConnection>
+        <url>git@github.com:swookiee/com.swookiee.runtime.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>larsp</id>
+            <name>Lars Pfannenschmidt</name>
+        </developer>
+        <developer>
+            <id>tkrueger</id>
+            <name>Thorsten Krüger</name>
+        </developer>
+    </developers>
 
     <modules>
         <module>com.swookiee.runtime</module>
@@ -165,7 +191,7 @@
             <version>${jersey.version}</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- Bridge between OSGi and jersey -->
         <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
