@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Thorsten Krüger and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thorsten Krüger - provide better error message on invalid configuration field types
+ *******************************************************************************/
+
 package com.swookiee.runtime.util.test;
 
 import java.util.HashMap;
