@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Swookiee Runtime Webconsole Branding Bundle
-Bundle-SymbolicName: com.swookiee.runtime.webconsolebranding
-Bundle-Version: 1.0.0.qualifier
-Fragment-Host: org.apache.felix.webconsole
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0">
-    <scr:component name="com.swookiee.runtime.swaggerui.SwaggerDocumentationRegistry">
-        <implementation class="com.swookiee.runtime.swaggerui.SwaggerDocumentationRegistry"/>
-        <service servicefactory="false">
-            <provide interface="com.swookiee.runtime.swaggerui.SwaggerDocumentationRegistry"/>
-        </service>
-    </scr:component>
-</components>

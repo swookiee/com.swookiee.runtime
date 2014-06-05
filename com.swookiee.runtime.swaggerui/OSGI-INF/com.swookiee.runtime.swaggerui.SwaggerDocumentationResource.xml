@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
-    <scr:component name="com.swookiee.runtime.swaggerui.SwaggerDocumentationResource">
-        <implementation class="com.swookiee.runtime.swaggerui.SwaggerDocumentationResource"/>
-        <service servicefactory="false">
-            <provide interface="com.swookiee.runtime.swaggerui.SwaggerDocumentationResource"/>
-        </service>
-        <reference name="SwaggerDocumentationRegistry" interface="com.swookiee.runtime.swaggerui.SwaggerDocumentationRegistry" cardinality="1..1" policy="static" bind="setSwaggerDocumentationRegistry" unbind="unsetSwaggerDocumentationRegistry"/>
-    </scr:component>
-</components>
