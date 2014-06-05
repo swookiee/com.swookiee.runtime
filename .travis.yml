@@ -1,7 +1,24 @@
 language: java
 jdk: openjdk7
-script: mvn -B install
+before_install: "git clone -b travis `git config --get remote.origin.url` target/travis"
+script: "
+if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
+then
+    mvn clean deploy --settings target/travis/settings.xml;
+else
+    mvn clean verify --settings target/travis/settings.xml;
+fi"
+
+# whitelist
+branches:
+  only:
+    - develop
+
 notifications:
   hipchat:
     rooms:
       secure: EiS9Vejix11+WWZRuxwMLdTPfxz7M+4cUzmrBfYN2rRhLrT2DrEDzhYpzxJ0lWvrIDdrZMqrAhw2PZVcNl0hvShnbyTSOkufXzSDxpD2eOIO6XxdPgZYasvPU/CmlXLpFL7fX0AGmrueFsNBlhIPBH0l/YWyEHtRZ7nlmixGrds=
+env:
+  global:
+  - secure: i7vRQyotgd5r0j/bD5Kc89FZU90iYewVYTJlf6nz+K4SgA1pTwnH2tW9yiHQaoyM51ybZu58Z+A/8r2+RO9XYBL7vuA+PwPDmh0bMXyQEV4sdPtWNFQIsRfVcfoovY9n7pU+zLBivdaAXt+cRwMrv4gPD+WToUCKdiuS+7APWu0=
+  - secure: jP1bEW5zEvYqaPej/eVwyXl8vc5uumhH2E0yB6L5VfGQOquiqw63nLW5wr3RYhYZSUpx8W63mJ3ZHK2U3ymz4/DMH78Is5XBWNO0HuElFcEOzxMmo5xETsPTk212mT1P+Wczt1BgAZjmhpxUHkbjFw9AVPyynObGs6LVyp3jkkM=
