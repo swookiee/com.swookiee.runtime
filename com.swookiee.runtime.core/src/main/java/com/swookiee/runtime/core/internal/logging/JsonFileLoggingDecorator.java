@@ -65,7 +65,7 @@ public class JsonFileLoggingDecorator {
             if (loggingDirectory == null || loggingDirectory.length() == 0) {
                 loggingDirectory = ".";
             }
-            filenamePattern = loggingDirectory + "/logFile.%d{yyyy-MM-dd}.json";
+            filenamePattern = loggingDirectory + "/osgi-log.%d{yyyy-MM-dd}.json";
             file = loggingDirectory + "/osgi-log.json";
 
             active = Boolean.parseBoolean(context.getProperty(ACTIVATION));
