@@ -100,7 +100,6 @@
       <plugin id="org.eclipse.osgi.util"/>
       <plugin id="org.glassfish.hk2.api"/>
       <plugin id="org.glassfish.hk2.external.asm-all-repackaged"/>
-      <plugin id="org.glassfish.hk2.external.cglib"/>
       <plugin id="org.glassfish.hk2.locator"/>
       <plugin id="org.glassfish.hk2.osgi-resource-locator"/>
       <plugin id="org.glassfish.hk2.utils"/>
@@ -188,7 +187,6 @@
       <plugin id="org.eclipse.osgi.util" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.api" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.external.asm-all-repackaged" autoStart="true" startLevel="0" />
-      <plugin id="org.glassfish.hk2.external.cglib" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.locator" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.osgi-resource-locator" autoStart="true" startLevel="0" />
       <plugin id="org.glassfish.hk2.utils" autoStart="true" startLevel="0" />
