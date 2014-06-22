@@ -22,7 +22,6 @@ import org.junit.Test
 import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.Version
-import org.slf4j.Logger
 
 public class BundleServletTest extends BaseServletTest {
 
@@ -44,7 +43,7 @@ public class BundleServletTest extends BaseServletTest {
         new BundleServlet(bundleContextMock).doGet(request, response)
 
         assertThat stringWriter.toString().trim(),
-                is('''{"id":1,"lastModified":1,"location":"hypernet","state":42,"symbolicName":"foobar","version":"foobar"}''')
+                is('''{"id":1,"lastModified":1,"location":"hypernet","state":42,"symbolicName":"foobar","version":"42.0.0"}''')
     }
 
     @Test

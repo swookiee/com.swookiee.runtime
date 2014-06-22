@@ -173,10 +173,9 @@ public class BundleServlet extends HttpServlet {
 
         final BundleRepresentation bundleRepresentation = new BundleRepresentation(bundle.getBundleId(),
                 bundle.getLastModified(), bundle.getLocation(), bundle.getState(), bundle.getSymbolicName(),
-                bundle.getSymbolicName());
+                bundle.getVersion().toString());
 
         return mapper.writeValueAsString(bundleRepresentation);
-
     }
 
     private String getBundleStartlevel(final Bundle bundle) throws JsonProcessingException {
