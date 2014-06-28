@@ -54,6 +54,7 @@
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.util</module>
         <module>com.swookiee.runtime.util.test</module>
+        
 
         <!-- TODO add test projects! -->
         <module>com.swookiee.runtime.swaggerui</module>
@@ -75,7 +76,7 @@
         <logback.version>1.1.2</logback.version>
         <jersey.version>2.9.1</jersey.version>
         <metrics.version>3.0.2</metrics.version>
-        <jackson.version>2.4.0</jackson.version>
+        <jackson.version>2.4.1</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0-beta</guice-version>
         <jetty.version>9.2.1.v20140609</jetty.version>
@@ -312,7 +313,7 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>3.3.2</version>
+            <version>3.3.4</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
