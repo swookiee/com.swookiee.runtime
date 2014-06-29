@@ -5,7 +5,7 @@ script: "
 if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
 then
     mvn -Prelease -DnewVersion=1.0.${TRAVIS_BUILD_NUMBER} initialize --settings target/travis/settings.xml;
-    mvn clean install --settings target/travis/settings.xml;
+    mvn clean deploy --settings target/travis/settings.xml;
 else
     mvn clean install --settings target/travis/settings.xml;
 fi"
