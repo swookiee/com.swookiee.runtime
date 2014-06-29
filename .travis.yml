@@ -4,7 +4,6 @@ before_install: "git clone -b travis `git config --get remote.origin.url` target
 script: "
 if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
 then
-    #mvn -Prelease -DnewVersion=1.0.${TRAVIS_BUILD_NUMBER} initialize --settings target/travis/settings.xml;
     mvn clean deploy --settings target/travis/settings.xml;
 else
     mvn clean install --settings target/travis/settings.xml;
@@ -23,3 +22,6 @@ env:
   global:
   - secure: GnYr8eAJvd5stuv96sCNwOkjc1QRIWaprQzWCX8GZgQRFAS9Hictn8sFdfDRcNkfOHhorwlKa1S5Bf7SlE9GQkA96XE3mP880Rv6swwOBduzwiCS9eoiLGLEuH3DVPIYVqs+KlNVBqHMxlbyj0+tWL+C8NkbxSfZoEN/QDWf0Pg=
   - secure: KdqmM8aHxowSEOwR/PEQsZ+6Vq9m+9FbUhWT9I3CIWPM+4KOfO0RLEgduwzyzWKcEczL9Yf2ZvY3HF8cPlQqlVLoYWrQmrCFRnVXw4LizUu+65nflf4uVOZzpHZwGPdop3nPHyjEBYBzac3jZg0jltpl5a6kIpUDl8uuw8ik2Ms=
+
+
+#mvn -Prelease -DnewVersion=1.0.${TRAVIS_BUILD_NUMBER} initialize --settings target/travis/settings.xml;
