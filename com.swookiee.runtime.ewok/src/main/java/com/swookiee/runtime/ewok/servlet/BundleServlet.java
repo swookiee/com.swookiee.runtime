@@ -25,6 +25,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.startlevel.BundleStartLevel;
+import org.osgi.framework.wiring.FrameworkWiring;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -157,8 +158,11 @@ public class BundleServlet extends HttpServlet {
         try {
 
             final long bundleId = ServletUtil.getId(request);
-            final Bundle bundle = ServletUtil.checkAndGetBundle(bundleContext, bundleId);
+            final Bundle bundle = ServletUtil.checkAndGetBundle(this.bundleContext, bundleId);
             bundle.uninstall();
+            Bundle systemBundle = this.bundleContext.getBundle(0);
+            FrameworkWiring wiring = systemBundle.adapt(FrameworkWiring.class);
+            wiring.refreshBundles(null);
 
         } catch (final HttpErrorException ex) {
             logger.error(ex.getMessage(), ex);

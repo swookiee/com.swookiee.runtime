@@ -22,6 +22,7 @@ import org.junit.Test
 import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.Version
+import org.osgi.framework.wiring.FrameworkWiring
 
 public class BundleServletTest extends BaseServletTest {
 
@@ -125,13 +126,17 @@ public class BundleServletTest extends BaseServletTest {
     void 'call DELETE and uninstall bundle'(){
 
         def deleteBundleCalled = false
+        def bundlesRefreshed = false
 
         def request = [
             getPathInfo:{ "/42" }
         ] as HttpServletRequest
 
         Bundle bundle = [
-            uninstall:{deleteBundleCalled=true }
+            uninstall:{ deleteBundleCalled=true },
+            adapt:{def a->
+                [ refreshBundles:{def bundles, def listener -> bundlesRefreshed =  true }] as FrameworkWiring
+            }
         ] as Bundle
 
         BundleContext bundleContext = [
@@ -140,6 +145,7 @@ public class BundleServletTest extends BaseServletTest {
 
         new BundleServlet(bundleContext).doDelete(request, null)
         assertThat deleteBundleCalled, is(true)
+        assertThat bundlesRefreshed, is(true)
     }
 
     def getBundleContextMock(){
