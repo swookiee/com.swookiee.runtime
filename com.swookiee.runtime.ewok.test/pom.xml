@@ -24,7 +24,7 @@
         <repository>
             <id>groovy-eclipse</id>
             <layout>p2</layout>
-            <url>http://dist.springsource.org/release/GRECLIPSE/e4.3/</url>
+            <url>http://dist.springsource.org/release/GRECLIPSE/e4.4/</url>
         </repository>
     </repositories>
 
