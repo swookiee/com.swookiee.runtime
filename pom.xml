@@ -59,7 +59,7 @@
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.util</module>
         <module>com.swookiee.runtime.util.test</module>
-        
+
 
         <!-- TODO add test projects! -->
         <module>com.swookiee.runtime.swaggerui</module>
@@ -210,7 +210,7 @@
         <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>publisher</artifactId>
-            <version>4.0</version>
+            <version>4.1</version>
         </dependency>
 
         <!-- Jersey needs some hk2 dependencies explicitly -->
