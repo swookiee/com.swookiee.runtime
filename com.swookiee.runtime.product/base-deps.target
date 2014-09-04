@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="com.swookiee.runtime" sequenceNumber="33">
+<?pde version="3.8"?><target name="com.swookiee.runtime" sequenceNumber="34">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.jdt.feature.group" version="3.10.0.v20140606-1536"/>
-<unit id="org.eclipse.pde.feature.group" version="3.10.0.v20140606-1215"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.10.0.v20140606-1602"/>
-<repository location="http://download.eclipse.org/releases/luna"/>
-</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.codehaus.groovy.alltests.feature.feature.group" version="2.9.0.xx-201407142235-e44-RELEASE"/>
 <unit id="org.codehaus.groovy.eclipse.feature.feature.group" version="2.9.0.xx-201407142235-e44-RELEASE"/>
 <repository location="http://dist.springsource.org/release/GRECLIPSE/e4.4/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.pde.feature.group" version="3.10.0.v20140606-1215"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.10.0.v20140606-1536"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.10.0.v20140606-1602"/>
+<repository location="http://download.eclipse.org/releases/luna"/>
 </location>
 </locations>
 <environment>
