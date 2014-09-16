@@ -14,10 +14,11 @@ package com.swookiee.runtime.ewok.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.Servlet;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This class is a helper to extract ids from rest like paths. Example <code>/42</code> has the identifier
+ * This class is a helper to extract IDs from REST like paths. Example <code>/42</code> has the identifier
  * <code>42</code>. More complex <i>templates</i> could also get implemented in this class.
  * 
  */
@@ -34,9 +35,9 @@ public class PathIdExtractor {
      * This method extracts ids as long from REST like paths.
      * 
      * @param path
-     *            String of a servlet pathInfo
+     *            String of a {@link Servlet} pathInfo
      * @return Identifier as long
-     * @throws HttpErrorException
+     * @throws HttpErrorException in case the path could not be parsed
      */
     public long getId(final String path) throws HttpErrorException {
         final Matcher matcher = idPattern.matcher(path);

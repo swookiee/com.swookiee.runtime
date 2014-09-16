@@ -30,7 +30,7 @@ import com.swookiee.runtime.core.internal.logging.LogReaderServiceTracker;
  * http://ekkescorner.wordpress.com/2009/09/05/osgi-logging-part-5-listen-to-osgi-log-reader-with-declarative-services-
  * ds/
  * <p>
- * & https://github.com/openhab/openhab/blob/master/bundles/core/org.openhab.core/src/main/java/org/openhab/core/
+ * &amp; https://github.com/openhab/openhab/blob/master/bundles/core/org.openhab.core/src/main/java/org/openhab/core/
  * internal/ logging/OSGILogListener.java
  */
 public class Activator implements BundleActivator {

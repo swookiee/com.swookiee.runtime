@@ -46,18 +46,20 @@ import com.swookiee.runtime.util.GuardAgainst;
  *     password: "admin123"
  * </pre>
  * 
- * @param <T>
- *            Class of your configuration pojo.
- * 
  * 
  */
 public final class ConfigurationUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigurationUtils.class);
     private final static ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+    
+    private ConfigurationUtils() {
+        //Making sure nobody creates a new instance.
+    }
 
     /**
      * 
+     * @param <T> Class of your configuration pojo.
      * @param clazz
      *            Configuration POJO {@link Class}
      * @param configurationFile
@@ -79,7 +81,7 @@ public final class ConfigurationUtils {
         }
     }
 
-    public static <T> void applyConfigurationElements(ConfigurationAdmin configurationAdmin, T configuration)
+    private static <T> void applyConfigurationElements(ConfigurationAdmin configurationAdmin, T configuration)
             throws IllegalAccessException, IOException {
         final Field[] fields = configuration.getClass().getFields();
 

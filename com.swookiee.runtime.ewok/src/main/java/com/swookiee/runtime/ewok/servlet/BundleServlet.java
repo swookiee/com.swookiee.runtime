@@ -39,7 +39,7 @@ import com.swookiee.runtime.ewok.util.ServletUtil;
 
 /**
  * This {@link HttpServlet} implements the Bundle Resource (5.1.3), Bundle State Resource (5.1.4), Bundle Header
- * Resource (5.1.5) & Bundle Startlevel Resource (5.1.6) of the OSGi RFC-182 draft version 8. @see <a href=
+ * Resource (5.1.5) &amp; Bundle Startlevel Resource (5.1.6) of the OSGi RFC-182 draft version 8. @see <a href=
  * https://github.com/osgi/design/tree/master/rfcs/rfc0182> https://github.com/osgi/design/tree/master/rfcs/rfc0182</a>
  * 
  */

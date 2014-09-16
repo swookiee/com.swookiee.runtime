@@ -32,13 +32,13 @@ import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
  * <p>
  * Complex types can be given in a format like this:
  * 
- * <code><pre>
- * Map<String, Object> map = new HashMap<>();
+ * <pre>
+ * Map &lt;String, Object&gt; map = new HashMap&lt;&gt;();
  * map.put("string", "string value");
  * map.put("myBean", new MyBean());
  * logger.info("{}", map);
- * </pre></code> If
- * <code>myBean</cdoe> is a proper JavaBean, the message will be logged as json, including the serialzed instance of <code>MyBean</code>.
+ * </pre> 
+ * If <code>myBean</code> is a proper JavaBean, the message will be logged as JSON, including the serialized instance of <code>MyBean</code>.
  */
 public class JsonFileLoggingDecorator {
 
