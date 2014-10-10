@@ -68,21 +68,18 @@ public class LogReaderServiceTracker implements ServiceTrackerCustomizer<LogRead
             final Logger logger = LoggerFactory.getLogger("Bundle." + entry.getBundle().getSymbolicName());
             // Marker marker = MarkerFactory.getMarker(entry.getBundle().getSymbolicName());
 
-            String message = entry.getServiceReference() == null ? entry.getMessage() : String.format(
-                    "message: %s, service: %s", entry.getMessage(), entry.getServiceReference());
-
             switch (entry.getLevel()) {
             case LogService.LOG_DEBUG:
-                logger.debug(message, entry.getException());
+                logger.debug(entry.getMessage(), entry.getException());
                 break;
             case LogService.LOG_INFO:
-                logger.info(message, entry.getException());
+                logger.info(entry.getMessage(), entry.getException());
                 break;
             case LogService.LOG_WARNING:
-                logger.warn(message, entry.getException());
+                logger.warn(entry.getMessage(), entry.getException());
                 break;
             case LogService.LOG_ERROR:
-                logger.error(message, entry.getException());
+                logger.error(entry.getMessage(), entry.getException());
                 break;
             }
         }
