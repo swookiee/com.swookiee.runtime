@@ -83,7 +83,7 @@
         <metrics.version>3.0.2</metrics.version>
         <jackson.version>2.4.3</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
-        <guice-version>4.0-beta</guice-version>
+        <guice-version>4.0-beta5</guice-version>
         <jetty.version>9.2.3.v20140905</jetty.version>
     </properties>
 
@@ -324,7 +324,7 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>3.3.5</version>
+            <version>3.4.1</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
