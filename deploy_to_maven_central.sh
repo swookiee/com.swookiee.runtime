@@ -7,8 +7,16 @@ if ( [ "$REPLY" == "yes" ] ) then
     read -p "Version Number (0.0.42) " -r REPLY
     mvn -PsetVersion -DnewVersion=$REPLY initialize
     mvn clean deploy -PaddJavadocSourcesAndSign
-    git tag v$REPLY
-    git push --tags
+    STATUS=$?
+    if [ $STATUS -eq 0 ]; then
+        echo "Pushing Tag to github"
+        git tag v$REPLY
+        git push --tags
+    else
+        echo "#################"
+        echo "## BUILD ERROR ##"
+        echo "#################"
+    fi
     git reset --hard HEAD~2
 else
     echo 'No yes, No deploy... :)'
