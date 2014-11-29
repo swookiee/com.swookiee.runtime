@@ -60,6 +60,7 @@
       <plugin id="javax.servlet-api" version="3.1.0"/>
       <plugin id="javax.validation.api"/>
       <plugin id="javax.ws.rs-api"/>
+      <plugin id="jcl.over.slf4j"/>
       <plugin id="joda-time"/>
       <plugin id="jul.to.slf4j"/>
       <plugin id="log4j.over.slf4j"/>
@@ -108,8 +109,8 @@
       <plugin id="org.glassfish.hk2.osgi-resource-locator"/>
       <plugin id="org.glassfish.hk2.utils"/>
       <plugin id="org.glassfish.jersey.bundles.repackaged.jersey-guava"/>
-      <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core"/>
       <plugin id="org.glassfish.jersey.containers.jersey-container-servlet"/>
+      <plugin id="org.glassfish.jersey.containers.jersey-container-servlet-core"/>
       <plugin id="org.glassfish.jersey.core.jersey-client"/>
       <plugin id="org.glassfish.jersey.core.jersey-common"/>
       <plugin id="org.glassfish.jersey.core.jersey-server"/>
@@ -149,6 +150,7 @@
       <plugin id="javax.servlet-api" autoStart="true" startLevel="0" />
       <plugin id="javax.validation.api" autoStart="true" startLevel="0" />
       <plugin id="javax.ws.rs-api" autoStart="true" startLevel="0" />
+      <plugin id="jcl.over.slf4j" autoStart="true" startLevel="0" />
       <plugin id="joda-time" autoStart="true" startLevel="0" />
       <plugin id="jul.to.slf4j" autoStart="true" startLevel="0" />
       <plugin id="log4j.over.slf4j" autoStart="true" startLevel="0" />
