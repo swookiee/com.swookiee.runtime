@@ -17,14 +17,16 @@
     <properties>
         <dropin.path>${project.build.directory}/dropins</dropin.path>
 
-        <!-- If set to "y", this will cause swookiee to wait for a connected 
+        <!-- If set to "y", this will cause swookiee to wait for a connected
             remote debugging session -->
         <debug.suspend>n</debug.suspend>
-        <!-- If set to true, the log output will be written as JSON output 
+        <!-- If set to true, the log output will be written as JSON output
             format -->
         <production.logging>false</production.logging>
         <!-- If set it will write the json production logging to this folder -->
         <logging.directory></logging.directory>
+        <!-- Configures the HTTP server listens to-->
+        <jetty.port>8080</jetty.port>
     </properties>
 
     <dependencies>
@@ -65,6 +67,7 @@
                         <argument>-DloggingDirectory=${logging.directory}</argument>
                         <argument>-Dlogback.configurationFile=${basedir}/logback.xml</argument>
                         <argument>-Dfelix.fileinstall.dir=${dropin.path}</argument>
+                        <argument>-Djetty.port=${jetty.port}</argument>
                         <argument>-Xdebug</argument>
                         <argument>-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=${debug.suspend}</argument>
                         <argument>-cp</argument>
