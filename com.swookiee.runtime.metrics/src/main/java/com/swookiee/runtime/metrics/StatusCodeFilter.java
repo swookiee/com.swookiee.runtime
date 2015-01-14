@@ -11,8 +11,6 @@
 
 package com.swookiee.runtime.metrics;
 
-import static com.codahale.metrics.MetricRegistry.name;
-
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -24,6 +22,7 @@ import javax.ws.rs.ext.Provider;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.slf4j.Logger;
@@ -38,6 +37,8 @@ public class StatusCodeFilter implements ContainerResponseFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(StatusCodeFilter.class);
     private MetricRegistry metricRegistry;
+    private final ConcurrentMap<Integer, Meter> statusCodeMeters = new ConcurrentHashMap<>();
+
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     public void setMetricRegistry(final SwookieeMetricRegistry metricRegistry) {
@@ -48,12 +49,15 @@ public class StatusCodeFilter implements ContainerResponseFilter {
         this.metricRegistry = null;
     }
 
-    private ConcurrentMap<Integer, Meter> statusCodeMeters;
-
     @Activate
     public void activate() {
-        statusCodeMeters = new ConcurrentHashMap<>();
-        logger.info("Status Code Filter activated!");
+        logger.info("Activate Status Code Filter!");
+    }
+
+    @Deactivate
+    public void deactivate() {
+        this.statusCodeMeters.clear();
+        logger.info("Deactivated Status Code Filter!");
     }
 
     @Override
@@ -73,7 +77,7 @@ public class StatusCodeFilter implements ContainerResponseFilter {
     }
 
     private void initMeterForStatus(final int status) {
-        final Meter meter = metricRegistry.meter(name(getClass(), String.format("response.%d", status)));
+        final Meter meter = metricRegistry.meter(String.format("StatusCodes.%d", status));
         statusCodeMeters.put(status, meter);
     }
 }

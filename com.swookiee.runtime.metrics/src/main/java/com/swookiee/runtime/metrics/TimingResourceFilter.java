@@ -11,8 +11,6 @@
 
 package com.swookiee.runtime.metrics;
 
-import static com.codahale.metrics.MetricRegistry.name;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -67,7 +65,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     @Activate
     public void activate() {
         logger.info("Activate Request Timer!");
-        this.requestTimer = this.metricRegistry.timer(name(getClass(), "requests"));
+        this.requestTimer = this.metricRegistry.timer("CombinedTimer");
     }
 
     @Deactivate
@@ -104,7 +102,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
             ResourceMethodInvoker invoker = (ResourceMethodInvoker) routingContext.getInflector();
             Class<?> clazz = invoker.getResourceClass();
             Method method = invoker.getResourceMethod();
-            return name(clazz, method.getName());
+            return String.format("%s.%s", clazz.getSimpleName(), method.getName());
         } catch (Exception ex) {
             return "undefined";
         }
