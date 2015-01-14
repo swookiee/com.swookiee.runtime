@@ -11,7 +11,7 @@
     <artifactId>com.swookiee.runtime.metrics</artifactId>
     <packaging>eclipse-plugin</packaging>
 
-    <name>Swookiee Runtime Metrics bundle</name>
+    <name>Swookiee Runtime Metrics Bundle</name>
     
     <dependencies>
         <dependency>

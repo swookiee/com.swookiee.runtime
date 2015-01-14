@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Swookiee Runtime Metrics bundle
+Bundle-Name: Swookiee Runtime Metrics Bundle
 Bundle-SymbolicName: com.swookiee.runtime.metrics
 Bundle-Version: 1.0.0.qualifier
 Import-Package: com.codahale.metrics;version="[3.0,4)",
@@ -9,9 +9,14 @@ Import-Package: com.codahale.metrics;version="[3.0,4)",
  com.fasterxml.jackson.annotation,
  com.fasterxml.jackson.databind,
  com.swookiee.runtime.util.configuration,
+ javax.annotation;version="[1.0.0,2.0.0)",
  javax.management,
+ javax.ws.rs;version="[2.0,3)",
  javax.ws.rs.container;version="[2.0,3)",
+ javax.ws.rs.core;version="[2.0,3)",
  javax.ws.rs.ext;version="[2.0,3)",
+ org.glassfish.jersey.server.internal.routing;version="[2.8.0,3.0.0)",
+ org.glassfish.jersey.server.model;version="[2.8.0,3.0.0)",
  org.osgi.framework;version="[1.7,2)",
  org.osgi.service.component.annotations;version="1.2.0",
  org.slf4j;version="[1.6.0,2.0.0)"
