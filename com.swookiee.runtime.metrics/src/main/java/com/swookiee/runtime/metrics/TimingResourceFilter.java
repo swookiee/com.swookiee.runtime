@@ -99,7 +99,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     public String getResourceTimerName(ContainerRequestContext requestContext) {
         try {
             UriRoutingContext routingContext = (UriRoutingContext) requestContext.getUriInfo();
-            ResourceMethodInvoker invoker = (ResourceMethodInvoker) routingContext.getInflector();
+            ResourceMethodInvoker invoker = (ResourceMethodInvoker) routingContext.getEndpoint();
             Class<?> clazz = invoker.getResourceClass();
             Method method = invoker.getResourceMethod();
             return String.format("%s.%s", clazz.getSimpleName(), method.getName());
