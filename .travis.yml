@@ -18,10 +18,5 @@ notifications:
   hipchat:
     rooms:
       secure: EiS9Vejix11+WWZRuxwMLdTPfxz7M+4cUzmrBfYN2rRhLrT2DrEDzhYpzxJ0lWvrIDdrZMqrAhw2PZVcNl0hvShnbyTSOkufXzSDxpD2eOIO6XxdPgZYasvPU/CmlXLpFL7fX0AGmrueFsNBlhIPBH0l/YWyEHtRZ7nlmixGrds=
-env:
-  global:
-  - secure: G3/cjQcOeU+462gmvCSgOO1a/O7fHLWnk2EVU8gjrXDbuBVrHjwEIlzHPfoel9L7PopCI/fLLic9rJkWTJOqgj3gB9e+MLejU7d6hhKZx7jeT0vqVqjLDZyJrrmI/oDGdRzl7jNlRk0r6I4NmzWjxEqH4hDZkNK7LTXKXXakIug=
-  - secure: QfN9JdlLwGrCqSKACMTehwKVZzIVXf/EgymvejHaJpB77d6AJ8OV85GQK7A4XElC/u0uaFGDjq6L5W3mLD88AG8XI8ouVVVZNi1N0J/lfooV1bt6bWbrc0rEH+skXfhVNoSfaQDuocR2SYEFk2gIDTtFIZnIV6Fbfv5cYVHqZgw=
-
 
 #mvn -Prelease -DnewVersion=1.0.${TRAVIS_BUILD_NUMBER} initialize --settings target/travis/settings.xml;
