@@ -20,8 +20,8 @@ notifications:
       secure: EiS9Vejix11+WWZRuxwMLdTPfxz7M+4cUzmrBfYN2rRhLrT2DrEDzhYpzxJ0lWvrIDdrZMqrAhw2PZVcNl0hvShnbyTSOkufXzSDxpD2eOIO6XxdPgZYasvPU/CmlXLpFL7fX0AGmrueFsNBlhIPBH0l/YWyEHtRZ7nlmixGrds=
 env:
   global:
-  - secure: GnYr8eAJvd5stuv96sCNwOkjc1QRIWaprQzWCX8GZgQRFAS9Hictn8sFdfDRcNkfOHhorwlKa1S5Bf7SlE9GQkA96XE3mP880Rv6swwOBduzwiCS9eoiLGLEuH3DVPIYVqs+KlNVBqHMxlbyj0+tWL+C8NkbxSfZoEN/QDWf0Pg=
-  - secure: cm7MbuEVVo5XfV1C0HGpu88psdzDz0oOJeez96r1K1qtw4+lRrI0ER4Qag/C8oWLsWkuiLaCU3YNMkUiLdhOJ1zSR9u+8XePBjE9L4x3oUVf/0q/cI4anI4hUSx8VUFZPeA1THymtDgFCAyIBuVcCY8e/uuZJ0j9FX+cP9YIKYo=
+  - secure: HqbtFQy5zFN8RXrMm19x2FIOYPpDe58J/LTKDYcYiTrbiQ2zWCr+mngy5sJib314wDbueW427d5Ob//ctNOjw/bhdCPuE1VHibN2qUJXKmziIay+fvxsjLtGJQGjgnnbFHHmuK030HO922HpBrSMqkcQ477GW65Q24eFACEiwbs=
+  - secure: Cgwms17ZG2O6t16I8Ba6KmMgbIgLyD26mS+DPDgRDTX9eFtULx+GEUd9kYgLhWdHVvH5Wy6jLhtgHWff9UZETSXWDbKcF3Fjq74fgTHDNV9y2qsUfUT/TAuwAiW+mIE9k/XGbn98kVHr6iEODIL35xjSAeOPzcnfY4aGBaIa0Ig=
 
 
 #mvn -Prelease -DnewVersion=1.0.${TRAVIS_BUILD_NUMBER} initialize --settings target/travis/settings.xml;
