@@ -21,4 +21,3 @@ Import-Package: io.prometheus.client;version="0.0.9.SNAPSHOT",
  org.slf4j;version="[1.6.0,2.0.0)"
 Service-Component: OSGI-INF/*.xml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.swookiee.runtime.prometheus.configuration;uses:="com.swookiee.core.configuration"

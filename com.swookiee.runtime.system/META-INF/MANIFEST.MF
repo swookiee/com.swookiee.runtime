@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Swookiee Core Oracle specific exports
+Bundle-SymbolicName: com.swookiee.runtime.system
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: com.swookiee
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: sun.misc,
+ sun.nio.ch,
+ com.sun.management
+Fragment-Host: system.bundle;extension:=framework
