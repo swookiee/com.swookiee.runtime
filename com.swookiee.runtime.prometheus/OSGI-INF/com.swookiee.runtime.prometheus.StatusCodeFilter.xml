@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
-    <scr:component name="com.swookiee.runtime.prometheus.StatusCodeFilter" activate="activate" deactivate="deactivate">
-        <implementation class="com.swookiee.runtime.prometheus.StatusCodeFilter"/>
-        <service servicefactory="false">
-            <provide interface="javax.ws.rs.container.ContainerResponseFilter"/>
-        </service>
-        <reference name="MetricRegistry" interface="com.swookiee.runtime.prometheus.SwookieeCollectorRegistry" cardinality="1..1" policy="static" bind="setMetricRegistry" unbind="unsetMetricRegistry"/>
-    </scr:component>
-</components>

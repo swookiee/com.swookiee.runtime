@@ -1,6 +1,6 @@
-package com.swookiee.runtime.prometheus.servlet;
+package com.swookiee.runtime.metrics.prometheus.servlet;
 
-import com.swookiee.runtime.prometheus.SwookieeCollectorRegistry;
+import com.swookiee.runtime.metrics.prometheus.SwookieeCollectorRegistry;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.common.TextFormat;
 import java.io.IOException;

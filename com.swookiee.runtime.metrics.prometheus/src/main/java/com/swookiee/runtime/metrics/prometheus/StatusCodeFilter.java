@@ -9,7 +9,7 @@
  * development and documentation
  * *****************************************************************************
  */
-package com.swookiee.runtime.prometheus;
+package com.swookiee.runtime.metrics.prometheus;
 
 import java.io.IOException;
 
@@ -35,47 +35,47 @@ import org.glassfish.jersey.server.model.ResourceMethodInvoker;
 @Component
 @Provider
 public class StatusCodeFilter implements ContainerResponseFilter {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(StatusCodeFilter.class);
     private CollectorRegistry collectorRegistry;
-    
+
     private static final Counter requestCounter = Counter.build()
-            .name("requests_totals")
+            .name("requests_total")
             .help("Request counters.")
             .labelNames("status", "method", "resource")
             .create();
-    
+
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
     public void setMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
         this.collectorRegistry = collectorRegistry;
     }
-    
+
     public void unsetMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
         this.collectorRegistry = null;
     }
-    
+
     @Activate
     public void activate() {
         requestCounter.register(collectorRegistry);
         logger.info("Activate Status Code Filter!");
     }
-    
+
     @Deactivate
     public void deactivate() {
         collectorRegistry.unregister(requestCounter);
         logger.info("Deactivated Status Code Filter!");
     }
-    
+
     @Override
     public void filter(final ContainerRequestContext requestContext, final ContainerResponseContext responseContext)
             throws IOException {
         requestCounter.labels(
                 Integer.toString(responseContext.getStatus()),
                 requestContext.getMethod(),
-                getResourceTimerName(requestContext)
-        ).inc();
+                getResourceTimerName(requestContext))
+                .inc();
     }
-    
+
     public String getResourceTimerName(ContainerRequestContext requestContext) {
         try {
             UriRoutingContext routingContext = (UriRoutingContext) requestContext.getUriInfo();

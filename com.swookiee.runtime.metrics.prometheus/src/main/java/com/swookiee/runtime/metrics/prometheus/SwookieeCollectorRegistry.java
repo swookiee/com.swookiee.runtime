@@ -7,9 +7,9 @@
  *
  * Contributors: Lars Pfannenschmidt - initial API and implementation, ongoing
  * development and documentation
- ******************************************************************************
+ * *****************************************************************************
  */
-package com.swookiee.runtime.prometheus;
+package com.swookiee.runtime.metrics.prometheus;
 
 import io.prometheus.client.CollectorRegistry;
 import org.osgi.service.component.annotations.Component;

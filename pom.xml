@@ -58,8 +58,8 @@
         <module>com.swookiee.runtime.ewok.test</module>
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.metrics.test</module>
-        <module>com.swookiee.runtime.prometheus</module>
         <module>com.swookiee.runtime.system</module>
+        <module>com.swookiee.runtime.metrics.prometheus</module>
         <module>com.swookiee.runtime.util</module>
         <module>com.swookiee.runtime.util.test</module>
 

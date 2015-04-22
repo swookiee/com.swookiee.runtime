@@ -1,4 +1,4 @@
-package com.swookiee.runtime.prometheus.servlet;
+package com.swookiee.runtime.metrics.prometheus.servlet;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

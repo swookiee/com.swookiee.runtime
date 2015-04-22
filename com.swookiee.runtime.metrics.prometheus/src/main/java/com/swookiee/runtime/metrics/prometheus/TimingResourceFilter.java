@@ -9,7 +9,7 @@
  * development and documentation
  * *****************************************************************************
  */
-package com.swookiee.runtime.prometheus;
+package com.swookiee.runtime.metrics.prometheus;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -50,18 +50,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
             .labelNames("method", "resource")
             .create();
 
-    private static final Histogram requestHistogram = Histogram.build()
-            .name("requests_latency")
-            .help("Request latency buckets.")
-            .labelNames("method", "resource")
-            .linearBuckets(0, 0.001, 5000)
-            .create();
-
     private Summary.Timer summaryTimer;
-    private Histogram.Timer histogramTimer;
-    private Summary.Child requestLatencyChild;
-    private Histogram.Child requestHistogramChild;
-
     private CollectorRegistry collectorRegistry;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
@@ -77,14 +66,11 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     public void activate() {
         logger.info("Activate Request Timer!");
         requestLatency.register(collectorRegistry);
-        requestHistogram.register(collectorRegistry);
-
     }
 
     @Deactivate
     public void deactivate() {
         collectorRegistry.unregister(requestLatency);
-        collectorRegistry.unregister(requestHistogram);
         logger.info("Deactivated Request Timer!");
     }
 
@@ -93,20 +79,14 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
         summaryTimer = requestLatency
                 .labels(
                         requestContext.getMethod(),
-                        getResourceTimerName(requestContext)
-                ).startTimer();
-        histogramTimer = requestHistogram.
-                labels(
-                        requestContext.getMethod(),
-                        getResourceTimerName(requestContext)
-                ).startTimer();
+                        getResourceTimerName(requestContext))
+                .startTimer();
     }
 
     @Override
     public void filter(final ContainerRequestContext requestContext, final ContainerResponseContext responseContext)
             throws IOException {
         summaryTimer.observeDuration();
-        histogramTimer.observeDuration();
     }
 
     public String getResourceTimerName(ContainerRequestContext requestContext) {
