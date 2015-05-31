@@ -14,7 +14,7 @@ package com.swookiee.runtime.metrics.prometheus;
 import io.prometheus.client.CollectorRegistry;
 import org.osgi.service.component.annotations.Component;
 
-@Component(service = {CollectorRegistry.class, SwookieeCollectorRegistry.class}, property = {"metricPrefix=swookiee"})
+@Component(service = {CollectorRegistry.class, SwookieeCollectorRegistry.class})
 public class SwookieeCollectorRegistry extends CollectorRegistry {
 
 }

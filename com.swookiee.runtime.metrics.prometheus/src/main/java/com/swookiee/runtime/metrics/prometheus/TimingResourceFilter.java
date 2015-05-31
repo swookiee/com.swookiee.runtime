@@ -54,11 +54,11 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     private CollectorRegistry collectorRegistry;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
+    public void setMetricRegistry(final CollectorRegistry collectorRegistry) {
         this.collectorRegistry = collectorRegistry;
     }
 
-    public void unsetMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
+    public void unsetMetricRegistry(final CollectorRegistry collectorRegistry) {
         this.collectorRegistry = null;
     }
 
@@ -97,7 +97,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
             Method method = invoker.getResourceMethod();
             return String.format("%s.%s", clazz.getSimpleName(), method.getName());
         } catch (Exception ex) {
-            return "undefined";
+            return "undefined.undefined";
         }
     }
 }

@@ -60,6 +60,7 @@
         <module>com.swookiee.runtime.metrics.test</module>
         <module>com.swookiee.runtime.system</module>
         <module>com.swookiee.runtime.metrics.prometheus</module>
+        <module>com.swookiee.runtime.metrics.prometheus.test</module>
         <module>com.swookiee.runtime.util</module>
         <module>com.swookiee.runtime.util.test</module>
 
@@ -87,6 +88,7 @@
         <guice-version>4.0</guice-version>
         <jetty.version>9.2.10.v20150310</jetty.version>
         <hk2.version>2.4.0-b12</hk2.version>
+        <prometheus.client.version>0.0.9</prometheus.client.version>
     </properties>
 
     <dependencies>
