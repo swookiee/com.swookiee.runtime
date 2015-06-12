@@ -5,8 +5,6 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors:
- *    Lars Pfannenschmidt - initial API and implementation, ongoing development and documentation
  *******************************************************************************/
 
 package com.swookiee.runtime.ewok.servlet
@@ -53,7 +51,8 @@ public class TimingResourceFilterTest {
             getHeaders:{
                 new MultivaluedHashMap<String, Object>()
             },
-            getMethod:{"TEST1-1"}
+            getMethod:{"TEST1-1"},
+            getStatus:{200}
         ] as ContainerResponseContext
 
         ContainerRequestContext tempRequestContext2 =[
@@ -63,7 +62,8 @@ public class TimingResourceFilterTest {
                 getHeaders:{
                     new MultivaluedHashMap<String, Object>()
                 },
-                getMethod:{"TEST1-2"}
+                getMethod:{"TEST1-2"},
+                getStatus:{200}
         ] as ContainerResponseContext
 
         filter.filter(tempRequestContext1)
@@ -75,9 +75,9 @@ public class TimingResourceFilterTest {
         }
 
         def sampleCount1 = (Integer)collectorRegistry.getSampleValue("requests_latency_seconds_count",
-                (String[])["method", "resource"], (String[])["TEST1-1", "undefined.undefined"])
+                (String[])["method", "resource", "status"], (String[])["TEST1-1", "undefined.undefined", "200"])
         def sampleCount2 = (Integer)collectorRegistry.getSampleValue("requests_latency_seconds_count",
-                (String[])["method", "resource"], (String[])["TEST1-2", "undefined.undefined"])
+                (String[])["method", "resource", "status"], (String[])["TEST1-2", "undefined.undefined", "200"])
 
         assertThat sampleCount1, is(equalTo(1))
         assertThat sampleCount2, is(equalTo(10))

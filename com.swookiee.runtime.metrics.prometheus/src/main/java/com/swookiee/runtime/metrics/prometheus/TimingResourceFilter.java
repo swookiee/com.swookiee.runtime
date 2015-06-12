@@ -5,14 +5,15 @@
  * the Eclipse Public License v1.0 which accompanies this distribution, and is
  * available at http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: Lars Pfannenschmidt - initial API and implementation, ongoing
- * development and documentation
  * *****************************************************************************
  */
 package com.swookiee.runtime.metrics.prometheus;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -44,10 +45,12 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
 
     private final static String HEADER_FIELD_NAME = "X-Processing-Time";
 
+    private final Map<ContainerRequestContext, Long> resourceRequestTimers = new ConcurrentHashMap<>();
+
     private static final Summary requestLatency = Summary.build()
             .name("requests_latency_seconds")
             .help("Request latency in seconds.")
-            .labelNames("method", "resource")
+            .labelNames("method", "resource", "status")
             .create();
 
     private Summary.Timer summaryTimer;
@@ -76,17 +79,30 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
 
     @Override
     public void filter(final ContainerRequestContext requestContext) throws IOException {
-        summaryTimer = requestLatency
-                .labels(
-                        requestContext.getMethod(),
-                        getResourceTimerName(requestContext))
-                .startTimer();
+        this.resourceRequestTimers.put(requestContext, System.nanoTime());
     }
 
     @Override
     public void filter(final ContainerRequestContext requestContext, final ContainerResponseContext responseContext)
             throws IOException {
-        summaryTimer.observeDuration();
+        Long startTime = this.resourceRequestTimers.get(requestContext);
+
+        if (startTime == null) {
+            return;
+        }
+
+        this.resourceRequestTimers.remove(requestContext);
+
+        Double elapsed = ((double)(System.nanoTime() - startTime))/1000000.0;
+
+        responseContext.getHeaders().putSingle(HEADER_FIELD_NAME, elapsed);
+
+        String responseStatus = Integer.toString(responseContext.getStatus());
+        requestLatency.labels(
+                        requestContext.getMethod(),
+                        getResourceTimerName(requestContext),
+                        responseStatus)
+                .observe(elapsed);
     }
 
     public String getResourceTimerName(ContainerRequestContext requestContext) {
