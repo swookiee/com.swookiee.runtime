@@ -46,6 +46,10 @@
             <id>tkrueger</id>
             <name>Thorsten Krüger</name>
         </developer>
+        <developer>
+            <id>utobi</id>
+            <name>Tobias Ullrich</name>
+        </developer>
     </developers>
 
     <modules>
