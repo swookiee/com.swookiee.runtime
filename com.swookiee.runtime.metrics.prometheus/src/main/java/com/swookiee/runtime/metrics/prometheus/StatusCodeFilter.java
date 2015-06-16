@@ -11,13 +11,19 @@
  */
 package com.swookiee.runtime.metrics.prometheus;
 
+import io.prometheus.client.CollectorRegistry;
+import io.prometheus.client.Counter;
+
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
+import org.glassfish.jersey.server.internal.routing.UriRoutingContext;
+import org.glassfish.jersey.server.model.ResourceMethodInvoker;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -25,12 +31,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import io.prometheus.client.CollectorRegistry;
-import io.prometheus.client.Counter;
-import java.lang.reflect.Method;
-import org.glassfish.jersey.server.internal.routing.UriRoutingContext;
-import org.glassfish.jersey.server.model.ResourceMethodInvoker;
 
 @Component
 @Provider
@@ -69,11 +69,8 @@ public class StatusCodeFilter implements ContainerResponseFilter {
     @Override
     public void filter(final ContainerRequestContext requestContext, final ContainerResponseContext responseContext)
             throws IOException {
-        requestCounter.labels(
-                Integer.toString(responseContext.getStatus()),
-                requestContext.getMethod(),
-                getResourceTimerName(requestContext))
-                .inc();
+        requestCounter.labels(Integer.toString(responseContext.getStatus()), requestContext.getMethod(),
+                getResourceTimerName(requestContext)).inc();
     }
 
     public String getResourceTimerName(ContainerRequestContext requestContext) {

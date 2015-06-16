@@ -11,11 +11,13 @@
  */
 package com.swookiee.runtime.metrics.prometheus;
 
+import io.prometheus.client.CollectorRegistry;
+import io.prometheus.client.Summary;
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -34,9 +36,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.prometheus.client.CollectorRegistry;
-import io.prometheus.client.Histogram;
-import io.prometheus.client.Summary;
 
 @Component
 @Provider
@@ -59,11 +58,11 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     private CollectorRegistry collectorRegistry;
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final CollectorRegistry collectorRegistry) {
+    public void setCollectorRegistry(final CollectorRegistry collectorRegistry) {
         this.collectorRegistry = collectorRegistry;
     }
 
-    public void unsetMetricRegistry(final CollectorRegistry collectorRegistry) {
+    public void unsetCollectorRegistry(final CollectorRegistry collectorRegistry) {
         this.collectorRegistry = null;
     }
 
@@ -95,15 +94,12 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
 
         this.resourceRequestTimers.remove(requestContext);
 
-        Double elapsed = ((double)(System.nanoTime() - startTime))/1000000.0;
+        double elapsed = ((double) (System.nanoTime() - startTime)) / 1000000.0;
 
         responseContext.getHeaders().putSingle(HEADER_FIELD_NAME, elapsed);
 
         String responseStatus = Integer.toString(responseContext.getStatus());
-        requestLatency.labels(
-                        requestContext.getMethod(),
-                        getResourceTimerName(requestContext),
-                        responseStatus)
+        requestLatency.labels(requestContext.getMethod(), getResourceTimerName(requestContext), responseStatus)
                 .observe(elapsed);
     }
 

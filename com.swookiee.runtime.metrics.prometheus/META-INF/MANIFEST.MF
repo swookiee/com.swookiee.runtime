@@ -3,12 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Swookiee Runtime prometheus Bundle
 Bundle-SymbolicName: com.swookiee.runtime.metrics.prometheus
 Bundle-Version: 1.0.0.qualifier
-Import-Package: io.prometheus.client;version="0.0.9",
- io.prometheus.client.exporter.common;version="0.0.9",
- io.prometheus.client.hotspot;version="0.0.9",
- com.fasterxml.jackson.annotation,
+Import-Package: com.fasterxml.jackson.annotation,
  com.fasterxml.jackson.databind,
  com.swookiee.runtime.util.configuration,
+ io.prometheus.client;version="0.0.9",
+ io.prometheus.client.exporter.common;version="0.0.9",
+ io.prometheus.client.hotspot;version="0.0.9",
  javax.annotation;version="[1.0.0,2.0.0)",
  javax.management,
  javax.ws.rs;version="[2.0,3)",
@@ -22,5 +22,4 @@ Import-Package: io.prometheus.client;version="0.0.9",
  org.slf4j;version="[1.6.0,2.0.0)"
 Service-Component: OSGI-INF/*.xml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: com.swookiee.runtime.metrics.prometheus.configuration;uses:="com.swookiee.core.configuration",
-  com.swookiee.runtime.metrics.prometheus
+Export-Package: com.swookiee.runtime.metrics.prometheus

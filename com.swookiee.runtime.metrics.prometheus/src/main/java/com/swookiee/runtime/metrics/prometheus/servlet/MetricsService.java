@@ -11,19 +11,23 @@
  */
 package com.swookiee.runtime.metrics.prometheus.servlet;
 
-import com.swookiee.runtime.metrics.prometheus.SwookieeCollectorRegistry;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.common.TextFormat;
+
 import java.io.IOException;
 import java.io.StringWriter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import javax.ws.rs.core.Response;
+
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.swookiee.runtime.metrics.prometheus.SwookieeCollectorRegistry;
 
 @Component
 public class MetricsService implements Metrics {
@@ -56,11 +60,9 @@ public class MetricsService implements Metrics {
         try {
             StringWriter writer = new StringWriter();
             TextFormat.write004(writer, collectorRegistry.metricFamilySamples());
-            //Response.status(Response.Status.OK).type(TextFormat.CONTENT_TYPE_004).
             return Response.ok(writer.toString(), TextFormat.CONTENT_TYPE_004).build();
-
         } catch (IOException ex) {
-            logger.error(null, ex);
+            logger.error("Could not read from prometheus registry: " + ex.getMessage(), ex);
             return Response.serverError().build();
         }
     }
