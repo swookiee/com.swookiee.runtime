@@ -4,6 +4,7 @@ before_install: "git clone -b travis `git config --get remote.origin.url` target
 script: "
 if [ ${TRAVIS_PULL_REQUEST} = 'false' ];
 then
+    echo ${LALALA};
     mvn clean deploy --settings target/travis/settings.xml;
 else
     mvn clean install --settings target/travis/settings.xml;
