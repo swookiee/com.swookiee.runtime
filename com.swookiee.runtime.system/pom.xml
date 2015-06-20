@@ -1,0 +1,41 @@
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.swookiee</groupId>
+        <artifactId>com.swookiee.runtime.parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>com.swookiee.runtime.system</artifactId>
+    <packaging>eclipse-plugin</packaging>
+
+    <name>Swookiee Core Oracle specific exports</name>
+
+    <repositories>
+        <repository>
+            <id>eclipse-luna</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/releases/luna</url>
+        </repository>
+        <repository>
+            <id>groovy-eclipse</id>
+            <layout>p2</layout>
+            <url>http://dist.springsource.org/release/GRECLIPSE/e4.4/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

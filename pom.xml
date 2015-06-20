@@ -46,6 +46,10 @@
             <id>tkrueger</id>
             <name>Thorsten Krüger</name>
         </developer>
+        <developer>
+            <id>utobi</id>
+            <name>Tobias Ullrich</name>
+        </developer>
     </developers>
 
     <modules>
@@ -58,9 +62,11 @@
         <module>com.swookiee.runtime.ewok.test</module>
         <module>com.swookiee.runtime.metrics</module>
         <module>com.swookiee.runtime.metrics.test</module>
+        <module>com.swookiee.runtime.system</module>
+        <module>com.swookiee.runtime.metrics.prometheus</module>
+        <module>com.swookiee.runtime.metrics.prometheus.test</module>
         <module>com.swookiee.runtime.util</module>
         <module>com.swookiee.runtime.util.test</module>
-
 
         <!-- TODO add test projects! -->
         <module>com.swookiee.runtime.swaggerui</module>
@@ -86,6 +92,7 @@
         <guice-version>4.0</guice-version>
         <jetty.version>9.2.10.v20150310</jetty.version>
         <hk2.version>2.4.0-b12</hk2.version>
+        <prometheus.client.version>0.0.9</prometheus.client.version>
     </properties>
 
     <dependencies>
@@ -457,6 +464,26 @@
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
             <version>1.1</version>
+        </dependency>
+
+        <!-- prometheus dependencies -->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>${prometheus.client.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_common</artifactId>
+            <version>${prometheus.client.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
+            <version>${prometheus.client.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Needed as Annotation processor -->

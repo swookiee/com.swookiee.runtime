@@ -52,9 +52,14 @@
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
       <plugin id="com.swookiee.runtime.metrics"/>
+      <plugin id="com.swookiee.runtime.metrics.prometheus"/>
       <plugin id="com.swookiee.runtime.swaggerui"/>
+      <plugin id="com.swookiee.runtime.system" fragment="true"/>
       <plugin id="com.swookiee.runtime.util"/>
       <plugin id="com.swookiee.runtime.webconsolebranding" fragment="true"/>
+      <plugin id="io.prometheus.simpleclient"/>
+      <plugin id="io.prometheus.simpleclient_common"/>
+      <plugin id="io.prometheus.simpleclient_hotspot"/>
       <plugin id="javassist"/>
       <plugin id="javax.annotation-api"/>
       <plugin id="javax.servlet-api" version="3.1.0"/>
@@ -143,8 +148,12 @@
       <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="2" />
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
+      <plugin id="com.swookiee.runtime.metrics.prometheus" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.swaggerui" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.util" autoStart="true" startLevel="0" />
+      <plugin id="io.prometheus.simpleclient" autoStart="true" startLevel="0" />
+      <plugin id="io.prometheus.simpleclient_common" autoStart="true" startLevel="0" />
+      <plugin id="io.prometheus.simpleclient_hotspot" autoStart="true" startLevel="0" />
       <plugin id="javassist" autoStart="true" startLevel="0" />
       <plugin id="javax.annotation-api" autoStart="true" startLevel="0" />
       <plugin id="javax.servlet-api" autoStart="true" startLevel="0" />
@@ -168,6 +177,7 @@
       <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.launcher" autoStart="false" startLevel="0" />
       <plugin id="org.eclipse.equinox.metatype" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.useradmin" autoStart="true" startLevel="0" />
