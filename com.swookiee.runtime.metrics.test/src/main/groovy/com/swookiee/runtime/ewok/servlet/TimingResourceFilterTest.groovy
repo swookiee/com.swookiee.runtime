@@ -66,7 +66,7 @@ public class TimingResourceFilterTest {
 
         for (int j = 0; j < 20; ++j) {
             final CountDownLatch latch = new CountDownLatch(1)
-            for (int i = 0; i < 50; ++i) {
+            for (int i = 0; i < 25; ++i) {
                 Runnable runner = new Runnable() {
                             public void run() {
                                 try {
@@ -91,7 +91,7 @@ public class TimingResourceFilterTest {
         }
         sleep 100
 
-        // We should have two timers, 1000 data points each.
+        // We should have two timers, 500 data points each.
         assertThat filter.metricRegistry.getTimers().size(), is(equalTo(2))
 
         // We should have no timers left
@@ -99,7 +99,7 @@ public class TimingResourceFilterTest {
 
         Timer firstTimer = filter.metricRegistry.getTimers().values().first()
         Timer lastTimer = filter.metricRegistry.getTimers().values().last()
-        assertThat firstTimer.count, is(equalTo(1000L))
-        assertThat lastTimer.count, is(equalTo(1000L))
+        assertThat firstTimer.count, is(equalTo(500L))
+        assertThat lastTimer.count, is(equalTo(500L))
     }
 }

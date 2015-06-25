@@ -109,7 +109,7 @@ public class TimingResourceFilterTest {
 
         for (int j = 0; j < 20; ++j) {
             final CountDownLatch latch = new CountDownLatch(1)
-            for (int i = 0; i < 50; ++i) {
+            for (int i = 0; i < 25; ++i) {
                 Runnable runner = new Runnable() {
                             public void run() {
                                 try {
@@ -151,7 +151,7 @@ public class TimingResourceFilterTest {
                 ])
 
         // We should have 1000 data points.
-        assertThat sampleCount, is(equalTo(1000))
+        assertThat sampleCount, is(equalTo(500))
 
         // We should have no timers left, otherwise we will have memory-leaks
         assertThat filter.resourceRequestTimers.size(), is(equalTo(0))
