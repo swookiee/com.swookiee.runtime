@@ -7,11 +7,12 @@
  *
  * Contributors:
  *    Tobias Ullrich - initial implementation
+ *    Frank Wisniewski - changed registration to white board pattern
  * *****************************************************************************
  */
 package com.swookiee.runtime.metrics.prometheus;
 
-import io.prometheus.client.CollectorRegistry;
+import io.prometheus.client.Collector;
 import io.prometheus.client.Summary;
 
 import java.io.IOException;
@@ -29,11 +30,11 @@ import javax.ws.rs.ext.Provider;
 
 import org.glassfish.jersey.server.internal.routing.UriRoutingContext;
 import org.glassfish.jersey.server.model.ResourceMethodInvoker;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +48,7 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
     private final static String HEADER_FIELD_NAME = "X-Processing-Time";
 
     private final Map<ContainerRequestContext, Long> resourceRequestTimers = new ConcurrentHashMap<>();
+    private ServiceRegistration<Collector> registeredLatency;
 
     private static final Summary requestLatency = Summary.build()
             .name("requests_latency_seconds")
@@ -54,27 +56,15 @@ public class TimingResourceFilter implements ContainerRequestFilter, ContainerRe
             .labelNames("method", "resource", "status")
             .create();
 
-    private Summary.Timer summaryTimer;
-    private CollectorRegistry collectorRegistry;
-
-    @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setCollectorRegistry(final CollectorRegistry collectorRegistry) {
-        this.collectorRegistry = collectorRegistry;
-    }
-
-    public void unsetCollectorRegistry(final CollectorRegistry collectorRegistry) {
-        this.collectorRegistry = null;
-    }
-
     @Activate
-    public void activate() {
+    public void activate(final BundleContext bundleContext) {
         logger.info("Activate Request Timer!");
-        requestLatency.register(collectorRegistry);
+        registeredLatency = bundleContext.registerService(Collector.class, requestLatency, null);
     }
 
     @Deactivate
     public void deactivate() {
-        collectorRegistry.unregister(requestLatency);
+        registeredLatency.unregister();
         logger.info("Deactivated Request Timer!");
     }
 

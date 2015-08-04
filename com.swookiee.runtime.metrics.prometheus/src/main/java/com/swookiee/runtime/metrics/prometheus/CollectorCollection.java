@@ -6,15 +6,20 @@
  * available at http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Tobias Ullrich - initial implementation
+ *    Frank Wisniewski - initial implementation
  * *****************************************************************************
  */
 package com.swookiee.runtime.metrics.prometheus;
 
-import io.prometheus.client.CollectorRegistry;
-import org.osgi.service.component.annotations.Component;
+import io.prometheus.client.Collector;
 
-@Component(service = {CollectorRegistry.class, SwookieeCollectorRegistry.class})
-public class SwookieeCollectorRegistry extends CollectorRegistry {
+import java.util.List;
 
+/**
+ * This interface marks a metric consisting of multiple Prometheus collectors. Implementations should be registered on
+ * the OSGi Service Registry to be picked up and relayed to Prometheus by the MetricRegistry.
+ * @see CollectorRegistryInventory
+ */
+public interface CollectorCollection {
+    public List<Collector> getCollectors();
 }
