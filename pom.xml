@@ -78,7 +78,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tycho.groupid>org.eclipse.tycho</tycho.groupid>
-        <tycho.version>0.22.0</tycho.version>
+        <tycho.version>0.23.1</tycho.version>
         <build.helper.maven.plugin.version>1.8</build.helper.maven.plugin.version>
         <maven.compiler.version>3.1</maven.compiler.version>
         <groovy.eclipse.compiler.version>2.9.2-01</groovy.eclipse.compiler.version>
@@ -99,7 +99,7 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <version>5.0.0</version>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

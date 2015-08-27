@@ -17,14 +17,14 @@
 
     <repositories>
         <repository>
-            <id>eclipse-luna</id>
+            <id>eclipse-mars</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/luna</url>
+            <url>http://download.eclipse.org/releases/mars</url>
         </repository>
         <repository>
             <id>groovy-eclipse</id>
             <layout>p2</layout>
-            <url>http://dist.springsource.org/release/GRECLIPSE/e4.4/</url>
+            <url>http://dist.springsource.org/snapshot/GRECLIPSE/e4.5/</url>
         </repository>
     </repositories>
 
