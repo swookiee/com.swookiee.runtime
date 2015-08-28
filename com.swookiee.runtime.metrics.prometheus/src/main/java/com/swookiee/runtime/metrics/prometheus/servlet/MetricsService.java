@@ -25,7 +25,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.function.BinaryOperator;
+import java.util.Iterator;
+import java.util.Set;
 
 @Component
 public class MetricsService implements Metrics {
@@ -33,12 +34,6 @@ public class MetricsService implements Metrics {
     private static final Logger logger = LoggerFactory.getLogger(MetricsService.class);
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final String HTML_LINK_TEMPLATE = "<a href=\"%s\">%s</a><br />";
-    private static final BinaryOperator<String> reducer = new BinaryOperator<String>() {
-        @Override
-        public String apply(String s1, String s2) {
-            return s1 + ", " + s2;
-        }
-    };
 
     private CollectorRegistryInventory inventory;
 
@@ -84,10 +79,7 @@ public class MetricsService implements Metrics {
 
     @Override
     public Response plainBundleList() {
-        String plain = inventory.getRegisteredBundles()
-                .stream()
-                .reduce(reducer)
-                .get();
+        String plain = reduce(inventory.getRegisteredBundles());
         return Response.ok(plain, MediaType.TEXT_PLAIN_TYPE).build();
     }
 
@@ -111,5 +103,21 @@ public class MetricsService implements Metrics {
             logger.error("Could not serialize bundle array: " + ex.getMessage(), ex);
             return Response.serverError().build();
         }
+    }
+
+    private String reduce(Set<String> strings) {
+        Iterator<String> iterator = strings.iterator();
+        if (!iterator.hasNext()) {
+            return "";
+        }
+        String value = iterator.next();
+        while (iterator.hasNext()) {
+            value = reduce(value, iterator.next());
+        }
+        return value;
+    }
+
+    private String reduce(String s1, String s2) {
+        return String.format("%s, %s", s1, s2);
     }
 }

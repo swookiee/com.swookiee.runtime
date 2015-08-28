@@ -21,11 +21,9 @@ import org.osgi.service.component.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 
 @Component(service = {CollectorRegistryInventory.class})
 public class CollectorRegistryInventory implements BundleListener {
@@ -35,12 +33,6 @@ public class CollectorRegistryInventory implements BundleListener {
     private BundleContext bundleContext;
 
     private Map<String, CollectorRegistry> registeredRegistries = new ConcurrentHashMap<>();
-    private Function<String, CollectorRegistry> registryInstantiator = new Function<String, CollectorRegistry>() {
-        @Override
-        public CollectorRegistry apply(String bundle) {
-            return new CollectorRegistry();
-        }
-    };
 
     @Activate
     public void activate(final BundleContext bundleContext) {
@@ -55,6 +47,7 @@ public class CollectorRegistryInventory implements BundleListener {
             registry.clear();
         }
         registeredRegistries.clear();
+        this.bundleContext.removeBundleListener(this);
         logger.info("Deactivated metric collector!");
     }
 
@@ -86,8 +79,8 @@ public class CollectorRegistryInventory implements BundleListener {
         return registeredRegistries.get(bundle);
     }
 
-    public List<String> getRegisteredBundles() {
-        return new ArrayList<>(registeredRegistries.keySet());
+    public Set<String> getRegisteredBundles() {
+        return registeredRegistries.keySet();
     }
 
     @Override
@@ -109,12 +102,21 @@ public class CollectorRegistryInventory implements BundleListener {
         logger.debug("Removed bundle {} from MetricRegistry", bundle);
     }
 
-    private CollectorRegistry getRegistry(Map<String, Object> properties) {
+    private CollectorRegistry getRegistry(Map<String, ?> properties) {
         String bundle = getBundleName(properties);
-        return registeredRegistries.computeIfAbsent(bundle, registryInstantiator);
+        return computeRegistryIfAbsent(bundle);
     }
 
-    private String getBundleName(Map<String, Object> properties) {
+    private CollectorRegistry computeRegistryIfAbsent(String bundle) {
+        CollectorRegistry registry = registeredRegistries.get(bundle);
+        if (registry == null) {
+            registry = new CollectorRegistry();
+            registeredRegistries.put(bundle, registry);
+        }
+        return registry;
+    }
+
+    private String getBundleName(Map<String, ?> properties) {
         long bundleId = (long) properties.get(BUNDLE_ID);
         Bundle bundle = bundleContext.getBundle(bundleId);
         return bundle.getSymbolicName();
