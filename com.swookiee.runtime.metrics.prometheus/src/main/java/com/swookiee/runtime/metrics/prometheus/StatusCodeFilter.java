@@ -7,37 +7,36 @@
  *
  * Contributors:
  *    Tobias Ullrich - initial implementation
+ *    Frank Wisniewski - switching to whiteboard pattern
  * *****************************************************************************
  */
 package com.swookiee.runtime.metrics.prometheus;
 
-import io.prometheus.client.CollectorRegistry;
+import io.prometheus.client.Collector;
 import io.prometheus.client.Counter;
-
-import java.io.IOException;
-import java.lang.reflect.Method;
+import org.glassfish.jersey.server.internal.routing.UriRoutingContext;
+import org.glassfish.jersey.server.model.ResourceMethodInvoker;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
-
-import org.glassfish.jersey.server.internal.routing.UriRoutingContext;
-import org.glassfish.jersey.server.model.ResourceMethodInvoker;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 @Component
 @Provider
 public class StatusCodeFilter implements ContainerResponseFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(StatusCodeFilter.class);
-    private CollectorRegistry collectorRegistry;
+    private ServiceRegistration<Collector> registeredCounter;
 
     private static final Counter requestCounter = Counter.build()
             .name("requests_total")
@@ -45,24 +44,15 @@ public class StatusCodeFilter implements ContainerResponseFilter {
             .labelNames("status", "method", "resource")
             .create();
 
-    @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
-        this.collectorRegistry = collectorRegistry;
-    }
-
-    public void unsetMetricRegistry(final SwookieeCollectorRegistry collectorRegistry) {
-        this.collectorRegistry = null;
-    }
-
     @Activate
-    public void activate() {
-        requestCounter.register(collectorRegistry);
+    public void activate(final BundleContext bundleContext) {
+        registeredCounter = bundleContext.registerService(Collector.class, requestCounter, null);
         logger.info("Activate Status Code Filter!");
     }
 
     @Deactivate
     public void deactivate() {
-        collectorRegistry.unregister(requestCounter);
+        registeredCounter.unregister();
         logger.info("Deactivated Status Code Filter!");
     }
 

@@ -7,38 +7,55 @@
  *
  * Contributors:
  *    Tobias Ullrich - initial implementation
- *    Lars Pfannenschmidt - added threading tests 
+ *    Lars Pfannenschmidt - added threading tests
+ *    Frank Wisniewski - adapted test to whiteboard pattern
  * *****************************************************************************
  */
 
 package com.swookiee.runtime.ewok.servlet
-
-import static org.hamcrest.CoreMatchers.*
-import static org.junit.Assert.*
-import static org.junit.matchers.JUnitMatchers.*
+import com.swookiee.runtime.metrics.prometheus.TimingResourceFilter
 import io.prometheus.client.CollectorRegistry
-
-import java.util.concurrent.CountDownLatch
+import org.junit.Test
+import org.osgi.framework.BundleContext
+import org.osgi.framework.ServiceRegistration
 
 import javax.ws.rs.container.ContainerRequestContext
 import javax.ws.rs.container.ContainerResponseContext
 import javax.ws.rs.core.MultivaluedHashMap
+import java.util.concurrent.CountDownLatch
 
-import org.glassfish.jersey.process.*
-import org.glassfish.jersey.server.*
-import org.glassfish.jersey.server.internal.process.*
-import org.junit.Test
-
-import com.swookiee.runtime.metrics.prometheus.TimingResourceFilter
+import static org.hamcrest.CoreMatchers.equalTo
+import static org.hamcrest.CoreMatchers.is
+import static org.junit.Assert.assertThat
 
 public class TimingResourceFilterTest {
 
+    def CollectorRegistry collectorRegistry = [] as CollectorRegistry
+
+    def getBundleContextMock() {
+
+        ServiceRegistration serviceRegistration = [
+                unregister:{
+                    collectorRegistry.clear()
+                    void
+                }
+        ] as ServiceRegistration
+
+        BundleContext bundleContext = [
+                registerService: {
+                    clazz, service, properties ->
+                        collectorRegistry.register service
+                        serviceRegistration
+                }
+        ] as BundleContext
+
+        bundleContext
+    }
+
     @Test
     void 'simple call count test'(){
-        CollectorRegistry collectorRegistry = [] as CollectorRegistry
         TimingResourceFilter filter = new TimingResourceFilter()
-        filter.setCollectorRegistry(collectorRegistry)
-        filter.activate()
+        filter.activate(bundleContextMock)
 
         ContainerRequestContext tempRequestContext1 =[
             getMethod:{ "TEST1-1" }
@@ -95,17 +112,12 @@ public class TimingResourceFilterTest {
         assertThat sampleCount2, is(equalTo(10))
 
         filter.deactivate()
-        filter.unsetCollectorRegistry()
-        collectorRegistry.clear()
     }
 
     @Test
     void 'test metric calculation multithreading'() {
-
-        CollectorRegistry collectorRegistry = new CollectorRegistry()
         def filter = new TimingResourceFilter()
-        filter.setCollectorRegistry(collectorRegistry)
-        filter.activate()
+        filter.activate(bundleContextMock)
 
         for (int j = 0; j < 20; ++j) {
             final CountDownLatch latch = new CountDownLatch(1)
