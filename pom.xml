@@ -224,7 +224,7 @@
         <dependency>
             <groupId>com.eclipsesource.jaxrs</groupId>
             <artifactId>publisher</artifactId>
-            <version>4.3</version>
+            <version>5.0</version>
         </dependency>
 
         <!-- Jersey needs some hk2 dependencies explicitly -->
