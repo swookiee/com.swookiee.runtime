@@ -1,3 +1,4 @@
+sudo: false
 language: java
 jdk: openjdk7
 before_install: "git clone -b travis `git config --get remote.origin.url` target/travis"
