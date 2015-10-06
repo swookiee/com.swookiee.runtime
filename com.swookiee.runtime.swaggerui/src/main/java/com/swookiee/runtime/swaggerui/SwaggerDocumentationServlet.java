@@ -33,7 +33,7 @@ import com.google.common.io.ByteStreams;
  */
 public class SwaggerDocumentationServlet extends HttpServlet {
 
-    private static final String DEFAULT_PATH = "/service.json";
+    private static final String DEFAULT_PATH = "/swagger.json";
     private static final long serialVersionUID = -8476611541655924943L;
 
     private final Bundle bundle;
