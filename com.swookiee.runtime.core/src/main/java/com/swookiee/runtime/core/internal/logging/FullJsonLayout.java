@@ -13,6 +13,7 @@ package com.swookiee.runtime.core.internal.logging;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -28,7 +29,8 @@ public class FullJsonLayout extends JsonLayout {
         Map<String, Object> jsonMap = super.toJsonMap(event);
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'");
-        jsonMap.put("ts", df.format(new Date()));
+        Calendar cal = Calendar.getInstance();
+        jsonMap.put("ts", df.format(cal.getTime()));
 
         if (isMeantToBeLoggedAsFullJson(event)) {
             jsonMap.put("message", event.getArgumentArray()[0]);
