@@ -14,12 +14,10 @@ package com.swookiee.runtime.core.internal.logging;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Map;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.contrib.json.classic.JsonLayout;
-//import org.joda.time.*;
 
 public class FullJsonLayout extends JsonLayout {
 
