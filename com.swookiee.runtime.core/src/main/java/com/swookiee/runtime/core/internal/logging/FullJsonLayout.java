@@ -21,12 +21,13 @@ import ch.qos.logback.contrib.json.classic.JsonLayout;
 
 public class FullJsonLayout extends JsonLayout {
 
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'");
+
     @Override
     protected Map<String, Object> toJsonMap(final ILoggingEvent event) {
         @SuppressWarnings("unchecked")
         Map<String, Object> jsonMap = super.toJsonMap(event);
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'");
         Calendar cal = Calendar.getInstance();
         jsonMap.put("ts", df.format(cal.getTime()));
 
