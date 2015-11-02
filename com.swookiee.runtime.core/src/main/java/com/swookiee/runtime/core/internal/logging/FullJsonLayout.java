@@ -11,17 +11,22 @@
 
 package com.swookiee.runtime.core.internal.logging;
 
+import java.util.Date;
 import java.util.Map;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.contrib.json.classic.JsonLayout;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 public class FullJsonLayout extends JsonLayout {
+
+    private static final ISO8601DateFormat ISO_FORMATTER = new ISO8601DateFormat();
 
     @Override
     protected Map<String, Object> toJsonMap(final ILoggingEvent event) {
         @SuppressWarnings("unchecked")
         Map<String, Object> jsonMap = super.toJsonMap(event);
+        jsonMap.put("ts", ISO_FORMATTER.format(new Date()));
 
         if (isMeantToBeLoggedAsFullJson(event)) {
             jsonMap.put("message", event.getArgumentArray()[0]);

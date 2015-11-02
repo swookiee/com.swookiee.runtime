@@ -14,10 +14,12 @@ package com.swookiee.runtime.metrics.prometheus.servlet;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("/metrics")
 public interface Metrics {
@@ -30,7 +32,7 @@ public interface Metrics {
     @GET
     @Path("/")
     @Produces(MediaType.TEXT_HTML)
-    Response htmlBundleList();
+    Response htmlBundleList(@Context UriInfo uri);
 
     @GET
     @Path("/")

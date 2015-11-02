@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Iterator;
@@ -33,7 +34,6 @@ public class MetricsService implements Metrics {
 
     private static final Logger logger = LoggerFactory.getLogger(MetricsService.class);
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static final String HTML_LINK_TEMPLATE = "<a href=\"%s\">%s</a><br />";
 
     private CollectorRegistryInventory inventory;
 
@@ -84,11 +84,21 @@ public class MetricsService implements Metrics {
     }
 
     @Override
-    public Response htmlBundleList() {
+    public Response htmlBundleList(UriInfo uri) {
+        String linkTemplate = "<a href="
+                + uri.getAbsolutePath().toString();
+
+        if (uri.getAbsolutePath().toString().endsWith("/")){
+            linkTemplate += "%s>%s</a><br />";
+        } else {
+            linkTemplate += "/%s>%s</a><br />";
+        }
+
+
         StringBuilder builder = new StringBuilder();
         builder.append("<html><head></head><body>");
         for (String bundle : inventory.getRegisteredBundles()) {
-            builder.append(String.format(HTML_LINK_TEMPLATE, bundle, bundle));
+            builder.append(String.format(linkTemplate, bundle, bundle));
         }
         builder.append("</body></html>");
         return Response.ok(builder.toString(), MediaType.TEXT_HTML_TYPE).build();
