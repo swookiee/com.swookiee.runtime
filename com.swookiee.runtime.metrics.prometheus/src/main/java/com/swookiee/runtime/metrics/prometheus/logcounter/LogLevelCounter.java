@@ -45,4 +45,8 @@ public class LogLevelCounter {
         registerdCounter.unregister();
         logger.info("Stopped Prometheus Log Level Counter!");
     }
+
+    public LogLevelCounterAppender getAppender() {
+        return instrumentedAppender;
+    }
 }
