@@ -12,45 +12,22 @@
  * *****************************************************************************
  */
 
-package com.swookiee.runtime.ewok.servlet
-import com.swookiee.runtime.metrics.prometheus.TimingResourceFilter
-import io.prometheus.client.CollectorRegistry
-import org.junit.Test
-import org.osgi.framework.BundleContext
-import org.osgi.framework.ServiceRegistration
-
-import javax.ws.rs.container.ContainerRequestContext
-import javax.ws.rs.container.ContainerResponseContext
-import javax.ws.rs.core.MultivaluedHashMap
-import java.util.concurrent.CountDownLatch
+package com.swookiee.runtime.metrics.prometheus
 
 import static org.hamcrest.CoreMatchers.equalTo
 import static org.hamcrest.CoreMatchers.is
 import static org.junit.Assert.assertThat
+import io.prometheus.client.CollectorRegistry
 
-public class TimingResourceFilterTest {
+import java.util.concurrent.CountDownLatch
 
-    def CollectorRegistry collectorRegistry = [] as CollectorRegistry
+import javax.ws.rs.container.ContainerRequestContext
+import javax.ws.rs.container.ContainerResponseContext
+import javax.ws.rs.core.MultivaluedHashMap
 
-    def getBundleContextMock() {
+import org.junit.Test
 
-        ServiceRegistration serviceRegistration = [
-                unregister:{
-                    collectorRegistry.clear()
-                    void
-                }
-        ] as ServiceRegistration
-
-        BundleContext bundleContext = [
-                registerService: {
-                    clazz, service, properties ->
-                        collectorRegistry.register service
-                        serviceRegistration
-                }
-        ] as BundleContext
-
-        bundleContext
-    }
+public class TimingResourceFilterTest extends BaseCollectorRegistryTest {
 
     @Test
     void 'simple call count test'(){

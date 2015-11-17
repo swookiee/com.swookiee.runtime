@@ -3,7 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Swookiee Runtime prometheus Bundle
 Bundle-SymbolicName: com.swookiee.runtime.metrics.prometheus
 Bundle-Version: 1.0.0.qualifier
-Import-Package: com.fasterxml.jackson.annotation,
+Import-Package: ch.qos.logback.classic,
+ ch.qos.logback.classic.spi,
+ ch.qos.logback.core,
+ ch.qos.logback.core.encoder,
+ ch.qos.logback.core.rolling,
+ ch.qos.logback.core.spi,
+ ch.qos.logback.core.status,
+ com.fasterxml.jackson.annotation,
  com.fasterxml.jackson.databind,
  com.swookiee.runtime.util.configuration,
  io.prometheus.client;version="0.0.9",

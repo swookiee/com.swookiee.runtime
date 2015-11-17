@@ -13,21 +13,28 @@
  */
 package com.swookiee.runtime.metrics.prometheus.servlet;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.swookiee.runtime.metrics.prometheus.CollectorRegistryInventory;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.exporter.common.TextFormat;
-import org.osgi.service.component.annotations.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.Set;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.swookiee.runtime.metrics.prometheus.CollectorRegistryInventory;
 
 @Component
 public class MetricsService implements Metrics {
@@ -48,11 +55,11 @@ public class MetricsService implements Metrics {
     }
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
-    public void setMetricRegistry(final CollectorRegistryInventory inventory) {
+    public void setMetricRegistry(CollectorRegistryInventory inventory) {
         this.inventory = inventory;
     }
 
-    public void unsetMetricRegistry(final CollectorRegistryInventory inventory) {
+    public void unsetMetricRegistry(CollectorRegistryInventory inventory) {
         this.inventory = null;
     }
 
@@ -85,15 +92,13 @@ public class MetricsService implements Metrics {
 
     @Override
     public Response htmlBundleList(UriInfo uri) {
-        String linkTemplate = "<a href="
-                + uri.getAbsolutePath().toString();
+        String linkTemplate = "<a href=" + uri.getAbsolutePath().toString();
 
-        if (uri.getAbsolutePath().toString().endsWith("/")){
+        if (uri.getAbsolutePath().toString().endsWith("/")) {
             linkTemplate += "%s>%s</a><br />";
         } else {
             linkTemplate += "/%s>%s</a><br />";
         }
-
 
         StringBuilder builder = new StringBuilder();
         builder.append("<html><head></head><body>");
