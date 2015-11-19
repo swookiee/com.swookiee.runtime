@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.swookiee</groupId>
@@ -60,8 +60,6 @@
         <module>com.swookiee.runtime.core.test</module>
         <module>com.swookiee.runtime.ewok</module>
         <module>com.swookiee.runtime.ewok.test</module>
-        <module>com.swookiee.runtime.metrics</module>
-        <module>com.swookiee.runtime.metrics.test</module>
         <module>com.swookiee.runtime.system</module>
         <module>com.swookiee.runtime.metrics.prometheus</module>
         <module>com.swookiee.runtime.metrics.prometheus.test</module>
@@ -321,24 +319,6 @@
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.fileinstall</artifactId>
             <version>3.2.8</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-core</artifactId>
-            <version>${metrics.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-jvm</artifactId>
-            <version>${metrics.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-graphite</artifactId>
-            <version>${metrics.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -33,9 +33,6 @@
       <plugin id="ch.qos.logback.contrib.logback-json-classic"/>
       <plugin id="ch.qos.logback.contrib.logback-json-core"/>
       <plugin id="ch.qos.logback.core"/>
-      <plugin id="com.codahale.metrics.core"/>
-      <plugin id="com.codahale.metrics.graphite"/>
-      <plugin id="com.codahale.metrics.jvm"/>
       <plugin id="com.eclipsesource.jaxrs.publisher"/>
       <plugin id="com.fasterxml.jackson.core.jackson-annotations"/>
       <plugin id="com.fasterxml.jackson.core.jackson-core"/>
@@ -50,7 +47,6 @@
       <plugin id="com.swookiee.runtime.authentication"/>
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>
-      <plugin id="com.swookiee.runtime.metrics"/>
       <plugin id="com.swookiee.runtime.metrics.prometheus"/>
       <plugin id="com.swookiee.runtime.swaggerui"/>
       <plugin id="com.swookiee.runtime.system" fragment="true"/>
@@ -129,9 +125,6 @@
       <plugin id="ch.qos.logback.contrib.logback-json-classic" autoStart="true" startLevel="0" />
       <plugin id="ch.qos.logback.contrib.logback-json-core" autoStart="true" startLevel="0" />
       <plugin id="ch.qos.logback.core" autoStart="true" startLevel="0" />
-      <plugin id="com.codahale.metrics.core" autoStart="true" startLevel="0" />
-      <plugin id="com.codahale.metrics.graphite" autoStart="true" startLevel="0" />
-      <plugin id="com.codahale.metrics.jvm" autoStart="true" startLevel="0" />
       <plugin id="com.eclipsesource.jaxrs.publisher" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.core.jackson-annotations" autoStart="true" startLevel="0" />
       <plugin id="com.fasterxml.jackson.core.jackson-core" autoStart="true" startLevel="0" />
@@ -145,7 +138,6 @@
       <plugin id="com.swookiee.runtime.authentication" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.core" autoStart="true" startLevel="2" />
       <plugin id="com.swookiee.runtime.ewok" autoStart="true" startLevel="0" />
-      <plugin id="com.swookiee.runtime.metrics" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.metrics.prometheus" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.swaggerui" autoStart="true" startLevel="0" />
       <plugin id="com.swookiee.runtime.util" autoStart="true" startLevel="0" />
