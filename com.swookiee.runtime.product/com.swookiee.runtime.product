@@ -95,10 +95,6 @@
       <plugin id="org.eclipse.jetty.servlet"/>
       <plugin id="org.eclipse.jetty.util"/>
       <plugin id="org.eclipse.jetty.webapp"/>
-      <plugin id="org.eclipse.jetty.websocket.api"/>
-      <plugin id="org.eclipse.jetty.websocket.common"/>
-      <plugin id="org.eclipse.jetty.websocket.server"/>
-      <plugin id="org.eclipse.jetty.websocket.servlet"/>
       <plugin id="org.eclipse.jetty.xml"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.services"/>
@@ -184,10 +180,6 @@
       <plugin id="org.eclipse.jetty.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.util" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.webapp" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.jetty.websocket.api" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.jetty.websocket.common" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.jetty.websocket.server" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.jetty.websocket.servlet" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.jetty.xml" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
       <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
