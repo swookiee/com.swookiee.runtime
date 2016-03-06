@@ -43,7 +43,6 @@
       <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
-      <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.swookiee.runtime.authentication"/>
       <plugin id="com.swookiee.runtime.core"/>
       <plugin id="com.swookiee.runtime.ewok"/>

@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Swookiee Runtime Util
-Bundle-SymbolicName: com.swookiee.runtime.util
+Bundle-SymbolicName: com.swookiee.runtime.util;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.fasterxml.jackson.annotation,
- com.fasterxml.jackson.core,
- com.fasterxml.jackson.databind,
- com.fasterxml.jackson.dataformat.yaml,
+Import-Package: com.fasterxml.jackson.annotation;version="2.7.0",
+ com.fasterxml.jackson.core;version="2.7.0",
+ com.fasterxml.jackson.databind;version="2.7.0",
+ com.fasterxml.jackson.dataformat.yaml;version="2.7.0",
  com.google.inject,
  com.google.inject.spi,
  org.osgi.framework;version="1.7.0",
