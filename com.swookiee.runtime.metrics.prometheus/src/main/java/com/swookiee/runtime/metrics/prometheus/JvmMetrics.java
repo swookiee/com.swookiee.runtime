@@ -8,6 +8,7 @@
  * Contributors:
  *    Tobias Ullrich - initial implementation
  *    Frank Wisniewski - switching to whiteboard pattern
+ *    Lars Pfannenschmidt - added ThreadExports
  * *****************************************************************************
  */
 package com.swookiee.runtime.metrics.prometheus;
@@ -16,6 +17,8 @@ import io.prometheus.client.Collector;
 import io.prometheus.client.hotspot.GarbageCollectorExports;
 import io.prometheus.client.hotspot.MemoryPoolsExports;
 import io.prometheus.client.hotspot.StandardExports;
+import io.prometheus.client.hotspot.ThreadExports;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Activate;
@@ -35,12 +38,14 @@ public class JvmMetrics {
     private final StandardExports standardExports = new StandardExports();
     private final MemoryPoolsExports memoryPoolsExports = new MemoryPoolsExports();
     private final GarbageCollectorExports garbageCollectorExports = new GarbageCollectorExports();
+    private final ThreadExports threadExports = new ThreadExports();
 
     @Activate
     public void activate(final BundleContext bundleContext) {
         registeredCollectors.add(bundleContext.registerService(Collector.class, standardExports, null));
         registeredCollectors.add(bundleContext.registerService(Collector.class, memoryPoolsExports, null));
         registeredCollectors.add(bundleContext.registerService(Collector.class, garbageCollectorExports, null));
+        registeredCollectors.add(bundleContext.registerService(Collector.class, threadExports, null));
         logger.info("Jvm Metrics activated!");
     }
 
