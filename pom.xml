@@ -81,16 +81,16 @@
         <maven.compiler.version>3.1</maven.compiler.version>
         <groovy.eclipse.compiler.version>2.9.2-01</groovy.eclipse.compiler.version>
         <groovy.eclipse.batch.version>2.4.3-01</groovy.eclipse.batch.version>
-        <slf4j.version>1.7.18</slf4j.version>
+        <slf4j.version>1.7.19</slf4j.version>
         <logback.version>1.1.6</logback.version>
         <jersey.version>2.22.2</jersey.version>
         <metrics.version>3.0.2</metrics.version>
-        <jackson.version>2.7.2</jackson.version>
+        <jackson.version>2.7.3</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0</guice-version>
         <jetty.version>9.2.15.v20160210</jetty.version>
         <hk2.version>2.4.0-b34</hk2.version>
-        <prometheus.client.version>0.0.13</prometheus.client.version>
+        <prometheus.client.version>0.0.14</prometheus.client.version>
     </properties>
 
     <dependencies>
