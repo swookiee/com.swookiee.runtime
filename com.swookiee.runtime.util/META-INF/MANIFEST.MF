@@ -8,11 +8,8 @@ Import-Package: com.fasterxml.jackson.annotation;version="2.7.0",
  com.fasterxml.jackson.core;version="2.7.0",
  com.fasterxml.jackson.databind;version="2.7.0",
  com.fasterxml.jackson.dataformat.yaml;version="2.7.0",
- com.google.inject,
- com.google.inject.spi,
  org.osgi.framework;version="1.7.0",
  org.osgi.service.cm;version="1.4.0",
  org.slf4j;version="[1.7.0,1.8.0)"
 Export-Package: com.swookiee.runtime.util,
- com.swookiee.runtime.util.configuration;uses:="org.osgi.service.cm",
- com.swookiee.runtime.util.guice;uses:="org.osgi.framework,com.google.inject.spi"
+ com.swookiee.runtime.util.configuration;uses:="org.osgi.service.cm"
