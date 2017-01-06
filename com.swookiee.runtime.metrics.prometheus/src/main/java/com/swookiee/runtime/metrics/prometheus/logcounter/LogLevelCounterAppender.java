@@ -32,7 +32,7 @@ public class LogLevelCounterAppender extends UnsynchronizedAppenderBase<ILogging
                 .name(COUNTER_NAME)
                 .help("Logback log statements at various log levels")
                 .labelNames("level")
-                .register();
+                .create();
         traceLabel = counter.labels("trace");
         debugLabel = counter.labels("debug");
         infoLabel = counter.labels("info");
