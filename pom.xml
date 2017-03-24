@@ -80,15 +80,15 @@
         <maven.compiler.version>3.1</maven.compiler.version>
         <groovy.eclipse.compiler.version>2.9.2-01</groovy.eclipse.compiler.version>
         <groovy.eclipse.batch.version>2.4.3-01</groovy.eclipse.batch.version>
-        <slf4j.version>1.7.22</slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        <jersey.version>2.25</jersey.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.2</logback.version>
+        <jersey.version>2.25.1</jersey.version>
         <metrics.version>3.0.2</metrics.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.8.7</jackson.version>
         <maven.test.search.classdir>true</maven.test.search.classdir>
         <guice-version>4.0</guice-version>
-        <jetty.version>9.3.15.v20161220</jetty.version>
-        <hk2.version>2.5.0-b30</hk2.version>
+        <jetty.version>9.3.17.v20170317</jetty.version>
+        <hk2.version>2.5.0-b32</hk2.version>
         <prometheus.client.version>0.0.18</prometheus.client.version>
     </properties>
 
@@ -114,7 +114,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.0</version>
+            <version>2.7</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -176,7 +176,7 @@
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.webconsole</artifactId>
-            <version>4.2.14</version>
+            <version>4.3.0</version>
             <classifier>all</classifier>
             <scope>provided</scope>
         </dependency>
@@ -281,7 +281,7 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.9.7</version>
+            <version>2.9.9</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -306,7 +306,7 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>1.5.12</version>
+            <version>1.5.13</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
