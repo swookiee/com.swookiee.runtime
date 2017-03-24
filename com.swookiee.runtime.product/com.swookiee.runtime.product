@@ -101,7 +101,8 @@
       <plugin id="org.glassfish.hk2.api"/>
       <plugin id="org.glassfish.hk2.external.asm-all-repackaged"/>
       <plugin id="org.glassfish.hk2.locator"/>
-      <plugin id="org.glassfish.hk2.osgi-resource-locator"/>
+      <plugin id="org.glassfish.hk2.osgi-resource-locator" version="2.3.0.b10_v201508191500"/>
+      <plugin id="org.glassfish.hk2.osgi-resource-locator" version="2.5.0.v20161103-1916"/>
       <plugin id="org.glassfish.hk2.utils"/>
       <plugin id="org.glassfish.jersey.bundles.repackaged.jersey-guava"/>
       <plugin id="org.glassfish.jersey.containers.jersey-container-servlet"/>

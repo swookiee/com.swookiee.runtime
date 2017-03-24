@@ -2,13 +2,13 @@
 <?pde version="3.8"?><target name="com.swookiee.runtime" sequenceNumber="44">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.codehaus.groovy.eclipse.feature.feature.group" version="2.9.2.xx-201702030026-e46"/>
+<unit id="org.codehaus.groovy.eclipse.feature.feature.group" version="2.9.2.xx-201703231514-e46"/>
 <repository location="http://dist.springsource.org/snapshot/GRECLIPSE/e4.6/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.12.0.v20161122-1740"/>
-<unit id="org.eclipse.pde.feature.group" version="3.12.2.v20161124-1400"/>
-<unit id="org.eclipse.jdt.feature.group" version="3.12.2.v20161124-1400"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.12.0.v20170209-1843"/>
+<unit id="org.eclipse.pde.feature.group" version="3.12.3.v20170301-0400"/>
+<unit id="org.eclipse.jdt.feature.group" version="3.12.3.v20170301-0400"/>
 <repository location="http://download.eclipse.org/releases/neon"/>
 </location>
 </locations>
